@@ -1,19 +1,13 @@
-import Index from '../Views/Index';
-import About from '../Views/About';
-import Not_Found from '../Views/Not_Found';
+import routes from './navbarRoutes';
 
-const routes = Object.freeze({
-  index: Index,
-  about: About,
-  error: Not_Found,
-});
 class Router {
   constructor(type) {
     console.log(routes);
     this.type = type;
   }
   renderRoute() {
-    return routes[this.type] || routes.error;
+    const route = routes[this.type] || routes.error;
+    return route;
   }
 }
 export default Router;

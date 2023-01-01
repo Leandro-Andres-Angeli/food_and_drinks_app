@@ -1,12 +1,13 @@
 import '@picocss/pico';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import NavbarHeader from './src/components/navbarheader/NavbarHeader';
 import Router from './src/Router/Router';
 
 import View from './src/Views/View';
-
+const navHeader = NavbarHeader;
 const app = document.getElementById('root');
-app.insertAdjacentHTML('afterbegin', 'app');
+app.insertAdjacentElement('afterbegin', navHeader.build());
 app.insertAdjacentHTML('beforeend', View);
 
 window.addEventListener('hashchange', function () {
