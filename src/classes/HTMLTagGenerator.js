@@ -11,12 +11,17 @@ class HTMLTagGenerator {
   }
   addStyles(classesList) {
     classesList.forEach((cssClass) => this.tag.classList.add(cssClass));
-    return this.tag;
+    return this;
+  }
+  addAttributes(attributes) {
+    for (const attr in attributes) {
+      this.tag.setAttribute(attr.replaceAll('_', '-'), attributes[attr]);
+    }
+    return this;
   }
   addChild(element, position) {
     // const childTag = document.createElement(element);
     this.tag.insertAdjacentElement(position, element.tag);
-    console.log(this.tag);
   }
   // addChild(element) {
   //   return document.createElement(element);
