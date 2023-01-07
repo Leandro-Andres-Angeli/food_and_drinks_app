@@ -1,5 +1,5 @@
-const about = () => {
+const Not_Found = () => {
   const section = document.createElement('section');
   return (section.innerHTML = `<h1>error</h1>`);
 };
-export default about();
+export default Not_Found();

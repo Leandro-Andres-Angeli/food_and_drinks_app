@@ -7,6 +7,7 @@ import NavbarLink from './src/classes/NavbarLink';
 import navbarRoutes from './src/utils/navbarRoutes';
 import getData from './src/apis/FetchApi';
 import apiEndPoints from './src/utils/apiRoutes';
+import Router from './src/Router/Router';
 
 if (module.hot) {
   module.hot.accept();
@@ -75,22 +76,41 @@ if (module.hot) {
 
 class App {
   constructor() {
-    this.headerNavbar = document.querySelector('.navbar-nav');
+    this.headerNavbar = document.querySelector('.navbar');
     this.root = document.getElementById('root');
-    this.routes = navbarRoutes;
+    this.routes = ['home', 'about', 'contact'];
     this.getData = getData;
-    this.preventDefaultActionLinks();
+
     window.addEventListener(
       'load',
       function () {
         this.renderNavLinks(this.routes);
+        console.log(window);
+      }.bind(this)
+    );
+
+    this.headerNavbar.addEventListener(
+      'click',
+      function (e) {
+        e.preventDefault();
+        if (!e.target.classList.contains('nav-link')) return;
+        const { route } = e.target.dataset;
+        window.history.pushState({}, '', route);
+        document.title = route || e.target.textContent;
+        route && this.render(route);
       }.bind(this)
     );
   }
+  render(route) {
+    const router = new Router(route);
+    router.renderRoute(this.root);
+  }
   renderNavLinks(routes) {
     const navbarLinksUl = document.querySelector('.navbar-nav');
+
     routes.forEach((route, i) => {
       const navbarLinkLi = new NavbarLink(route);
+      console.log(navbarLinkLi.tag);
       i === routes.length - 1 && navbarLinkLi.addStyle('order-last');
       navbarLinksUl.insertAdjacentElement('beforeend', navbarLinkLi.tag);
     });

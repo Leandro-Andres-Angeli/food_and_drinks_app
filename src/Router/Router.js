@@ -2,11 +2,13 @@ import routes from '../utils/navbarRoutes';
 
 class Router {
   constructor(type) {
-    console.log(routes);
-    this.type = type;
+    this.type = routes[type];
+    console.log(type);
   }
-  renderRoute() {
+  renderRoute(DOMel) {
     const route = routes[this.type] || routes.error;
+    console.log(this);
+    DOMel.innerHTML = this.type.component;
     return route;
   }
 }
