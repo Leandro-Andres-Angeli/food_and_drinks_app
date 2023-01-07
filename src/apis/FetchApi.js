@@ -1,12 +1,14 @@
-function fetchAPI() {
-  async function getData(url) {
-    const req = await fetch(url);
-    // console.log(req);
-    // console.log(req.json());
-    const parsed = await req.json();
-    console.log(parsed);
-    // return parsed;
-  }
-  return { getData };
+function getData(URL, callbackRenderFunc) {
+  fetch(URL)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return callbackRenderFunc(data);
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
 }
-export default fetchAPI;
+export default getData;

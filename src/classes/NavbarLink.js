@@ -8,7 +8,7 @@ class NavbarLink extends HTMLTagGenerator {
     this.addChild(
       new HTMLTagGenerator(textContent, 'a')
         .addStyles(navLinkClasses.classes)
-        .addAttributes({ data_route: textContent }),
+        .addAttributes({ data_route: textContent, href: textContent }),
       'beforeend'
     );
     // this.child.addAttributes({ href: '#' });
