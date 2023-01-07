@@ -3,14 +3,14 @@ import './src/styles/base.scss';
 import 'core-js/stable';
 import HTMLTagGenerator from './src/classes/HTMLTagGenerator';
 import categories from './src/Views/Categories';
+import NavbarLink from './src/classes/NavbarLink';
+import navbarRoutes from './src/Router/navbarRoutes';
 
 if (module.hot) {
   module.hot.accept();
 }
 // const categories = `www.themealdb.com/api/json/v1/1/list.php?c=list`;
-function showCategoriesTest(data) {
-  console.log(data);
-}
+
 // const navbarUl = new HTMLTagGenerator('categories', 'ul');
 
 // navbarUl.addChild(new HTMLTagGenerator('list item', 'li'), 'beforeend');
@@ -20,7 +20,9 @@ function showCategories(data) {
     'nav-item',
     'dropdown',
   ]);
+  // const navLink = new NavbarLink('link');
 
+  // console.log(navLink);
   navbarUl.addChild(
     new HTMLTagGenerator('categories', 'a')
       .addStyles(['nav-link', 'dropdown-toggle'])
@@ -57,7 +59,7 @@ function showCategories(data) {
 }
 const testRec =
   'https://api.spoonacular.com/recipes/random?apiKey=63e4bc6a307042d6928cb58979964f64&number=10';
-const getData = (URL, callbackRenderFunc) => {
+function getData(URL, callbackRenderFunc) {
   fetch(URL)
     .then((res) => {
       return res.json();
@@ -69,15 +71,47 @@ const getData = (URL, callbackRenderFunc) => {
     .catch((err) => {
       console.log(err);
     });
-};
+}
 // const navbarUl = new HTMLTagGenerator('categories', 'ul');
 // navbarUl.addChild(new HTMLTagGenerator('data', 'li'), 'beforeend');
 // console.log(navbarUl);
 ///////////
-getData(
-  'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
-  showCategories
-);
+const renderNavLinks = (routes) => {
+  console.log(routes);
+  const navbarLinksUl = document.querySelector('.navbar-nav');
+  routes.forEach((route, i) => {
+    const navbarLinkLi = new NavbarLink(route);
+    i === routes.length - 1 && navbarLinkLi.addStyle('order-last');
+    navbarLinksUl.insertAdjacentElement('beforeend', navbarLinkLi.tag);
+  });
+
+  getData(
+    'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
+    showCategories
+  );
+};
+
+// function ren(call, call2) {
+//   renderNavLinks(navbarRoutes.slice(0, -1));
+//   call;
+//   call2;
+// }
+
+// ren(
+//   getData(
+//     'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
+//     showCategories
+//   )
+// );
+renderNavLinks(navbarRoutes);
+// ren(
+//   getData(
+//     'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
+//     showCategories
+//   ),
+//   renderNavLinks(navbarRoutes.slice(-1))
+// );
+
 //////////
 
 // getData('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
