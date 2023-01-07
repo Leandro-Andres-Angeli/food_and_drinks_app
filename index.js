@@ -1,32 +1,50 @@
 import * as bootstrap from 'bootstrap';
 import './src/styles/base.scss';
 import 'core-js/stable';
-import Navlink from './src/classes/NavLink';
+import HTMLTagGenerator from './src/classes/HTMLTagGenerator';
+
 if (module.hot) {
   module.hot.accept();
 }
-const categories = `www.themealdb.com/api/json/v1/1/list.php?c=list`;
+// const categories = `www.themealdb.com/api/json/v1/1/list.php?c=list`;
 
+function showCategories(data) {
+  const navbarUl = new HTMLTagGenerator('categories', 'ul');
+  console.log(data);
+  data.meals.map((d) => {
+    navbarUl.addChild(new HTMLTagGenerator(d.strCategory, 'li'), 'beforeend');
+  });
+  document
+    .querySelector('.navbar')
+    .insertAdjacentHTML('beforeend', navbarUl.tag.outerHTML);
+}
 const testRec =
   'https://api.spoonacular.com/recipes/random?apiKey=63e4bc6a307042d6928cb58979964f64&number=10';
-const getData = (URL) => {
+const getData = (URL, callbackRenderFunc) => {
   fetch(URL)
     .then((res) => {
       return res.json();
     })
-    .then((data) => console.log(data))
+    .then((data) => {
+      return callbackRenderFunc(data);
+    })
+
     .catch((err) => {
       console.log(err);
     });
-  // .then((data) => console.log(data));
-
-  // const parsed = await data.json();
-  // console.log(parsed);
 };
-getData('https://www.themealdb.com/api/json/v1/1/categories.php');
-getData('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+// const navbarUl = new HTMLTagGenerator('categories', 'ul');
+// navbarUl.addChild(new HTMLTagGenerator('data', 'li'), 'beforeend');
+// console.log(navbarUl);
+///////////
+getData(
+  'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
+  showCategories
+);
+//////////
+
 // getData('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
-getData('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+// getData('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
 // getData('https://www.themealdb.com/api/json/v1/1/randomselection.php');
 
 // import 'regenerator-runtime/runtime';
@@ -36,7 +54,9 @@ getData('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
 
 // import View from './src/Views/View';
 // import fetchAPI from './src/apis/FetchApi';
-// const { getData } = fetchAPI();
+// import categories from './src/Views/Categories';
+// import HTMLTagGenerator from './src/classes/HTMLTagGenerator';
+
 // const gd = async () => {
 //   try {
 //     const f = await fetch('www.themealdb.com/api/json/v1/1/list.php?c=list');
@@ -70,14 +90,18 @@ class App {
     this.root = document.getElementById('root');
     console.log(this.root);
     this.preventDefaultActionLinks();
-    this.renderNavbarLinks(['categories', 'contact']);
+    // this.renderNavbarLinks(['categories', 'contact']);
+    // this.headerNavbar.insertAdjacentHTML(
+    //   'beforeend',
+    //   getData(
+    //     'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
+    //     showCategories
+    //   )
+    // );
   }
   renderNavbarLinks(links) {
     links.forEach((link) => {
-      this.headerNavbar.insertAdjacentElement(
-        'beforeend',
-        new Navlink(link).addAnchor()
-      );
+      this.headerNavbar.insertAdjacentElement('beforeend');
     });
   }
 
