@@ -1,0 +1,13 @@
+:root {
+  --slider-height: 0;
+}
+#carouselExampleControls {
+  height: calc(100vh - var(--navbar-height));
+  .carousel-inner {
+    height: calc(100vh - var(--navbar-height));
+    img {
+      height: calc(100vh - var(--navbar-height) * 0.7);
+      object-fit: cover;
+    }
+  }
+}
