@@ -3,10 +3,37 @@
 }
 #carouselExampleControls {
   height: calc(100vh - var(--navbar-height));
+  background-color: #f5ebd9;
+  p {
+    display: -webkit-box;
+
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .carousel-inner {
     height: calc(100vh - var(--navbar-height));
-    img {
-      height: calc(100vh - var(--navbar-height) * 0.7);
+    .row {
+      div:nth-child(2) {
+        background-color: red;
+      }
+
+      // &::before {
+      //   content: '';
+      //   background-color: rgba(0, 0, 0, 0.65);
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      // }
+    }
+
+    .img-slider {
+      // height: calc(100vh - var(--navbar-height) * 0.7);
+      height: 70vh;
+      transform: translateX(-24%);
+      position: relative;
       object-fit: cover;
     }
   }

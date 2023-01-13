@@ -4,6 +4,8 @@ const HomeSlider = (randomMeals) => {
     '--navbar-height',
     document.querySelector('nav').getClientRects()[0].height + 'px'
   );
+
+  // data-bs-ride="carousel"
   return (
     randomMeals
       .map(({ meals }, i) => {
@@ -11,20 +13,35 @@ const HomeSlider = (randomMeals) => {
         console.log(strMeal);
         return (
           (i === 0 &&
-            `<div id="carouselExampleControls"   class="carousel slide" data-bs-ride="carousel">
+            `<div id="carouselExampleControls"   class="carousel slide my-5 py-5" >
+            
 <div class="carousel-inner p-5">
 <div class="carousel-item active ">
-  <img src="${strMealThumb}" class="d-block w-100" alt="...">
-  <div class="carousel-caption  d-md-block">
+  
+  <div class='row'>
+  <div class='col-6'>
+  
   <h5>${strMeal}</h5>
   <p>${strInstructions}</p>
-</div>
+  
+  </div>
+  <div class='col-6'>
+  <img src="${strMealThumb}" class="img-slider d-block position-absolute " alt="...">
+  </div>
+  </div>
+  
+
 </div>`) ||
           ` <div class="carousel-item ">
-<img src="${strMealThumb}" class="d-block w-100" alt="...">
-<div class="carousel-caption  d-md-block">
+
+<div class='row'>
+<div class='col-6'>
 <h5>${strMeal}</h5>
 <p>${strInstructions}</p>
+</div>
+<div class='col-6'>
+<img src="${strMealThumb}" class="d-block img-slider position-absolute " alt="...">
+</div>
 </div>
 </div>`
         );
