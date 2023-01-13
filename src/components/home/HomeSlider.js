@@ -15,18 +15,18 @@ const HomeSlider = (randomMeals) => {
           (i === 0 &&
             `<div id="carouselExampleControls"   class="carousel slide my-5 py-5" >
             
-<div class="carousel-inner p-5">
+<div class="carousel-inner  p-4">
 <div class="carousel-item active ">
   
   <div class='row'>
   <div class='col-6'>
-  
+  <h6>Welcome to out store</h6>
   <h5>${strMeal}</h5>
   <p>${strInstructions}</p>
   
   </div>
-  <div class='col-6'>
-  <img src="${strMealThumb}" class="img-slider d-block position-absolute " alt="...">
+  <div class='col-6'  style="background-image:url(${strMealThumb})" >
+
   </div>
   </div>
   
@@ -36,11 +36,12 @@ const HomeSlider = (randomMeals) => {
 
 <div class='row'>
 <div class='col-6'>
+<h6>Welcome to out store</h6>
 <h5>${strMeal}</h5>
 <p>${strInstructions}</p>
 </div>
-<div class='col-6'>
-<img src="${strMealThumb}" class="d-block img-slider position-absolute " alt="...">
+<div class='col-6' style="background-image:url(${strMealThumb})" >
+
 </div>
 </div>
 </div>`
