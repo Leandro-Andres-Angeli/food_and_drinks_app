@@ -1,5 +1,11 @@
+import AnimatedButton from '../../shared/AnimatedButton';
 import './home_slider.scss';
 const HomeSlider = (randomMeals) => {
+  // <button class=' btn btn-primary carousel-btn'>order now</button>;
+  const btnSliderArticle = new AnimatedButton('order now')
+    .addClassLists(['carousel-btn'])
+    .build();
+  console.log(btnSliderArticle);
   document.documentElement.style.setProperty(
     '--navbar-height',
     document.querySelector('nav').getClientRects()[0].height + 'px'
@@ -23,7 +29,8 @@ const HomeSlider = (randomMeals) => {
   <h6>Welcome to out store</h6>
   <h2 class='text-primary'>${strMeal}</h2>
   <p>${strInstructions}</p>
-  <button class='btn btn-small btn-primary carousel-btn'>order now</button>
+  ${btnSliderArticle}
+            
   </div>
   <div class='col-6 d-none d-md-block'   >
             <img src="${strMealThumb}" class="img-fluid carousel-img" alt="...">
@@ -39,7 +46,7 @@ const HomeSlider = (randomMeals) => {
 <h6>Welcome to out store</h6>
 <h2 class='text-blue'>${strMeal}</h2>
 <p>${strInstructions}</p>
-<button class='btn btn-small btn-primary carousel-btn'>order now</button>
+${btnSliderArticle}
 </div>
 <div class='col-6 d-none d-md-block'   >
             <img src="${strMealThumb}" class="img-fluid carousel-img" alt="...">

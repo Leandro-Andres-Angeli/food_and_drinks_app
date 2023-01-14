@@ -16,7 +16,7 @@
 // };
 
 import getData from '../apis/getData';
-import HomeSlider from '../components/home/HomeSlider';
+import HomeSlider from '../components/home/slider/HomeSlider';
 
 // export default Home;
 export const Home = async () => {
