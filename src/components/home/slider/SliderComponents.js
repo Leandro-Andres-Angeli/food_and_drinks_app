@@ -37,5 +37,16 @@ class SliderImg extends SliderComponent {
       `;
   }
 }
+class SliderBtn extends SliderComponent {
+  constructor({ direction, textContext }) {
+    super();
+    this.tag = ` 
+    <button class="carousel-control-${direction}" type="button" id="slider_btn" data-bs-target="#carouselExampleControls" data-bs-slide="${direction}">
+    <span class="carousel-control-${direction}-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">${textContext}</span>
+  </button>
+      `;
+  }
+}
 
-export { SliderTextContent, SliderImg };
+export { SliderTextContent, SliderImg, SliderBtn };
