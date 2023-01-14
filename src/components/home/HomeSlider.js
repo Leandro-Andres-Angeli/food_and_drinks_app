@@ -13,20 +13,20 @@ const HomeSlider = (randomMeals) => {
         console.log(strMeal);
         return (
           (i === 0 &&
-            `<div id="carouselExampleControls"   class="carousel slide my-5 py-5" >
+            `<div id="carouselExampleControls"   class="carousel slide  py-5" >
             
 <div class="carousel-inner  p-4">
 <div class="carousel-item active ">
   
   <div class='row'>
-  <div class='col-6'>
+  <div class='col-12 col-md-6 p-2 p-md-4  d-flex flex-column gap-4 '>
   <h6>Welcome to out store</h6>
-  <h5>${strMeal}</h5>
+  <h2 class='text-primary'>${strMeal}</h2>
   <p>${strInstructions}</p>
-  
+  <button class='btn btn-small btn-primary carousel-btn'>order now</button>
   </div>
-  <div class='col-6'  style="background-image:url(${strMealThumb})" >
-
+  <div class='col-6 d-none d-md-block'   >
+            <img src="${strMealThumb}" class="img-fluid carousel-img" alt="...">
   </div>
   </div>
   
@@ -35,14 +35,15 @@ const HomeSlider = (randomMeals) => {
           ` <div class="carousel-item ">
 
 <div class='row'>
-<div class='col-6'>
+<div class='col-12 col-md-6 p-2 p-md-4  d-flex flex-column gap-4 '>
 <h6>Welcome to out store</h6>
-<h5>${strMeal}</h5>
+<h2 class='text-blue'>${strMeal}</h2>
 <p>${strInstructions}</p>
+<button class='btn btn-small btn-primary carousel-btn'>order now</button>
 </div>
-<div class='col-6' style="background-image:url(${strMealThumb})" >
-
-</div>
+<div class='col-6 d-none d-md-block'   >
+            <img src="${strMealThumb}" class="img-fluid carousel-img" alt="...">
+  </div>
 </div>
 </div>`
         );

@@ -14,10 +14,37 @@
   .carousel-inner {
     // height: calc(100vh - var(--navbar-height));
 
-    // .img-slider {
-    //   height: calc(100vh - var(--navbar-height) * 0.5);
+    .col-12:nth-child(1) {
+      border: 5px dashed black;
+      border-right: none;
+      position: relative;
+      &::after {
+        content: '';
+        background-color: var(--light-yellow);
+        width: 25%;
+        height: 5px;
+        position: absolute;
+        bottom: -5px;
+        right: 0px;
+      }
+      &::before {
+        content: '';
+        background-color: var(--light-yellow);
+        width: 10%;
+        height: 5px;
+        position: absolute;
+        top: -5px;
+        right: 0px;
+      }
+      .carousel-btn {
+        width: fit-content;
+      }
+    }
 
-    //   object-fit: cover;
-    // }
+    .carousel-img {
+      max-height: calc(100vh * 0.7);
+
+      object-fit: cover;
+    }
   }
 }
