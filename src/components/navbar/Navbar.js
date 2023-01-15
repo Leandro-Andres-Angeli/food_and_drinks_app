@@ -1,5 +1,6 @@
 import * as brandPic from '../../assets/icons/spaghetti.png';
-import routes from '../../utils/routes';
+import routes from '../../router/routes';
+
 import './navbarStyles.scss';
 import NavLink from './NavLink';
 const Navbar = () => {
@@ -7,6 +8,7 @@ const Navbar = () => {
   console.log(firsArt);
   console.log(last);
   const view = ` <nav class="navbar navbar-expand-md ">
+
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
       <img  class='navbar-brand_logo' src=${brandPic}>

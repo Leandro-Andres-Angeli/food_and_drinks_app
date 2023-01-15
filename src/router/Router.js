@@ -1,4 +1,4 @@
-import routes from '../utils/navbarRoutes';
+import routes from './routes';
 
 class Router {
   constructor(type) {

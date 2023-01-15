@@ -12,7 +12,7 @@ const HomeSlider = (randomMeals) => {
     document.querySelector('nav').getClientRects()[0].height + 'px'
   );
 
-  let carousel = `<div id="carouselExampleControls"   class="carousel slide  py-5" >
+  let carousel = `<div id="carouselExampleControls"   class="carousel slide  py-5 px-md-5" >
   <div class="carousel-inner  p-4">`;
   randomMeals.map(({ meals }, i) => {
     const { strMeal, strSource, strMealThumb, strInstructions } = meals[0];
