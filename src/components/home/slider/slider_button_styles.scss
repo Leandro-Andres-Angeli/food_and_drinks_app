@@ -1,0 +1,22 @@
+@mixin moveBtn($distance, $opacityValue: 0) {
+  transform: translateX($distance);
+  opacity: $opacityValue;
+}
+.slider_btn {
+  @media screen and (min-width: 800px) {
+    .carousel-control-prev-icon {
+      @include moveBtn(-10rem);
+      transition: all 0.2s ease-in;
+      &.show_btn {
+        @include moveBtn(0, 1);
+      }
+    }
+    .carousel-control-next-icon {
+      @include moveBtn(10rem);
+      transition: all 0.2s ease-in;
+      &.show_btn {
+        @include moveBtn(0, 1);
+      }
+    }
+  }
+}
