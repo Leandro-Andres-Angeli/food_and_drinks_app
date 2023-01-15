@@ -41,7 +41,7 @@ class SliderBtn extends SliderComponent {
   constructor({ direction, textContext }) {
     super();
     this.tag = ` 
-    <button class="carousel-control-${direction}" type="button" id="slider_btn" data-bs-target="#carouselExampleControls" data-bs-slide="${direction}">
+    <button class="slider_btn carousel-control-${direction}" type="button"  data-bs-target="#carouselExampleControls" data-bs-slide="${direction}">
     <span class="carousel-control-${direction}-icon" aria-hidden="true"></span>
     <span class="visually-hidden">${textContext}</span>
   </button>

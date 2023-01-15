@@ -1,3 +1,5 @@
-#slider_btn {
-  background-color: green;
+.slider_btn {
+  span:first-of-type {
+    border: 1px solid;
+  }
 }

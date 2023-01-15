@@ -1,5 +1,5 @@
 import * as bootstrap from 'bootstrap';
-import './src/styles/base.scss';
+// import './src/styles/base.scss';
 import 'core-js/stable';
 import Navbar from './src/components/navbar/Navbar';
 import { asyncRender, Home } from './src/views/Home';
