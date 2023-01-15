@@ -5,15 +5,17 @@
 .slider_btn {
   @media screen and (min-width: 800px) {
     .carousel-control-prev-icon {
-      @include moveBtn(-10rem);
-      transition: all 0.2s ease-in;
+      @include moveBtn(2rem);
+      transition: opacity 0.2s ease-in;
+      transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
       &.show_btn {
         @include moveBtn(0, 1);
       }
     }
     .carousel-control-next-icon {
-      @include moveBtn(10rem);
-      transition: all 0.2s ease-in;
+      @include moveBtn(-2rem);
+      transition: opacity 0.2s ease-in;
+      transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
       &.show_btn {
         @include moveBtn(0, 1);
       }

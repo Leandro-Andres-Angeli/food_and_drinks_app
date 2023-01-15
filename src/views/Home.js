@@ -1,20 +1,3 @@
-// import getData from '../apis/getData';
-// const header = async () => {
-//   const sliderData = await getData(
-//     'https://www.themealdb.com/api/json/v1/1/random.php'
-//   );
-//   console.log(sliderData);
-//   //   const view = '<h1>Hola</h1>';
-//   //   return view;
-// };
-// const Home = async () => {
-//   const sliderData = await getData(
-//     'https://www.themealdb.com/api/json/v1/1/random.php'
-//   );
-//   console.log(sliderData);
-//   return '<h1>data</h1>';
-// };
-
 import getData from '../apis/getData';
 import HomeSlider from '../components/home/slider/HomeSlider';
 
