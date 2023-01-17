@@ -2,23 +2,21 @@
   transform: translateX($distance);
   opacity: $opacityValue;
 }
+$slider_setup: (
+  'prev': 2rem,
+  'next': -2rem,
+);
 .slider_btn {
   @media screen and (min-width: 800px) {
-    .carousel-control-prev-icon {
-      @include moveBtn(2rem);
+    @each $className, $distance in $slider_setup {
+      .carousel-control-#{$className}-icon {
+        @include moveBtn($distance);
 
-      transition: opacity 0.5s ease-in, transform 0.3s ease-in;
-      opacity: 0;
-      &.show_btn {
-        @include moveBtn(0, 1);
-      }
-    }
-    .carousel-control-next-icon {
-      @include moveBtn(-2rem);
-
-      transition: opacity 0.5s ease-in, transform 0.3s ease-in;
-      &.show_btn {
-        @include moveBtn(0, 1);
+        transition: opacity 0.5s ease-in, transform 0.3s ease-in;
+        opacity: 0;
+        &.show_btn {
+          @include moveBtn(0, 1);
+        }
       }
     }
   }
