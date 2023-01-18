@@ -9,7 +9,7 @@ const HomeSlider = (randomMeals) => {
   console.log(btnSliderArticle);
   document.documentElement.style.setProperty(
     '--navbar-height',
-    document.querySelector('nav').getClientRects()[0].height + 'px'
+    document.querySelector('.header-nav').getClientRects()[0].height + 'px'
   );
 
   let carousel = `

@@ -1,4 +1,11 @@
-.navbar-brand {
+.dropdown-menu {
+  border-top: 2px solid var(--bs-primary);
+  li a {
+    transition: color 0.2s ease-in;
+    &:hover {
+      color: var(--bs-primary);
+    }
+  }
 }
 .navbar-brand_logo {
   width: 4rem;

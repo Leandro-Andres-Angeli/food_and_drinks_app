@@ -1,14 +1,3 @@
-// class getData {
-//   async fetchData(url) {
-//     try {
-//       const res = await fetch(url);
-//       const data = res.json();
-//       return data;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
-// }
 async function getData(url) {
   try {
     const res = await fetch(url);
