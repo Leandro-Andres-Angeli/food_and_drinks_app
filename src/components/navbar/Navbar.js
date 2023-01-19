@@ -3,7 +3,7 @@ import * as brandPic from '../../assets/icons/spaghetti.png';
 import routes from '../../router/routes';
 
 import './navbarStyles.scss';
-import NavLink, { NavElement, navElements } from './NavLink';
+import { NavElement } from './NavLink';
 const Navbar = async () => {
   const [last, ...firsArt] = routes.reverse();
 
@@ -12,7 +12,7 @@ const Navbar = async () => {
   const mealCategories = await getData(
     'https://www.themealdb.com/api/json/v1/1/categories.php'
   );
-  console.log(mealCategories);
+
   const view = ` <nav class="navbar nav header-nav navbar-expand-md ">
 
     <div class="container-fluid">
@@ -34,6 +34,7 @@ const Navbar = async () => {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
          ${firsArt
+           .reverse()
            .map((link) => NavElement.setStrategy('navLink').build(link))
            .join('')}
          
@@ -48,7 +49,7 @@ const Navbar = async () => {
                  `<li><a class="dropdown-item" href="${Object.keys(
                    mealCategories
                  )}/${category}"
-                 ">${name}</a></li>`
+                 >${name}</a></li>`
              )
              .join('')}
              
@@ -70,6 +71,7 @@ const Navbar = async () => {
       </div>
     </div>
   </nav>`;
+
   return view;
 };
 export default Navbar;

@@ -1,4 +1,5 @@
 import * as bootstrap from 'bootstrap';
+
 // import './src/styles/base.scss';
 import 'core-js/stable';
 import Navbar from './src/components/navbar/Navbar';
@@ -17,17 +18,33 @@ if (module.hot) {
 class App {
   constructor() {
     this.app = document.querySelector('.app');
-    console.log(this.app);
-
-    window.addEventListener(
-      'load',
-      async function () {
-        window.location.hash = '#';
-
+    window.location.hash = '#';
+    window.addEventListener('hashchange', function () {
+      console.log('change');
+    });
+    window.addEventListener('load', function () {
+      (async function () {
         asyncRender(Navbar);
+
         asyncRender(Home);
-      }.bind(this)
-    );
+      }.bind(this)());
+    });
+    this.app.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+
+        let route =
+          window.location.href.slice(0, window.location.href.indexOf('#') + 1) +
+          e.target.pathname;
+
+        window.location = route;
+      } else return;
+    });
+  }
+
+  handleRoute() {
+    return this.app;
   }
 }
+
 new App();
