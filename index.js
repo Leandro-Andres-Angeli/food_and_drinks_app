@@ -47,22 +47,6 @@ class App {
           routes[e.target.pathname.slice(1)].view,
           this.app
         );
-
-      // if (e.target.tagName === 'A') {
-      //   console.log('click a');
-      //   e.preventDefault();
-      //   const hashIndex = window.location.href.indexOf('#') + 1;
-      //   let route =
-      //     window.location.href.slice(0, hashIndex) + e.target.pathname;
-      //   window.location = route;
-      //   console.log(e.target.pathname);
-      //   console.log(routes[e.target.pathname.slice(1)]);
-      //   asyncRender.call(
-      //     this,
-      //     routes[e.target.pathname.slice(1)].view,
-      //     this.app
-      //   );
-      // } else return;
     });
   }
 
