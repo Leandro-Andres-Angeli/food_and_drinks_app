@@ -18,16 +18,15 @@ if (module.hot) {
 class App {
   constructor() {
     this.app = document.querySelector('.app');
+    this.header = document.querySelector('header');
     window.location.hash = '#';
     window.addEventListener('hashchange', function () {
       console.log('change');
     });
-    window.addEventListener('load', function () {
-      (async function () {
-        asyncRender(Navbar);
+    window.addEventListener('load', () => {
+      asyncRender.call(this, Navbar, this.header);
 
-        asyncRender(Home);
-      }.bind(this)());
+      asyncRender.call(this, Home, this.app);
     });
     this.app.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') {

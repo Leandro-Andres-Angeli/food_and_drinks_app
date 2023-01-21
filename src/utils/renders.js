@@ -1,9 +1,10 @@
-export const asyncRender = async (el) => {
+export const asyncRender = async function (el, htmlTarget) {
   let html = await el();
-
-  document.querySelector('.app').insertAdjacentHTML('beforeend', html);
+  console.log(this);
+  console.log(htmlTarget);
+  htmlTarget.insertAdjacentHTML('beforeend', html);
 };
-export const render = async (el) => {
+export const render = async function (el, htmlTarget) {
   const html = await el();
-  document.querySelector('.app').insertAdjacentHTML('afterbegin', html);
+  htmlTarget.insertAdjacentHTML('afterbegin', html);
 };
