@@ -6,10 +6,10 @@ const HomeSlider = (randomMeals) => {
   const btnSliderArticle = new AnimatedButton('order now')
     .addClassLists(['carousel-btn'])
     .build();
-  console.log(btnSliderArticle);
+
   document.documentElement.style.setProperty(
     '--navbar-height',
-    document.querySelector('.header-nav').getClientRects()[0].height + 'px'
+    document.querySelector('.header-nav')?.getClientRects()[0].height + 'px'
   );
 
   let carousel = `

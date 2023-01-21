@@ -23,9 +23,12 @@ class App {
     this.body = document.querySelector('body');
     this.header = document.querySelector('header');
     window.location.hash = '#/home';
-    window.addEventListener('hashchange', function () {
-      console.log('change');
+    window.addEventListener('hashchange', () => {
+      const route = window.location.hash.slice(2);
+
+      asyncRender(routes[route].view, this.app);
     });
+
     window.addEventListener('load', () => {
       const loading = document.createElement('div');
       loading.classList.add('loading');
@@ -41,12 +44,12 @@ class App {
 
       // handleNavbarLink(e);
       const changeRoute = handleNavbarLink(e, currentRoute);
-      changeRoute &&
-        asyncRender.call(
-          this,
-          routes[e.target.pathname.slice(1)].view,
-          this.app
-        );
+      // changeRoute &&
+      //   asyncRender.call(
+      //     this,
+      //     routes[e.target.pathname.slice(1)].view,
+      //     this.app
+      //   );
     });
   }
 

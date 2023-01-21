@@ -11,7 +11,7 @@ const handleNavbarLink = (e, currentRoute) => {
     }
 
     window.location = '#/' + linkRoute;
-    return routes[linkRoute];
+    // return routes[linkRoute];
   } else return;
 };
 export default handleNavbarLink;
