@@ -3,9 +3,10 @@ import * as bootstrap from 'bootstrap';
 // import './src/styles/base.scss';
 import 'core-js/stable';
 import Navbar from './src/components/navbar/Navbar';
-import { asyncRender, Home } from './src/views/Home';
+import Home from './src/views/Home';
 import { async } from 'regenerator-runtime';
 import { asyncRender } from './src/utils/renders';
+import routes from './src/router/routes';
 
 if (module.hot) {
   module.hot.accept();
@@ -28,15 +29,21 @@ class App {
 
       asyncRender.call(this, Home, this.app);
     });
-    this.app.addEventListener('click', (e) => {
+    this.header.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') {
+        console.log('click a');
         e.preventDefault();
-
+        const hashIndex = window.location.href.indexOf('#') + 1;
         let route =
-          window.location.href.slice(0, window.location.href.indexOf('#') + 1) +
-          e.target.pathname;
-
+          window.location.href.slice(0, hashIndex) + e.target.pathname;
         window.location = route;
+        console.log(e.target.pathname);
+        console.log(routes[e.target.pathname.slice(1)]);
+        asyncRender.call(
+          this,
+          routes[e.target.pathname.slice(1)].view,
+          this.app
+        );
       } else return;
     });
   }

@@ -5,8 +5,7 @@ import routes from '../../router/routes';
 import './navbarStyles.scss';
 import { NavElement } from './NavLink';
 const Navbar = async () => {
-  const [last, ...firsArt] = routes.reverse();
-
+  const [last, ...firsArt] = Object.keys(routes).reverse();
   // ${firsArt.map((link) => NavLink(link)).join('')}
   // ${NavLink(last)}
   const mealCategories = await getData(
@@ -16,7 +15,7 @@ const Navbar = async () => {
   const view = ` <nav class="navbar nav header-nav navbar-expand-md ">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="#/home">
       <img  class='navbar-brand_logo' src=${brandPic}>
       Navbar
       </a>
@@ -39,9 +38,9 @@ const Navbar = async () => {
            .join('')}
          
            <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <button class="nav-link dropdown-toggle border-0 btn"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            meal ${Object.keys(mealCategories)}
-           </a>
+           </button>
            <ul class="dropdown-menu border-top-2" aria-labelledby="navbarDropdown">
            ${mealCategories.categories
              .map(

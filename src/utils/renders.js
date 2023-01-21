@@ -1,8 +1,7 @@
 export const asyncRender = async function (el, htmlTarget) {
   let html = await el();
-  console.log(this);
-  console.log(htmlTarget);
-  htmlTarget.insertAdjacentHTML('beforeend', html);
+
+  htmlTarget.innerHTML = html;
 };
 export const render = async function (el, htmlTarget) {
   const html = await el();

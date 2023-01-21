@@ -2,7 +2,7 @@ import getData from '../apis/getData';
 import HomeSlider from '../components/home/slider/HomeSlider';
 
 // export default Home;
-export const Home = async () => {
+const Home = async () => {
   const randomMeal = () =>
     getData('https://www.themealdb.com/api/json/v1/1/random.php');
   const randomMeals = await Promise.all([
@@ -46,3 +46,4 @@ export const Home = async () => {
   });
   return HomeSlider(randomMeals);
 };
+export default Home;
