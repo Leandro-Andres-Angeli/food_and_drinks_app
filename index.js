@@ -19,15 +19,21 @@ if (module.hot) {
 class App {
   constructor() {
     this.app = document.querySelector('.app');
+    this.body = document.querySelector('body');
     this.header = document.querySelector('header');
     window.location.hash = '#';
     window.addEventListener('hashchange', function () {
       console.log('change');
     });
     window.addEventListener('load', () => {
+      const loading = document.createElement('div');
+      loading.classList.add('loading');
+      loading.innerText = 'loading';
+      this.body.appendChild(loading);
       asyncRender.call(this, Navbar, this.header);
 
       asyncRender.call(this, Home, this.app);
+      this.body.removeChild(loading);
     });
     this.header.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') {
