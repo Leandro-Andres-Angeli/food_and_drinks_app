@@ -7,6 +7,7 @@ import Home from './src/views/Home';
 import { async } from 'regenerator-runtime';
 import { asyncRender } from './src/utils/renders';
 import routes from './src/router/routes';
+import handleNavbarLink from './src/utils/handleNavbarLinks';
 
 if (module.hot) {
   module.hot.accept();
@@ -21,7 +22,7 @@ class App {
     this.app = document.querySelector('.app');
     this.body = document.querySelector('body');
     this.header = document.querySelector('header');
-    window.location.hash = '#';
+    window.location.hash = '#/home';
     window.addEventListener('hashchange', function () {
       console.log('change');
     });
@@ -36,21 +37,32 @@ class App {
       this.body.removeChild(loading);
     });
     this.header.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
-        console.log('click a');
-        e.preventDefault();
-        const hashIndex = window.location.href.indexOf('#') + 1;
-        let route =
-          window.location.href.slice(0, hashIndex) + e.target.pathname;
-        window.location = route;
-        console.log(e.target.pathname);
-        console.log(routes[e.target.pathname.slice(1)]);
+      const currentRoute = window.location.hash;
+
+      // handleNavbarLink(e);
+      const changeRoute = handleNavbarLink(e, currentRoute);
+      changeRoute &&
         asyncRender.call(
           this,
           routes[e.target.pathname.slice(1)].view,
           this.app
         );
-      } else return;
+
+      // if (e.target.tagName === 'A') {
+      //   console.log('click a');
+      //   e.preventDefault();
+      //   const hashIndex = window.location.href.indexOf('#') + 1;
+      //   let route =
+      //     window.location.href.slice(0, hashIndex) + e.target.pathname;
+      //   window.location = route;
+      //   console.log(e.target.pathname);
+      //   console.log(routes[e.target.pathname.slice(1)]);
+      //   asyncRender.call(
+      //     this,
+      //     routes[e.target.pathname.slice(1)].view,
+      //     this.app
+      //   );
+      // } else return;
     });
   }
 
