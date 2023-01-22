@@ -1,4 +1,4 @@
-import About from '../views/About';
+import About from '../views/about/About';
 import Contact from '../views/Contact';
 import Home from '../views/Home';
 
