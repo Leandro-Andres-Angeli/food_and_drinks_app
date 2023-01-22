@@ -4,13 +4,18 @@ const About = () => {
   const mainSection = new PageSection('main').setContent(
     mainHeader('About', 'about us')
   );
-  console.log(image);
-  const aboutInfo = new PageSection('section')
-    .setContent(`<div class='row p-5 text-center gap-5 gap-lg-0'>
+  document.body.addEventListener('click', function () {
+    console.log('About');
+  });
+
+  const aboutInfo = new PageSection('section');
+
+  aboutInfo.setContent(
+    `<div class='row p-5 text-center gap-5 gap-lg-0'>
   <div class='col col-12 col-lg-6 '>
     <img class='img-fluid rounded shadow-lg ${
       window.innerWidth >= 768 ? 'w-100' : 'w-75'
-    }' src=${image}/>
+    }' lazy='true' src=${image}/>
   </div>
   <div class='col col-12 col-lg-6 my-lg-5 my-0 py-5 py-lg-0'>
   <h2 class='text-primary fw-bold'>
@@ -21,7 +26,16 @@ const About = () => {
 
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat consetetur sadipscing. doloremque ipsum doloribus facilis est magni mollitia. Rerum natus saepe ipsum dolor sit amet.</p>
   </div>
-  </div>`);
+  </div>`
+  );
+  let options = {
+    root: document.body,
+    rootMargin: '70px',
+    threshold: 0.5,
+  };
+
+  let observer = new IntersectionObserver(() => console.log('img'), options);
+  observer.observe(document.querySelector('img'));
   return `${mainSection.tag.outerHTML + aboutInfo.tag.outerHTML}`;
 };
 
