@@ -40,7 +40,7 @@ alt="" >
 </picture> 
     
   </div>
-  <div class='col col-12 col-lg-6 my-lg-5 my-0 py-5 py-lg-0'>
+  <div class='col col-12 col-lg-6 my-lg-5 my-0 py-5 py-lg-0 about-info-text-component'>
   <h2 class='text-primary fw-bold'>
   
   Few Words 

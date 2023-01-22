@@ -1,3 +1,15 @@
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
 .img-about-info-container {
   // background-color: red;
+}
+$red: red;
+
+.about-info-text-component {
+  p {
+    @media (max-width: map-get($grid-breakpoints,sm)) {
+      max-height: 20vh;
+      overflow-y: scroll;
+    }
+  }
 }
