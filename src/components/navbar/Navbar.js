@@ -1,5 +1,5 @@
 import getData from '../../apis/getData';
-import * as brandPic from '../../assets/icons/spaghetti.png';
+import * as brandPic from '../../../static/assets/icons/spaghetti.png';
 import routes from '../../router/routes';
 
 import './navbarStyles.scss';

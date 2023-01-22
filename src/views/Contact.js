@@ -1,5 +1,12 @@
+import PageSection from '../components/shared/PageSection';
+
+import { mainHeader } from '../components/shared/PageSection';
 const Contact = () => {
-  return `<h1>Contact</h1>`;
+  const mainSection = new PageSection('main').setContent(
+    mainHeader('Contact', 'contact us')
+  );
+
+  return `${mainSection.tag.outerHTML}`;
 };
 
 export default Contact;

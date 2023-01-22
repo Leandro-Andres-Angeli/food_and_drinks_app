@@ -14,7 +14,7 @@ const HomeSlider = (randomMeals) => {
 
   let carousel = `
   <main>
-  <div id="carouselExampleControls"   class="carousel slide  py-5 px-md-5" >
+  <div id="carouselExampleControls"   class="carousel background-yellow-100 slide  py-5 px-md-5" >
   <div class="carousel-inner  p-4">`;
   randomMeals.map(({ meals }, i) => {
     const { strMeal, strSource, strMealThumb, strInstructions } = meals[0];

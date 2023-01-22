@@ -24,10 +24,12 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
     color: #{$value} !important;
   }
   .background-#{$color} {
-    color: #{$value} !important;
+    background-color: #{$value} !important;
   }
 }
-
+.text-stroke {
+  -webkit-text-stroke: 1px #000000cf;
+}
 body {
   overflow-x: hidden;
 }
