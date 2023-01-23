@@ -1,14 +1,10 @@
 import { aboutInfo, mainSection } from './AboutComponents';
-const About = () => {
-  // let options = {
-  //   root: document.body,
-  //   rootMargin: '70px',
-  //   threshold: 0.5,
-  // };
+import ServicesComponent from './ServicesComponent';
 
-  // let observer = new IntersectionObserver(() => console.log('img'), options);
-  // observer.observe(document.querySelector('img'));
-  return `${mainSection.tag.outerHTML + aboutInfo.tag.outerHTML}`;
+const About = () => {
+  return `${
+    mainSection.tag.outerHTML + aboutInfo.tag.outerHTML + ServicesComponent
+  }`;
 };
 
 export default About;

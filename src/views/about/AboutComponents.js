@@ -6,20 +6,7 @@ import './about_styles.scss';
 export const mainSection = new PageSection('main').setContent(
   mainHeader('About', 'about us')
 );
-const aboutInfo = new PageSection('section');
-
-/* <img class='img-fluid rounded shadow-lg ${
-      window.innerWidth >= 768 ? 'w-100' : 'w-75'
-    }' lazy='true' src=${image}/> */
-
-{
-  /* <picture class='img-fluid'>
-  <source media="(min-width:1201px)" srcset="${image}" type="image/png">
-  <source media="(max-width:1200px)" srcset="${imageMobile}" type="image/png">
-  <img  class='img-fluid' src="${image}"/>
- 
-</picture>  */
-}
+export const aboutInfo = new PageSection('section');
 
 aboutInfo.setContent(
   `<div class='row p-5 text-center gap-5 gap-lg-0'>
@@ -36,7 +23,7 @@ aboutInfo.setContent(
 <img src=
 "${imageMobile}"
 class='img-fluid rounded shadow-lg'
-alt="" >
+alt="" lazy='true'>
 </picture> 
     
   </div>
@@ -51,4 +38,3 @@ alt="" >
   </div>
   </div>`
 );
-export { aboutInfo };
