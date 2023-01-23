@@ -9,8 +9,8 @@ export const mainSection = new PageSection('main').setContent(
 export const aboutInfo = new PageSection('section');
 
 aboutInfo.setContent(
-  `<div class='row p-5 text-center gap-5 gap-lg-0'>
-  <div class='col col-12 col-lg-6 img-about-info-container  m-auto'>
+  `<div class='row p-5 text-center gap-5 gap-md-0 '>
+  <div class='col col-12 col-md-6 img-about-info-container  m-auto'>
 <picture>
 
        <source media="(min-width: 1200px)"
@@ -27,7 +27,7 @@ alt="" lazy='true'>
 </picture> 
     
   </div>
-  <div class='col col-12 col-lg-6 my-lg-5 my-0 py-5 py-lg-0 about-info-text-component'>
+  <div class='col col-12 col-md-6 my-lg-5 my-0 py-5 py-lg-0 about-info-text-component'>
   <h2 class='text-primary fw-bold'>
   
   Few Words 
