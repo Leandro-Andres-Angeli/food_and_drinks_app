@@ -9264,55 +9264,55 @@ textarea.form-control-lg {
   color: #f8f9fa !important; }
 
 .background-gray-100 {
-  background-color: #f8f9fa !important; }
+  background-color: #f8f9fa; }
 
 .text-gray-200 {
   color: #e9ecef !important; }
 
 .background-gray-200 {
-  background-color: #e9ecef !important; }
+  background-color: #e9ecef; }
 
 .text-gray-300 {
   color: #dee2e6 !important; }
 
 .background-gray-300 {
-  background-color: #dee2e6 !important; }
+  background-color: #dee2e6; }
 
 .text-gray-400 {
   color: #ced4da !important; }
 
 .background-gray-400 {
-  background-color: #ced4da !important; }
+  background-color: #ced4da; }
 
 .text-gray-500 {
   color: #adb5bd !important; }
 
 .background-gray-500 {
-  background-color: #adb5bd !important; }
+  background-color: #adb5bd; }
 
 .text-gray-600 {
   color: #6c757d !important; }
 
 .background-gray-600 {
-  background-color: #6c757d !important; }
+  background-color: #6c757d; }
 
 .text-gray-700 {
   color: #495057 !important; }
 
 .background-gray-700 {
-  background-color: #495057 !important; }
+  background-color: #495057; }
 
 .text-gray-800 {
   color: #343a40 !important; }
 
 .background-gray-800 {
-  background-color: #343a40 !important; }
+  background-color: #343a40; }
 
 .text-gray-900 {
   color: #212529 !important; }
 
 .background-gray-900 {
-  background-color: #212529 !important; }
+  background-color: #212529; }
 
 .fs-7 {
   font-size: 0.9rem; }

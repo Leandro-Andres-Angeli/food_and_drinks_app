@@ -35,7 +35,7 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
   }
 
   .background-gray-#{$color} {
-    background-color: #{$value} !important;
+    background-color: #{$value};
   }
 }
 .fs-7 {
