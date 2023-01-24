@@ -27,7 +27,7 @@ alt="" lazy='true'>
 </picture> 
     
   </div>
-  <div class='col col-12 col-md-6 my-lg-5 my-0 py-5 py-lg-0 about-info-text-component'>
+  <div class='col col-12 col-md-6 my-lg-5 my-0 py-0 py-lg-5 about-info-text-component'>
   <h2 class='text-primary fw-bold'>
   
   Few Words 

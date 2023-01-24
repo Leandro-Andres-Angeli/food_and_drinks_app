@@ -28,6 +28,19 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
     background-color: #{$value} !important;
   }
 }
+
+@each $color, $value in $grays {
+  .text-gray-#{$color} {
+    color: #{$value} !important;
+  }
+
+  .background-gray-#{$color} {
+    background-color: #{$value} !important;
+  }
+}
+.fs-7 {
+  font-size: 0.9rem;
+}
 .text-stroke {
   -webkit-text-stroke: 1px #000000cf;
 }

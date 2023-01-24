@@ -25,15 +25,5 @@ export const mainHeader = (
     <p>${subtitle}</p>
   </div>`;
 };
-export const innerCard = (
-  title,
-
-  classLists = 'mt-4 p-5 text-center background-yellow-100 '
-) => {
-  return `<div class="${classLists} ">
-    <h1 >${title}</h1>
-    <p>${subtitle}</p>
-  </div>`;
-};
 
 export default PageSection;
