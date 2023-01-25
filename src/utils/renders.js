@@ -1,5 +1,4 @@
 export const asyncRender = async function (el, htmlTarget) {
-  // htmlTarget.innerHTML = `<div>loading</div>`;
   let html = await el();
 
   htmlTarget.innerHTML = html;

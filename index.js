@@ -8,6 +8,7 @@ import { async } from 'regenerator-runtime';
 import { asyncRender } from './src/utils/renders';
 import routes from './src/router/routes';
 import handleNavbarLink from './src/utils/handleNavbarLinks';
+import Footer from './src/components/footer/Footer';
 
 if (module.hot) {
   module.hot.accept();
@@ -51,6 +52,7 @@ class App {
       //     this.app
       //   );
     });
+    Footer;
   }
 
   handleRoute() {
