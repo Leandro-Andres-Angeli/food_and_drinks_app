@@ -1,0 +1,24 @@
+$list-group-bg: #212529;
+$primary: #c62c34;
+$primary-darker: #c62c34;
+$list-group-color: white;
+$list-group-border-color: rgba(white, 0.125);
+$enable-shadows: true;
+$enable-transitions: true;
+$enable-gradients: true;
+$enable-rounded: false;
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/bootstrap/scss/utilities';
+.quick-link {
+  overflow: hidden;
+  .list-group-item {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    &:hover {
+      color: #c62c34 !important;
+      translate: 1rem;
+      max-width: 100%;
+    }
+  }
+}

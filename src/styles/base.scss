@@ -20,6 +20,7 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
     background-color: $value !important;
   }
 }
+
 @each $color, $value in $yellows {
   .text-#{$color} {
     color: #{$value} !important;

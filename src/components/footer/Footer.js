@@ -41,7 +41,7 @@ console.log(listItems);
 const listFooter = FooterComponent.setTag(
   (() => {
     const tag = document.createElement('ul');
-    tag.classList.add('list-group');
+    'list-group quick-link'.split(' ').forEach((cl) => tag.classList.add(cl));
     return tag;
   })()
 ).setInnerTags(listItems).tag;
