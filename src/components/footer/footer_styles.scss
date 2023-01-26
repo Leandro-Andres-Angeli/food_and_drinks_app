@@ -1,24 +1,33 @@
-$list-group-bg: #212529;
-$primary: #c62c34;
-$primary-darker: #c62c34;
-$list-group-color: white;
-$list-group-border-color: rgba(#212529, 0.125);
-$enable-shadows: true;
-$enable-transitions: true;
-$enable-gradients: true;
-$enable-rounded: false;
-@import '../../../node_modules/bootstrap/scss/bootstrap';
-@import '../../../node_modules/bootstrap/scss/utilities';
-.quick-link {
-  overflow: hidden;
-  .list-group-item {
-    cursor: pointer;
-    transition: all 0.2s ease;
+footer {
+  $list-group-bg: #212529;
+  $primary: #c62c34;
+  $primary-darker: #c62c34;
+  $list-group-color: white;
+  $list-group-border-color: rgba(#212529, 0.125);
+  $enable-shadows: true;
+  $enable-transitions: true;
+  $enable-gradients: true;
+  $enable-rounded: false;
+  @import '../../../node_modules/bootstrap/scss/bootstrap';
+  @import '../../../node_modules/bootstrap/scss/utilities';
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .quick-link {
     overflow: hidden;
-    &:hover {
-      color: #c62c34 !important;
-      translate: 1rem;
-      max-width: 100%;
+    .list-group-item {
+      .list-group-item-anchor {
+        display: block;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        overflow: hidden;
+        &:hover {
+          color: #c62c34 !important;
+          translate: 1rem;
+          max-width: 100%;
+        }
+      }
     }
   }
 }

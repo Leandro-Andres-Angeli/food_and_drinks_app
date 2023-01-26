@@ -5,7 +5,7 @@ console.log(arrowIcon);
 console.log(document.body.get);
 class FooterComponent {
   static tag;
-
+  static classLists;
   static setTag(tagSetup) {
     this.tag = tagSetup;
     return this;
@@ -31,7 +31,9 @@ const listItems = [
   .reduce((acc, current) => {
     acc.push(
       FooterComponent.setTag(
-        `<li class='list-group-item'>${arrowIcon} ${current}</li>`
+        `<li class='list-group-item'>
+        <a href='#' class='list-group-item-anchor'> ${arrowIcon} ${current}</a>
+        </li>`
       ).tag
     );
     return acc;
@@ -65,4 +67,4 @@ class Footer {
     this.footer.innerHTML = listCol.tag.outerHTML;
   }
 }
-export default new Footer();
+export default Footer;

@@ -52,7 +52,7 @@ class App {
       //     this.app
       //   );
     });
-    Footer;
+    new Footer();
   }
 
   handleRoute() {
