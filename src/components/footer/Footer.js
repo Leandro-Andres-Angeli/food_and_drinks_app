@@ -89,27 +89,31 @@ const footerTags = {
         `<ul class="list-group">` +
         `${contactList
           .map((contact) => {
-            const { text } = contact;
+            const {
+              icon: { component: icon },
+              text,
+            } = contact;
             console.log(text);
 
             return `<li class="list-group-item px-md-0"> 
                      ${
                        `<ul class='list-group'>` +
-                       contact.icon.component +
                        Object.entries(text)
                          .map(
                            ([key, val]) =>
                              `
-                             <li class='list-group-item'>
-                             <ul class='list-group'>${key} ${
+                             <li class='list-group-item '>
+                            
+                             <ul class='list-group'>  
+                             <span class='d-flex justify-content-start gap-2 align-items-baseline'>${icon}${key} </span> ${
                                (Array.isArray(val) &&
                                  val
                                    .map(
                                      (v) =>
-                                       `<li class='list-group-item'>${v}</li>`
+                                       `<li class='list-group-item p-0 '>${v}</li>`
                                    )
                                    .join('')) ||
-                               `<li class='list-group-item'>${val}</li>`
+                               `<li class='list-group-item p-0 '>${val}</li>`
                              } </ul></li>`
                          )
                          .join('') +
