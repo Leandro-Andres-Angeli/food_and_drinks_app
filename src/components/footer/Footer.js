@@ -14,6 +14,13 @@ const servicesList = [
   'Our Services',
   'Career Opportunity ',
 ];
+const openingHours = [
+  [' Mon-Tue', ' 6:00AM-10:00PM'],
+  ['Wed-Thu', ' 6:00AM-10:00PM'],
+  ['Fri', ' 8:00AM-04:00PM'],
+  ['Sat', ' 10:00AM-06:00PM'],
+  ['Sun', 'Closed'],
+];
 const footerTags = {
   title: {
     render: function (title) {
@@ -32,6 +39,24 @@ const footerTags = {
        </a>
        </li>`
        )
+       .join('')}
+</ul>`;
+    },
+  },
+  ulHours: {
+    render: function () {
+      console.log(openingHours);
+      return `      <ul class="list-group">
+     ${openingHours
+       .map((openinghour) => {
+         const [day, hour] = openinghour;
+         return `<li class="list-group-item  d-flex justify-content-between"> 
+          <span>${day} </span>
+          <span>${hour} </span>
+       
+       
+       </li>`;
+       })
        .join('')}
 </ul>`;
     },
@@ -62,18 +87,26 @@ class FooterUl extends FooterSection {
 }
 const fu = new FooterUl();
 console.log(fu);
-const fs = new FooterSection();
-
-fs
+const fs1 = new FooterSection()
   .addClasslist(['quick-link'])
   .setContent(undefined, footerTags.title.render('quick link'))
   .setContent(undefined, footerTags.ulServices.render())
   .build().outerHTML;
-console.log(fs.tag);
+const fs2 = new FooterSection()
+  .addClasslist(['opening-hours'])
+  .setContent(undefined, footerTags.title.render('opening hours'))
+  .setContent(undefined, footerTags.ulHours.render())
+  .build().outerHTML;
+
+console.log(fs2);
 class Footer {
   constructor() {
     this.footerDom = document.querySelector('footer');
-    this.footerDom.innerHTML = fs.tag.outerHTML;
+    this.footerDom.innerHTML = ` 
+    <div class='container-fluid px-md-5 py-3'>
+    <div class='row'> ${fs1 + fs2}</div>
+    </div>
+    `;
   }
 }
 console.log('section');
