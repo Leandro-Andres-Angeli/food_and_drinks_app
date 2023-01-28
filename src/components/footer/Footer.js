@@ -21,6 +21,30 @@ const openingHours = [
   ['Sat', ' 10:00AM-06:00PM'],
   ['Sun', 'Closed'],
 ];
+const contactList = [
+  {
+    icon: iconsList.callIcon,
+    text: {
+      Phone: '+12 345 678 999',
+    },
+  },
+  {
+    icon: iconsList.mailIcon,
+    text: {
+      Email: [`hello@example.com`, ` test@example.com`],
+    },
+  },
+
+  // {icon:iconsList.mailIcon,text:{
+  //   Email: [`hello@example.com`,` test@example.com`]
+  // }
+  {
+    icon: iconsList.locationIcon,
+    text: {
+      Address: ` 123 Western Road Melbourne, United Kingdom`,
+    },
+  },
+];
 const footerTags = {
   title: {
     render: function (title) {
@@ -29,7 +53,6 @@ const footerTags = {
   },
   ulServices: {
     render: function () {
-      console.log(servicesList);
       return `      <ul class="list-group">
      ${servicesList
        .map(
@@ -45,12 +68,11 @@ const footerTags = {
   },
   ulHours: {
     render: function () {
-      console.log(openingHours);
       return `      <ul class="list-group">
      ${openingHours
        .map((openinghour) => {
          const [day, hour] = openinghour;
-         return `<li class="list-group-item  d-flex justify-content-between"> 
+         return `<li class="list-group-item px-md-0 d-flex justify-content-between opening-hours-li"> 
           <span>${day} </span>
           <span>${hour} </span>
        
@@ -59,6 +81,48 @@ const footerTags = {
        })
        .join('')}
 </ul>`;
+    },
+  },
+  ulContact: {
+    render: function () {
+      return (
+        `<ul class="list-group">` +
+        `${contactList
+          .map((contact) => {
+            const { text } = contact;
+            console.log(text);
+
+            return `<li class="list-group-item px-md-0"> 
+                     ${
+                       `<ul class='list-group'>` +
+                       contact.icon.component +
+                       Object.entries(text)
+                         .map(
+                           ([key, val]) =>
+                             `
+                             <li class='list-group-item'>
+                             <ul class='list-group'>${key} ${
+                               (Array.isArray(val) &&
+                                 val
+                                   .map(
+                                     (v) =>
+                                       `<li class='list-group-item'>${v}</li>`
+                                   )
+                                   .join('')) ||
+                               `<li class='list-group-item'>${val}</li>`
+                             } </ul></li>`
+                         )
+                         .join('') +
+                       `</ul>`
+                     }
+       
+       
+            </li>`;
+          })
+          .join('')}` +
+        ` 
+      </ul>`
+      );
     },
   },
 };
@@ -86,7 +150,7 @@ class FooterUl extends FooterSection {
   }
 }
 const fu = new FooterUl();
-console.log(fu);
+
 const fs1 = new FooterSection()
   .addClasslist(['quick-link'])
   .setContent(undefined, footerTags.title.render('quick link'))
@@ -97,14 +161,18 @@ const fs2 = new FooterSection()
   .setContent(undefined, footerTags.title.render('opening hours'))
   .setContent(undefined, footerTags.ulHours.render())
   .build().outerHTML;
+const fs3 = new FooterSection()
+  .addClasslist(['contact'])
+  .setContent(undefined, footerTags.title.render('contact'))
+  .setContent(undefined, footerTags.ulContact.render())
+  .build().outerHTML;
 
-console.log(fs2);
 class Footer {
   constructor() {
     this.footerDom = document.querySelector('footer');
     this.footerDom.innerHTML = ` 
     <div class='container-fluid px-md-5 py-3'>
-    <div class='row'> ${fs1 + fs2}</div>
+    <div class='row'> ${fs1 + fs2 + fs3}</div>
     </div>
     `;
   }

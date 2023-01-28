@@ -6,6 +6,10 @@
   );
 }
 footer {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
   * {
     color: white;
   }
@@ -24,6 +28,12 @@ footer {
     color: inherit;
     text-decoration: none;
   }
+  .opening-hours {
+    .opening-hours-li:not(:last-child) {
+      border-bottom: 1px solid;
+    }
+  }
+
   .footer-section-title {
     &::before {
       content: '';
