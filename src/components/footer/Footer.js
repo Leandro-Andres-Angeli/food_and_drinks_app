@@ -49,7 +49,7 @@ const footerTags = {
       const cardContent = `
         <div class='container align-items-end d-flex'>
         <img src=${img} class="img-fluid brand-img" alt="...">
-        <h2 class="card-title d-inline ms-3">${title}</h2>
+        <h2 class="card-title d-inline ms-3 text-primary fw-bold">${title}</h2>
         </div> 
       <div class="card-body">
       
