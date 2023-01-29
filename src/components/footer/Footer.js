@@ -143,7 +143,10 @@ const footerTags = {
   },
 };
 class FooterSection {
-  constructor(tagType = 'div', classLists = 'col col-12 col-md-6 col-lg-3') {
+  constructor(
+    tagType = 'div',
+    classLists = 'col col-12 col-md-6 col-lg-3 px-2 px-md-0 my-3 my-md-1'
+  ) {
     this.tag = document.createElement(tagType);
     classLists.split(' ').forEach((cl) => this.tag.classList.add(cl));
   }
