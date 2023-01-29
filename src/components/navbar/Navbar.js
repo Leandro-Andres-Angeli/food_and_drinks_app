@@ -17,7 +17,7 @@ const Navbar = async () => {
     <div class="container-fluid">
       <a class="navbar-brand" href="#/home">
       <img  class='navbar-brand_logo' src=${brandPic}>
-      Navbar
+      Gatherer
       </a>
       <button
         class="navbar-toggler"

@@ -22,6 +22,8 @@ footer {
   $enable-transitions: true;
   $enable-gradients: true;
   $enable-rounded: false;
+  $card-bg: $list-group-bg;
+  $card-color: white;
   @import '../../../node_modules/bootstrap/scss/bootstrap';
   @import '../../../node_modules/bootstrap/scss/utilities';
   a {
@@ -42,12 +44,12 @@ footer {
       position: absolute;
       width: 100%;
       height: 2px;
-      @include calcGradient(9) // background-image: linear-gradient(
-        //   to right,
-        //   red calc(14px * 9),
-        //   white 16%
-        // );
-;
+      @include calcGradient(9);
+    }
+  }
+  .brand-section {
+    .brand-img {
+      width: 4rem;
     }
   }
   .quick-link {

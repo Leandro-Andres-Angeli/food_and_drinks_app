@@ -1,11 +1,7 @@
-import { join } from 'path-browserify';
 import { iconsList } from '../../utils/icons/icons';
+import * as brandPic from '../../../static/assets/icons/spaghetti.png';
 import './footer_styles.scss';
-// import FooterSection from './Footer';
-const addClasslist = function (element, classList = ['cl']) {
-  classList.forEach((cl) => element.classList.add(cl));
-  return element;
-};
+
 const servicesList = [
   'Privacy Policy',
   'Terms & Conditions',
@@ -35,9 +31,6 @@ const contactList = [
     },
   },
 
-  // {icon:iconsList.mailIcon,text:{
-  //   Email: [`hello@example.com`,` test@example.com`]
-  // }
   {
     icon: iconsList.locationIcon,
     text: {
@@ -49,6 +42,25 @@ const footerTags = {
   title: {
     render: function (title) {
       return `<h2 class='footer-section-title fs-4 position-relative'>${title}</h2> `;
+    },
+  },
+  brandComponent: {
+    render: function (title, img) {
+      const cardContent = `
+        <div class='container align-items-end d-flex'>
+        <img src=${img} class="img-fluid brand-img" alt="...">
+        <h2 class="card-title d-inline ms-3">${title}</h2>
+        </div> 
+      <div class="card-body">
+      
+      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laudantium quae dolorum aperiam inventore vel enim delectus? Expedita, fugit alias.
+    </div>
+    
+          
+         
+          
+          `;
+      return cardContent;
     },
   },
   ulServices: {
@@ -95,7 +107,7 @@ const footerTags = {
             } = contact;
             console.log(text);
 
-            return `<li class="list-group-item px-md-0"> 
+            return `<li class="list-group-item p-0"> 
                      ${
                        `<ul class='list-group'>` +
                        Object.entries(text)
@@ -139,8 +151,9 @@ class FooterSection {
     classList.forEach((cl) => this.tag.classList.add(cl));
     return this;
   }
-  setContent(position = 'beforeend', renderTag) {
-    this.tag.insertAdjacentHTML(position, renderTag);
+  setContent(position = 'beforeend', renderTag, target = this.tag) {
+    target.insertAdjacentHTML(position, renderTag);
+
     return this;
   }
 
@@ -148,17 +161,24 @@ class FooterSection {
     return this.tag;
   }
 }
-class FooterUl extends FooterSection {
-  constructor() {
-    super('ul', 'list-group');
-  }
-}
-const fu = new FooterUl();
+
+const fs = new FooterSection()
+  .addClasslist(['brand-section'])
+  .setContent(
+    undefined,
+    `<div class='card border-0'>${footerTags.brandComponent.render(
+      'Gatherer',
+      brandPic
+    )}</div>`,
+    undefined
+  )
+
+  .build().outerHTML;
 
 const fs1 = new FooterSection()
   .addClasslist(['quick-link'])
   .setContent(undefined, footerTags.title.render('quick link'))
-  .setContent(undefined, footerTags.ulServices.render())
+  .setContent(undefined, footerTags.ulServices.render('gatherer', brandPic))
   .build().outerHTML;
 const fs2 = new FooterSection()
   .addClasslist(['opening-hours'])
@@ -176,12 +196,12 @@ class Footer {
     this.footerDom = document.querySelector('footer');
     this.footerDom.innerHTML = ` 
     <div class='container-fluid px-md-5 py-3'>
-    <div class='row'> ${fs1 + fs2 + fs3}</div>
+    <div class='row'> ${fs + fs1 + fs2 + fs3}</div>
     </div>
     `;
   }
 }
-console.log('section');
+
 // const listItems = [
 //   'Privacy Policy',
 //   'Terms & Conditions',
