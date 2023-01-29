@@ -122,10 +122,10 @@ const footerTags = {
                                  val
                                    .map(
                                      (v) =>
-                                       `<li class='list-group-item p-0 '>${v}</li>`
+                                       `<li class='list-group-item p-0'>${v}</li>`
                                    )
                                    .join('')) ||
-                               `<li class='list-group-item p-0 '>${val}</li>`
+                               `<li class='list-group-item p-0'>${val}</li>`
                              } </ul></li>`
                          )
                          .join('') +
@@ -145,7 +145,7 @@ const footerTags = {
 class FooterSection {
   constructor(
     tagType = 'div',
-    classLists = 'col col-12 col-md-6 col-lg-3 px-2 px-md-0 my-3 my-md-1'
+    classLists = 'col col-12 col-md-6 col-lg-3 px-4 my-3 my-md-1'
   ) {
     this.tag = document.createElement(tagType);
     classLists.split(' ').forEach((cl) => this.tag.classList.add(cl));
@@ -198,7 +198,7 @@ class Footer {
   constructor() {
     this.footerDom = document.querySelector('footer');
     this.footerDom.innerHTML = ` 
-    <div class='container-fluid px-md-5 py-3'>
+    <div class='p-3'>
     <div class='row'> ${fs + fs1 + fs2 + fs3}</div>
     </div>
     `;
