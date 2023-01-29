@@ -20,7 +20,7 @@ for (const key in servicesListObj) {
     innerCard(
       title,
       content,
-      ' col-lg-4  col-12 card services-detail-card position-relative background-gray-800 shadow-lg text-yellow-100 border rounded text-center d-flex flex-column justify-content-around ',
+      ' col-lg-4  col-12  services-detail-card position-relative  text-yellow-100  text-center d-flex flex-column justify-content-around ',
       {
         titleTag: 'h2',
         contentTag: 'p',
@@ -34,7 +34,7 @@ for (const key in servicesListObj) {
 const servicesInner = () => {
   return `<section class='container '>
         ${servicesTitle}
-        <div class='row '>
+        <div class='row gap-3 gap-lg-0 my-5'>
         ${servicesList.join(' ')}
         </div>
   </section>`;

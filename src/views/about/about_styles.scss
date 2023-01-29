@@ -9,7 +9,7 @@
     }
   }
 }
-.services-detail-card.background-gray-800 {
+.services-detail-card > .inner-card {
   transition: background-color 0.2s ease-in-out;
   h2 {
     z-index: 10;
