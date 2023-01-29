@@ -9,6 +9,7 @@ import { asyncRender } from './src/utils/renders';
 import routes from './src/router/routes';
 import handleNavbarLink from './src/utils/handleNavbarLinks';
 import Footer from './src/components/footer/Footer';
+import SubscribeComponent from './src/components/footer/SubscribeComponent';
 
 if (module.hot) {
   module.hot.accept();
@@ -53,6 +54,21 @@ class App {
       //   );
     });
     new Footer();
+    // const testf = (function () {
+    //   console.log(this);
+    // })
+    const renderSubscribe = function (callback) {
+      const subscribeComponent = SubscribeComponent();
+      document
+        .querySelector('footer')
+        .insertAdjacentHTML('beforebegin', subscribeComponent);
+      callback.call(document.querySelector('.subscribe-form'));
+    };
+    renderSubscribe(function () {
+      this.addEventListener('submit', (e) => {
+        e.preventDefault();
+      });
+    });
   }
 
   handleRoute() {
