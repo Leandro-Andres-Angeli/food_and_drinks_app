@@ -1,5 +1,6 @@
 import getData from '../../apis/getData';
 import HomeSlider from '../../components/home/slider/HomeSlider';
+import CategoriesSection from './home_components/CategoriesSection';
 
 // export default Home;
 const Home = async () => {
@@ -12,34 +13,7 @@ const Home = async () => {
     randomMeal(),
     randomMeal(),
   ]);
-  // [
-  //   {
-  //     mouseEvent: 'mouseover',
-  //     action: 'add',
-  //     condition: function (ev) {
-  //       return Boolean(!!ev.closest?.('main'));
-  //     },
-  //   },
-  //   {
-  //     mouseEvent: 'mouseout',
-  //     action: 'remove',
-  //     condition: function (ev) {
-  //       return Boolean(ev.closest?.('main'));
-  //     },
-  //   },
-  // ].map(({ mouseEvent, log, condition, action }) => {
-  //   document.addEventListener(mouseEvent, function (e) {
-  //     const sliderBtns = [
-  //       ...document.querySelectorAll('#carouselExampleControls .slider_btn'),
-  //     ].map((btnContainer) => btnContainer.querySelector('span'));
-  //     const validEvent = condition(e.target);
-  //     return validEvent
-  //       ? sliderBtns.forEach((sliderBtn) => {
-  //           return sliderBtn.classList[`${action}`]('show_btn');
-  //         })
-  //       : null;
-  //   });
-  // });
-  return HomeSlider(randomMeals);
+
+  return HomeSlider(randomMeals) + (await CategoriesSection());
 };
 export default Home;
