@@ -1,6 +1,6 @@
 import About from '../views/about/About';
 import Contact from '../views/Contact';
-import Home from '../views/Home';
+import Home from '../views/home/Home';
 
 const routes = {
   home: { route: 'home', view: Home },

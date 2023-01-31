@@ -12,13 +12,16 @@ const SubscribeComponent = () => {
 </form>`;
 
   const componentCol = (innerComponent = 'data') => {
-    return `<div class='col col-12 col-lg-6 p-5'> ${innerComponent}</div>`;
+    return `<div class='col col-12 col-lg-6 py-5'> ${innerComponent}</div>`;
   };
-  return `<div class='container-fluid background-yellow-100'>
+  return `
+  <section class='background-yellow-100'>
+  <div class='container'>
     <div class='row'>
      ${componentCol(leftContent)}
      ${componentCol(rightContent)}
     </div>
-    </div>`;
+    </div>
+    </section>`;
 };
 export default SubscribeComponent;

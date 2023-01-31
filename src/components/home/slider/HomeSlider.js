@@ -1,3 +1,4 @@
+import { addAnimationBtnSlider } from '../../../utils/animateFunctions';
 import AnimatedButton from '../../shared/AnimatedButton';
 import './home_slider.scss';
 import { SliderBtn, SliderImg, SliderTextContent } from './SliderComponents';
@@ -45,7 +46,7 @@ const HomeSlider = (randomMeals) => {
     return (carousel += new SliderBtn(btnData).build());
   });
   carousel += `</div></main>`;
-
+  addAnimationBtnSlider();
   return carousel;
 };
 

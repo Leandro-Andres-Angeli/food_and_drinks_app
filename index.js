@@ -3,7 +3,7 @@ import * as bootstrap from 'bootstrap';
 // import './src/styles/base.scss';
 import 'core-js/stable';
 import Navbar from './src/components/navbar/Navbar';
-import Home from './src/views/Home';
+import Home from './src/views/home/Home';
 import { async } from 'regenerator-runtime';
 import { asyncRender } from './src/utils/renders';
 import routes from './src/router/routes';
