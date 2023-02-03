@@ -45,10 +45,17 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
 .text-stroke {
   -webkit-text-stroke: 1px #000000cf;
 }
+.img-categories-card {
+  max-width: 100%;
+  height: 70%;
+}
 body {
   overflow-x: hidden;
 }
-
+$test: blue;
+@mixin borderColor {
+  border: 1px solid map-get($grays, '500');
+}
 :root {
   --light-yellow: #f5ebd9;
 }

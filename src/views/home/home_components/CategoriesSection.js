@@ -1,4 +1,5 @@
 import getData from '../../../apis/getData';
+import './category_card.scss';
 const getCols = (array, divider) => {
   let arr = [];
   let j = divider;
@@ -42,7 +43,7 @@ const CategoriesSection = async () => {
                            <a href="#" class="text-decoration-none">
                            <picture>
                            <h3  >${strCategory}</h3> 
-                           <img class='img-fluid' src='${strCategoryThumb}'>
+                           <img class='img-categories-card' src='${strCategoryThumb}'>
                            </picture>
                            
                            </div>

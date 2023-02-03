@@ -2,14 +2,17 @@
 // @import '../../../../node_modules/bootstrap/scss/utilities';
 // @debug $grays;
 
+@import '../../../styles/base.scss';
 .category-card {
   position: relative;
+  backdrop-filter: grayscale(37%) brightness(44%);
+
   z-index: 1;
   &::before {
     content: '';
     width: 100%;
     height: 100%;
-    background-color: transparent;
+
     position: absolute;
     top: 0%;
     left: 0;
@@ -17,15 +20,32 @@
     border: 1px solid transparent;
     transition: all 0.2s ease;
   }
-  @debug red;
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0%;
+    left: 0;
+
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+
   &:hover {
     &::before {
-      border: 1px solid color(400);
+      @include borderColor;
 
       width: 80%;
       height: 80%;
-      left: calc(100% - (50% + 90% / 2));
-      top: calc(100% - (50% + 90% / 2));
+      left: calc(100% - (50% + 80% / 2));
+      top: calc(100% - (50% + 80% / 2));
+    }
+    &::after {
+      filter: grayscale(37%) brightness(44%);
+      -webkit-filter: grayscale(37%) brightness(44%);
+      -moz-filter: grayscale(37%) brightness(44%);
     }
   }
 }
