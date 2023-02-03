@@ -25,6 +25,7 @@ const CategoriesSection = async () => {
 
   console.log(getCategories.categories);
   return `<section class='background-yellow-100'>
+
             <div class='container'>
                 <h2 class='text-primary'>Categories</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua.</p>
@@ -35,15 +36,17 @@ const CategoriesSection = async () => {
                      `<div class='row'>${categoriesCol
                        .map(
                          ({ strCategoryThumb, strCategory }) =>
-                           `<div class ='col col-12 col-md-6 col-lg-3 my-2 mx-2 mx-md-0'>
+                           `<div class ='col col-12 col-md-6 col-lg-3 my-2  '>
+                          
                            <div class='category-card card background-yellow-100 p-2 text-center shadow-lg'>
+                           <a href="#" class="text-decoration-none">
                            <picture>
-                           <h3>${strCategory}</h3> 
+                           <h3  >${strCategory}</h3> 
                            <img class='img-fluid' src='${strCategoryThumb}'>
                            </picture>
                            
                            </div>
-                            </div>`
+                            </div></a>`
                        )
                        .join(' ')} </div>`
                  )
