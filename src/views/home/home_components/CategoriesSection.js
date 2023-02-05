@@ -38,19 +38,18 @@ const CategoriesSection = async () => {
                        .map(
                          ({ strCategoryThumb, strCategory }) =>
                            `<div class ='col col-12 col-md-6 col-lg-3 my-2  '>
-                           
-                           <div class='category-card card background-yellow-100 p-2 text-center shadow-lg'>
-                         
                            <a href="#" class="text-decoration-none">
+                           <div data-category="${strCategory}" class='category-card card background-yellow-100 p-2 text-center shadow-lg'>
+                         
                            <picture>
-                           <h3  >${strCategory}</h3> 
+                           <h3  class='d-none'>${strCategory}</h3> 
                            <img class='img-categories-card' src='${strCategoryThumb}'>
                            </picture>
+                           
                            </div>
-                           </div>
-                            </a>`
+                            </div></a>`
                        )
-                       .join(' ')}</div> `
+                       .join(' ')} </div>`
                  )
                  .join(' ')}
             </div>
