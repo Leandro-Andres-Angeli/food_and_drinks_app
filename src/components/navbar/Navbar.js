@@ -8,6 +8,7 @@ const Navbar = async () => {
   const [last, ...firsArt] = Object.keys(routes).reverse();
   // ${firsArt.map((link) => NavLink(link)).join('')}
   // ${NavLink(last)}
+  console.log(firsArt);
   const mealCategories = await getData(
     'https://www.themealdb.com/api/json/v1/1/categories.php'
   );
@@ -39,15 +40,15 @@ const Navbar = async () => {
          
            <li class="nav-item dropdown">
            <button class="nav-link dropdown-toggle border-0 btn"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           meal ${Object.keys(mealCategories)}
+            ${Object.keys(mealCategories)}
            </button>
-           <ul class="dropdown-menu border-top-2" aria-labelledby="navbarDropdown">
+           <ul class="dropdown-menu border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
            ${mealCategories.categories
              .map(
                ({ idCategory: category, strCategory: name }) =>
-                 `<li><a class="dropdown-item" href="${Object.keys(
+                 `<li><a class="dropdown-item" href="#/${Object.keys(
                    mealCategories
-                 )}/${category}"
+                 )}/?${name}"
                  >${name}</a></li>`
              )
              .join('')}

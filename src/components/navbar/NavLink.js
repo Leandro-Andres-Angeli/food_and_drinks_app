@@ -1,7 +1,7 @@
 function NavLink(route) {
   const view = `
 <li class="nav-item">
-<a class="nav-link active" aria-current="page" href="${route}">${route}</a>
+<a class="nav-link active" aria-current="page" href="#/${route}">${route}</a>
 </li>`;
   return view;
 }
@@ -30,6 +30,7 @@ export class NavElement {
     this.element = navElements[type]['tag'];
     return this;
   }
+
   static build(route) {
     return this.element(route);
   }

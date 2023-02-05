@@ -26,7 +26,10 @@ class App {
     this.header = document.querySelector('header');
     window.location.hash = '#/home';
     window.addEventListener('hashchange', () => {
-      const route = window.location.hash.slice(2);
+      let route = window.location.hash
+        .slice(2)
+        .split('?')[0]
+        .replaceAll('/', '');
 
       asyncRender(routes[route].view, this.app);
     });
@@ -46,6 +49,7 @@ class App {
 
       // handleNavbarLink(e);
       const changeRoute = handleNavbarLink(e, currentRoute);
+
       // changeRoute &&
       //   asyncRender.call(
       //     this,
