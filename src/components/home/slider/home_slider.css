@@ -1,0 +1,50 @@
+@use './slider_button_styles';
+:root {
+  --slider-height: 0;
+}
+
+#carouselExampleControls p {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#carouselExampleControls .carousel-inner .col-12:nth-child(1) {
+  border: 5px dashed black;
+  border-right: none;
+  position: relative;
+}
+
+#carouselExampleControls .carousel-inner .col-12:nth-child(1)::after {
+  content: '';
+  background-color: var(--light-yellow);
+  width: 25%;
+  height: 5px;
+  position: absolute;
+  bottom: -5px;
+  right: 0px;
+}
+
+#carouselExampleControls .carousel-inner .col-12:nth-child(1)::before {
+  content: '';
+  background-color: var(--light-yellow);
+  width: 10%;
+  height: 5px;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+}
+
+#carouselExampleControls .carousel-inner .col-12:nth-child(1) .carousel-btn {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#carouselExampleControls .carousel-inner .carousel-img {
+  max-height: calc(100vh * 0.7);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+/*# sourceMappingURL=home_slider.css.map */

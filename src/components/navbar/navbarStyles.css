@@ -1,0 +1,13 @@
+.dropdown-menu li a {
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.dropdown-menu li a:hover {
+  color: var(--bs-primary);
+}
+
+.navbar-brand_logo {
+  width: 4rem;
+}
+/*# sourceMappingURL=navbarStyles.css.map */

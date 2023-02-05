@@ -1,0 +1,33 @@
+@media screen and (min-width: 800px) {
+  .slider_btn .carousel-control-prev-icon {
+    -webkit-transform: translateX(2rem);
+            transform: translateX(2rem);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in, -webkit-transform 0.3s ease-in;
+    transition: opacity 0.5s ease-in, -webkit-transform 0.3s ease-in;
+    transition: opacity 0.5s ease-in, transform 0.3s ease-in;
+    transition: opacity 0.5s ease-in, transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+    opacity: 0;
+  }
+  .slider_btn .carousel-control-prev-icon.show_btn {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  .slider_btn .carousel-control-next-icon {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in, -webkit-transform 0.3s ease-in;
+    transition: opacity 0.5s ease-in, -webkit-transform 0.3s ease-in;
+    transition: opacity 0.5s ease-in, transform 0.3s ease-in;
+    transition: opacity 0.5s ease-in, transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+    opacity: 0;
+  }
+  .slider_btn .carousel-control-next-icon.show_btn {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=slider_button_styles.css.map */
