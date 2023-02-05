@@ -3,6 +3,25 @@
 // @debug $grays;
 
 @import '../../../styles/base.scss';
+@keyframes animateOutline {
+  0% {
+    outline-offset: 30px;
+    outline: 1px solid;
+  }
+  25% {
+    outline-offset: 27px;
+    outline: 1px solid ligthen($primary, 80%);
+  }
+
+  75% {
+    outline-offset: 22px;
+    outline: 1px solid ligthen($primary, 70%);
+  }
+  100% {
+    outline-offset: 20px;
+    outline: 1px solid $primary;
+  }
+}
 
 .category-card {
   &::before {
@@ -31,8 +50,10 @@
     /* move left by 50% of own width */
     transform: translateX(-50%) translateY(-50%);
     isolation: isolate;
+    outline: 1px solid transparent;
+    outline-offset: 30px;
 
-    transition: opacity 0.2s ease, outline 0.4s ease;
+    transition: animation 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   &:hover {
@@ -49,8 +70,9 @@
     }
     &::after {
       opacity: 1;
-      outline: 1px solid;
-      outline-offset: 10px;
+      animation: animateOutline 0.2s forwards;
+
+      transition: animation 0.2s ease;
     }
   }
 }
