@@ -1,4 +1,4 @@
-export default getCols = (array, divider) => {
+const getCols = (array, divider) => {
   let arr = [];
   let j = divider;
   for (let i = 0; i < array.length; i = i + 4) {
@@ -14,3 +14,4 @@ export default getCols = (array, divider) => {
   }
   return arr;
 };
+export default getCols;
