@@ -1,0 +1,11 @@
+@use '../../styles/mixins/mixins';
+.top-sellers-title {
+  &::before {
+    @include mixins.customUnderline(9);
+  }
+}
+.top-sellers-list {
+  img {
+    min-width: 5rem;
+  }
+}

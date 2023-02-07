@@ -49,7 +49,7 @@ const Navbar = async () => {
                ({ idCategory: category, strCategory: name }) =>
                  `<li><a class="dropdown-item" href="#/${Object.keys(
                    mealCategories
-                 )}/?category=${name}"
+                 )}/?${name}"
                  >${name}</a></li>`
              )
              .join('')}

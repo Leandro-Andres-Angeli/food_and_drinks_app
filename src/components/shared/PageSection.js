@@ -13,16 +13,12 @@ class PageSection {
     return this;
   }
 }
-export const mainHeader = (
-  title = 'Contact',
-  subtitle = 'contact us',
-  classes = ['background-yellow-100']
-) => {
-  return `<div class='mt-4 p-5 text-center ${classes
-    .map((cl) => cl)
-    .join(' ')}  '>
+export const mainHeader = (title, subtitle, classes) => {
+  return `<div class='mt-4 p-5 text-center ${
+    classes && classes.map((cl) => cl).join(' ')
+  }  '>
     <h1 >${title}</h1>
-    <p>${subtitle}</p>
+    ${(subtitle && `<p>${subtitle}</p>`) || ''}
   </div>`;
 };
 

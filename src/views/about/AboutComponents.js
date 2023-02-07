@@ -4,7 +4,7 @@ import * as imageTablet from '../../../static/assets/img/spaghetti-sm.jpg';
 import PageSection, { mainHeader } from '../../components/shared/PageSection';
 import './about_styles.scss';
 export const mainSection = new PageSection('main').setContent(
-  mainHeader('About', 'about us')
+  mainHeader('About', 'about us', ['background-yellow-100'])
 );
 export const aboutInfo = new PageSection('section');
 
