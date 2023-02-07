@@ -4,7 +4,7 @@ import getCols from '../../../utils/icons/getCols';
 
 const CategoriesSection = async () => {
   const getCategories = await getData(
-    'https://www.themealdb.com/api/json/v1/1/categories.php'
+    `${process.env.API_ENDPOINT}categories.php`
   );
 
   const dividedCatergories = getCols(getCategories.categories, 4);

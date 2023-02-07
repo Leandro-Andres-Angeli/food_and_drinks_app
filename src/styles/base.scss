@@ -45,6 +45,8 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
 }
 .text-stroke {
   -webkit-text-stroke: 1px #000000cf;
+  text-shadow: #000 0px 0px 0.5px, #000 0px 0px 1px, #000 0px 0px 0.5px,
+    #000 0px 0px 0.5px, #000 0px 0px 0.5px, #000 0px 0px 0.5px;
 }
 .img-categories-card {
   max-width: 100%;

@@ -6,6 +6,10 @@
 }
 .top-sellers-list {
   img {
-    min-width: 5rem;
+    min-width: 6rem;
+    object-fit: cover;
   }
+}
+rating-container {
+  letter-spacing: 0.5rem;
 }
