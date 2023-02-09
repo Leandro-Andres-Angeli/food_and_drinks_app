@@ -119,15 +119,15 @@ const CategoryComponent = async () => {
               ${separatePagination
                 .map(
                   (page) =>
-                    `<div class='col  col-12 w-lg-100'>
-                
-                    ${page
-                      .map((product) => {
-                        return `<div class='col col-3' >${productCard(
-                          product
-                        )}</div>`;
-                      })
-                      .join('')}</div>`
+                    `<div class='col  col-12 w-lg-100 row'>
+                      
+                  ${page
+                    .map(
+                      (prod) =>
+                        `<div class='col col-4'>${productCard(prod)}</div>`
+                    )
+                    .join('')}
+                   </div>`
                 )
                 .join('')} 
                
