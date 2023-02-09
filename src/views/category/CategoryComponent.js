@@ -84,7 +84,7 @@ const CategoryComponent = async () => {
   separated.rightSide.map((el) => (el.price = Math.random() * 10));
   console.log(separated.rightSide);
 
-  const separatePagination = divideArray(separated.rightSide, 6);
+  const separatePagination = divideArray(separated.rightSide, 9);
   console.log(separatePagination);
   //BEFORE PAGINATION
   // <div class='col p-md-5 col-12 col-lg-8'>
