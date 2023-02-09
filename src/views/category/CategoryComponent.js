@@ -2,23 +2,7 @@ import getData from '../../apis/getData';
 import PageSection, { mainHeader } from '../../components/shared/PageSection';
 import './category_component.scss';
 import divideArray from '../../utils/divideArray';
-const productNav = () => {
-  return `<nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>`;
-};
+
 class RatingContainer extends HTMLElement {
   constructor() {
     super();
@@ -86,6 +70,33 @@ const CategoryComponent = async () => {
 
   const separatePagination = divideArray(separated.rightSide, 9);
   console.log(separatePagination);
+  const productNav = (pages = Math.floor(separated.rightSide.length / 9)) => {
+    console.log(pages);
+    //   <li class="page-item disabled">
+    //   <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    // </li>
+    // <li class="page-item"><a class="page-link" href="#">1</a></li>
+    // <li class="page-item active" aria-current="page">
+    //   <a class="page-link" href="#">2</a>
+    // </li>
+    // <li class="page-item"><a class="page-link" href="#">3</a></li>
+    // <li class="page-item">
+    //   <a class="page-link" href="#">Next</a>
+    // </li>
+    return `<nav aria-label="...">
+    <ul class="pagination">
+        ${(() => {
+          let listItems = '';
+          for (let i = 1; i < pages + 1; i++) {
+            listItems += `    <li class="page-item ">
+               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">${i}</a>
+             </li>`;
+          }
+          return listItems;
+        })()}
+    </ul>
+  </nav>`;
+  };
   //BEFORE PAGINATION
   // <div class='col p-md-5 col-12 col-lg-8'>
   // <div class='row '>
@@ -109,7 +120,7 @@ const CategoryComponent = async () => {
       .outerHTML
   }
     <div class='row'>
-    <div class='col top-sellers-col p-md-5 col-12 col-lg-4'>
+    <div class='col top-sellers-col p-md-2 col-12 col-lg-4'>
     <h2 class='position-relative text-capitalize top-sellers-title'>top sellers</h2>
     <ul class='list-group top-sellers-list gap-2'>
     ${separated.leftSide.map((item) => previewCard(item)).join('')}</ul>
