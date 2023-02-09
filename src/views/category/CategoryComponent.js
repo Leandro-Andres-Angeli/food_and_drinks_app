@@ -1,6 +1,8 @@
 import getData from '../../apis/getData';
 import PageSection, { mainHeader } from '../../components/shared/PageSection';
 import './category_component.scss';
+import divideArray from '../../utils/divideArray';
+
 class RatingContainer extends HTMLElement {
   constructor() {
     super();
@@ -8,9 +10,24 @@ class RatingContainer extends HTMLElement {
     this.innerHTML = `<span class='text-stroke'>${'⭐'.repeat(5)}</span> `;
   }
 }
+const productCard = ({ idMeal, strMealThumb, strMeal, price }) => {
+  return `<div class='card' data-id="${idMeal}">
+       <img src="${strMealThumb}" class="  card-img-top category-aside-img" alt="..." > 
+       <div class='card-body'>
+       <h2 class='fs-5 card-title text-truncate'>${strMeal}</h2> 
+       <p class='card-text'>
+        ${new Intl.NumberFormat('es-AR', {
+          style: 'currency',
+          currency: 'ARS',
+        }).format(price)}
+        
+      </p>
+      </div>
+       </div>`;
+};
 customElements.define('rating-container', RatingContainer);
 const previewCard = function (data) {
-  // ratingStartComponet();
+  console.log(data);
   const [name, img] = Object.values(arguments[0]);
 
   return `<li class="list-group-item d-flex border-0 shadow-md">
@@ -21,7 +38,7 @@ const previewCard = function (data) {
    <p> ${new Intl.NumberFormat('es-AR', {
      style: 'currency',
      currency: 'ARS',
-   }).format('25')}</p>
+   }).format(25)}</p>
     </div>
   </li>`;
 };
@@ -36,7 +53,7 @@ const CategoryComponent = async () => {
   const categoryFetch = await getData(
     `${process.env.API_ENDPOINT}filter.php?c=${category}`
   );
-  console.log(categoryFetch);
+  // console.log(categoryFetch);
   const { meals } = categoryFetch;
 
   const separated = meals.reduce(
@@ -47,25 +64,28 @@ const CategoryComponent = async () => {
     { leftSide: [], rightSide: [] }
   );
 
-  console.log(separated);
+  // console.log(separated);
   separated.rightSide.map((el) => (el.price = Math.random() * 10));
-  const separatePagination = (() => {
-    console.log(separated.rightSide.length);
-    let pagination = [];
-    for (let i = 0; i < separated.rightSide.length; i = i + 21) {
-      let paginated = [];
-      paginated = [...paginated, separated.rightSide[i]];
-      for (let j = i; j < array.length; index++) {
-        const element = array[index];
-      }
-      console.log(separated.rightSide[i]);
-      console.log(paginated);
-      return pagination.push(1);
-    }
-    pagination.push(1);
-    return pagination;
-  })();
+  console.log(separated.rightSide);
+
+  const separatePagination = divideArray(separated.rightSide, 6);
   console.log(separatePagination);
+  //BEFORE PAGINATION
+  // <div class='col p-md-5 col-12 col-lg-8'>
+  // <div class='row '>
+
+  // ${separated.rightSide
+  //   .map(
+  //     (product) =>
+  //       `<div class=' col-3  mb-3' >
+  //       ${productCard(product)}
+  //   </div>`
+  //   )
+  //   .join('')}
+  // </div>
+  // </div>
+
+  //BEFORE PAGINATION
   return `<section>
   <div class='container-fluid'>
   ${
@@ -78,30 +98,13 @@ const CategoryComponent = async () => {
     <ul class='list-group top-sellers-list gap-2'>
     ${separated.leftSide.map((item) => previewCard(item)).join('')}</ul>
     </div>
-    <div class='col p-md-5 col-12 col-lg-8'>
-    <div class='row '>
-    ${separated.rightSide
-      .map(
-        ({ strMeal, strMealThumb, idMeal, price }) =>
-          `<div class=' col-12 col-md-6 col-lg-3 mb-3' >
-       <div class='card' data-id="${idMeal}">
-       <img src="${strMealThumb}" class="  card-img-top category-aside-img" alt="..." > 
-       <div class='card-body'>
-       <h2 class='fs-5 card-title text-truncate'>${strMeal}</h2> 
-       <p class='card-text'>
-        ${new Intl.NumberFormat('es-AR', {
-          style: 'currency',
-          currency: 'ARS',
-        }).format(price)}
-        
-      </p>
+      <div class='col p-md-5 col-12 col-lg-8'>
+         <div class='row '>
+              ${separatePagination
+                .map((page) => `<div class='col12'>page</div>`)
+                .join()} 
+        </div>
       </div>
-       </div>
-      </div>`
-      )
-      .join('')}
-      </div>
-    </div>
     </div>
   </div>
   </section>`;

@@ -1,13 +1,13 @@
 import getData from '../../../apis/getData';
 import './category_card.scss';
-import getCols from '../../../utils/icons/getCols';
+import divideArray from '../../../utils/divideArray';
 
 const CategoriesSection = async () => {
   const getCategories = await getData(
     `${process.env.API_ENDPOINT}categories.php`
   );
 
-  const dividedCatergories = getCols(getCategories.categories, 4);
+  const dividedCatergories = divideArray(getCategories.categories, 4);
   // console.log(dividedCatergories);
 
   // console.log(getCategories.categories);

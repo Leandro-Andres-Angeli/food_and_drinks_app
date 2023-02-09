@@ -105,7 +105,6 @@ const footerTags = {
               icon: { component: icon },
               text,
             } = contact;
-            console.log(text);
 
             return `<li class="list-group-item p-0"> 
                      ${

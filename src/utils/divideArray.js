@@ -1,7 +1,7 @@
-const getCols = (array, divider) => {
+const divideArray = (array, divider) => {
   let arr = [];
   let j = divider;
-  for (let i = 0; i < array.length; i = i + 4) {
+  for (let i = 0; i < array.length; i = i + divider) {
     // console.log(i);
     // console.log(j);
     let arr1 = [];
@@ -10,8 +10,8 @@ const getCols = (array, divider) => {
       // console.log(arr1);
     }
     arr.push(arr1);
-    j += 4;
+    j += divider;
   }
   return arr;
 };
-export default getCols;
+export default divideArray;
