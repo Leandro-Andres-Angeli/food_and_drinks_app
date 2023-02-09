@@ -2,7 +2,23 @@ import getData from '../../apis/getData';
 import PageSection, { mainHeader } from '../../components/shared/PageSection';
 import './category_component.scss';
 import divideArray from '../../utils/divideArray';
-
+const productNav = () => {
+  return `<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>`;
+};
 class RatingContainer extends HTMLElement {
   constructor() {
     super();
@@ -98,14 +114,28 @@ const CategoryComponent = async () => {
     <ul class='list-group top-sellers-list gap-2'>
     ${separated.leftSide.map((item) => previewCard(item)).join('')}</ul>
     </div>
-      <div class='col p-md-5 col-12 col-lg-8'>
-         <div class='row '>
+      <div class='col py-md-5 col-12 col-lg-8'>
+         <div class='row flex-nowrap'>
               ${separatePagination
-                .map((page) => `<div class='col12'>page</div>`)
-                .join()} 
+                .map(
+                  (page) =>
+                    `<div class='col  col-12 w-lg-100'>
+                
+                    ${page
+                      .map((product) => {
+                        return `<div class='col col-3' >${productCard(
+                          product
+                        )}</div>`;
+                      })
+                      .join('')}</div>`
+                )
+                .join('')} 
+               
         </div>
       </div>
+      <div class='container d-flex justify-content-end pe-3'>${productNav()}</div>
     </div>
+    
   </div>
   </section>`;
 };
