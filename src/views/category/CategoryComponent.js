@@ -42,11 +42,7 @@ const previewCard = function (data) {
     </div>
   </li>`;
 };
-// function ratingStartComponet() {
 
-// const  = document.createDocumentFragment();
-// new Array(5).forEach();
-// }
 const CategoryComponent = async () => {
   const split = window.location.hash.split('?');
   const category = split.pop().trim();
@@ -64,7 +60,7 @@ const CategoryComponent = async () => {
     { leftSide: [], rightSide: [] }
   );
 
-  // console.log(separated);
+
   separated.rightSide.map((el) => (el.price = Math.random() * 10));
   console.log(separated.rightSide);
 
@@ -72,17 +68,7 @@ const CategoryComponent = async () => {
   console.log(separatePagination);
   const productNav = (pages = Math.floor(separated.rightSide.length / 9)) => {
     console.log(pages);
-    //   <li class="page-item disabled">
-    //   <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    // </li>
-    // <li class="page-item"><a class="page-link" href="#">1</a></li>
-    // <li class="page-item active" aria-current="page">
-    //   <a class="page-link" href="#">2</a>
-    // </li>
-    // <li class="page-item"><a class="page-link" href="#">3</a></li>
-    // <li class="page-item">
-    //   <a class="page-link" href="#">Next</a>
-    // </li>
+   
     return `<nav aria-label="...">
     <ul class="pagination">
         ${(() => {
@@ -97,22 +83,7 @@ const CategoryComponent = async () => {
     </ul>
   </nav>`;
   };
-  //BEFORE PAGINATION
-  // <div class='col p-md-5 col-12 col-lg-8'>
-  // <div class='row '>
-
-  // ${separated.rightSide
-  //   .map(
-  //     (product) =>
-  //       `<div class=' col-3  mb-3' >
-  //       ${productCard(product)}
-  //   </div>`
-  //   )
-  //   .join('')}
-  // </div>
-  // </div>
-
-  //BEFORE PAGINATION
+  
   return `<section>
   <div class='container-fluid'>
   ${
@@ -125,16 +96,16 @@ const CategoryComponent = async () => {
     <ul class='list-group top-sellers-list gap-2'>
     ${separated.leftSide.map((item) => previewCard(item)).join('')}</ul>
     </div>
-      <div class='col py-md-5 col-12 col-lg-8'>
+      <div class='col product-category-cards py-md-5 col-12 col-lg-8'>
          <div class='row flex-nowrap'>
               ${separatePagination
                 .map(
-                  (page) =>
-                    `<div class='col  col-12 w-lg-100 row'>
+                  (page,i) =>
+                    `<div  data-index="${i}" class='col  col-12 w-lg-100 row'>
                       
                   ${page
                     .map(
-                      (prod) =>
+                      (prod , i) =>
                         `<div class='col col-4'>${productCard(prod)}</div>`
                     )
                     .join('')}
