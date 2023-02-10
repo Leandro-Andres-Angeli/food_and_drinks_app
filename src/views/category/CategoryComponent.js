@@ -43,7 +43,7 @@ const previewCard = function (data) {
   </li>`;
 };
 
-const CategoryComponent = async () => {
+const CategoryComponent1 = async () => {
   const split = window.location.hash.split('?');
   const category = split.pop().trim();
   const categoryFetch = await getData(
@@ -75,7 +75,7 @@ const CategoryComponent = async () => {
           let listItems = '';
           for (let i = 1; i < pages + 1; i++) {
             listItems += `    <li class="page-item ">
-               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">${i}</a>
+               <a class="page-link" href="#" tabindex="${i-1}" aria-disabled="true">${i}</a>
              </li>`;
           }
           return listItems;
@@ -121,4 +121,24 @@ const CategoryComponent = async () => {
   </div>
   </section>`;
 };
-export default CategoryComponent;
+class CategoryComponent {
+  constructor(){
+    this.root = CategoryComponent1
+   this.app = document.querySelector('.app')
+    document.querySelector('.app').addEventListener('click',(e)=>{
+      e.preventDefault()
+      this.handlePaginationLink(e)
+    })
+   
+  }
+  handlePaginationLink(e){
+    //  e.target.closest('ul') ? console.log('ul') : console.log('not')
+    // console.log(e.target)
+    // console.log(e.target.closest('ul'))
+    // console.log(e.target.closest('ul').classList.contains('pagination'))
+    if(!e.target.closest('ul') || !e.target.closest('ul').classList.contains('pagination')) return
+   else{ console.log(e.target) }
+  }
+
+}
+export default new CategoryComponent().root;
