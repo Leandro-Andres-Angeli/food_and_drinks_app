@@ -137,7 +137,9 @@ class CategoryComponent {
     // console.log(e.target.closest('ul'))
     // console.log(e.target.closest('ul').classList.contains('pagination'))
     if(!e.target.closest('ul') || !e.target.closest('ul').classList.contains('pagination')) return
-   else{ console.log(e.target) }
+   else{
+     console.log('target')
+    this.app.querySelector('.product-category-cards').animate([{transform:'translateX(0px)'},{transform:'translateX(19px)'}],{duration:1000,fill:'forwards'}) }
   }
 
 }
