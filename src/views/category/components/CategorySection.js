@@ -52,13 +52,13 @@ const CategorySection = async () => {
         .outerHTML
     }
       <div class='row'>
-      <div class='col top-sellers-col p-md-2 col-12 col-lg-4'>
+      <div class='col bg-light top-sellers-col p-md-2 col-12 col-lg-4'>
       <h2 class='position-relative text-capitalize top-sellers-title'>top sellers</h2>
       <ul class='list-group top-sellers-list gap-2'>
       ${separated.leftSide.map((item) => previewCard(item)).join('')}</ul>
       </div>
         <div class='col product-category-cards py-md-5 col-12 col-lg-8'>
-           <div class='row flex-nowrap'>
+           <div class='row flex-nowrap  gap-4 p2'>
                 ${separatePagination
                   .map(
                     (page,i) =>

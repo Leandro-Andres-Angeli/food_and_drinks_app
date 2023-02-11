@@ -1,4 +1,7 @@
 @use '../../styles/mixins/mixins';
+.top-sellers-col{
+  z-index: 1;
+}
 .top-sellers-title {
   &::before {
     @include mixins.customUnderline(9);
