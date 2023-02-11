@@ -11,8 +11,8 @@ const CategorySection = async () => {
       `${process.env.API_ENDPOINT}filter.php?c=${category}`
     );
     // console.log(categoryFetch);
-    const { meals } = categoryFetch;
-  
+    const  meals  = categoryFetch[`${Object.keys(categoryFetch)[0]}`] ;
+      console.log(Object.keys(categoryFetch))
     const divideProductArray = (()=>{ 
       let divideProductArray =  meals.reduce(
        (acc, curr, i, arr) => {

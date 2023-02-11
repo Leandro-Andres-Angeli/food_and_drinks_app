@@ -7,6 +7,7 @@ const routes = {
   home: { route: 'home', view: Home },
   about: { route: 'about', view: About },
   categories: { route: 'categories:category', view: CategoryComponent },
+  drinks: { route: 'drinks:category', view: CategoryComponent },
   contact: { route: 'contact', view: Contact },
 };
 export default routes;

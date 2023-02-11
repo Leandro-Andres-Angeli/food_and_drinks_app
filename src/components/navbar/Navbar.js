@@ -4,6 +4,7 @@ import routes from '../../router/routes';
 
 import './navbarStyles.scss';
 import { NavElement } from './NavLink';
+import dropdownMenu from './DropdownMenu';
 const Navbar = async () => {
   const [last, ...firsArt] = Object.keys(routes)
     .filter((category) => category !== 'categories')
@@ -13,7 +14,30 @@ const Navbar = async () => {
   const mealCategories = await getData(
     `${process.env.API_ENDPOINT}categories.php`
   );
+  const drinksCategories = await getData(
+    `${process.env.API_DRINKS_ENDPOINT}list.php?c=list`
+  );
+  // console.log(process.env.API_DRINKS_ENDPOINT)
+ 
+//   <li class="nav-item dropdown">
+//   <button class="nav-link dropdown-toggle  text-gray-800"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+//    ${Object.keys(mealCategories)}
+//   </button>
+//   <ul class="dropdown-menu   border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
+//   ${mealCategories.categories
+//     .map(
+//       ({ idCategory: category, strCategory: name }) =>
+//         `<li><a class="dropdown-item" href="#/${Object.keys(
+//           mealCategories
+//         )}/?${name}"
+//         >${name}</a></li>`
+//     )
+//     .join('')}
+    
+    
+//   </ul>
 
+// </li>
   const view = ` <nav class="navbar nav header-nav navbar-expand-md ">
 
     <div class="container-fluid">
@@ -38,26 +62,10 @@ const Navbar = async () => {
            .reverse()
            .map((link) => NavElement.setStrategy('navLink').build(link))
            .join('')}
-         
-           <li class="nav-item dropdown">
-           <button class="nav-link dropdown-toggle  text-gray-800"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            ${Object.keys(mealCategories)}
-           </button>
-           <ul class="dropdown-menu   border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
-           ${mealCategories.categories
-             .map(
-               ({ idCategory: category, strCategory: name }) =>
-                 `<li><a class="dropdown-item" href="#/${Object.keys(
-                   mealCategories
-                 )}/?${name}"
-                 >${name}</a></li>`
-             )
-             .join('')}
-             
-             
-           </ul>
-         
-         </li>
+          ${dropdownMenu(mealCategories,'meals')}
+         ${ dropdownMenu(drinksCategories,'drinks')}
+        
+      
          ${NavElement.setStrategy('navLink').build(last)}
         </ul>
         <form class="d-flex">
@@ -72,7 +80,7 @@ const Navbar = async () => {
       </div>
     </div>
   </nav>`;
-
+  
   return view;
 };
 export default Navbar;
