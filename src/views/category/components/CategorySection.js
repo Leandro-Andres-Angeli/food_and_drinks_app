@@ -35,7 +35,7 @@ const CategorySection = async () => {
     const productNav = (pages = Math.floor(divideProductArray.rightSide.length / 9)) => {
       console.log(pages);
      
-      return `<nav aria-label="...">
+      return `<nav class='pe-4' aria-label="...">
       <ul class="pagination">
           ${(() => {
             let listItems = '';
@@ -81,7 +81,7 @@ const CategorySection = async () => {
                  
           </div>
         </div>
-        <div class='container d-flex justify-content-end pe-3'>${productNav()}</div>
+        <div class='container d-flex justify-content-end pe-3 py-3'>${productNav()}</div>
       </div>
       
     </div>
