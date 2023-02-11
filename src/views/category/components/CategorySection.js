@@ -13,21 +13,26 @@ const CategorySection = async () => {
     // console.log(categoryFetch);
     const { meals } = categoryFetch;
   
-    const separated = meals.reduce(
-      (acc, curr, i, arr) => {
+    const divideProductArray = (()=>{ 
+      let divideProductArray =  meals.reduce(
+       (acc, curr, i, arr) => {
         (i <= 4 && acc.leftSide.push(arr[i])) || acc.rightSide.push(arr[i]);
         return acc;
       },
       { leftSide: [], rightSide: [] }
     );
+    
+    divideProductArray.rightSide.length === 0 &&   divideProductArray.rightSide.push(...divideProductArray.leftSide) ;
+    return divideProductArray
+    }
+  )()
   
+    divideProductArray.rightSide.map((el) => (el.price = Math.random() * 10));
+    console.log(divideProductArray.rightSide);
   
-    separated.rightSide.map((el) => (el.price = Math.random() * 10));
-    console.log(separated.rightSide);
-  
-    const separatePagination = divideArray(separated.rightSide, 9);
-    console.log(separatePagination);
-    const productNav = (pages = Math.floor(separated.rightSide.length / 9)) => {
+    const divideProductPagination = divideArray(divideProductArray.rightSide, 9);
+    console.log(divideProductPagination);
+    const productNav = (pages = Math.floor(divideProductArray.rightSide.length / 9)) => {
       console.log(pages);
      
       return `<nav aria-label="...">
@@ -55,14 +60,14 @@ const CategorySection = async () => {
       <div class='col bg-light top-sellers-col p-md-2 col-12 col-lg-4'>
       <h2 class='position-relative text-capitalize top-sellers-title'>top sellers</h2>
       <ul class='list-group top-sellers-list gap-2'>
-      ${separated.leftSide.map((item) => previewCard(item)).join('')}</ul>
+      ${divideProductArray.leftSide.map((item) => previewCard(item)).join('')}</ul>
       </div>
-        <div class='col product-category-cards py-md-5 col-12 col-lg-8'>
+        <div class='col product-category-cards  col-12 col-lg-8'>
            <div class='row flex-nowrap  gap-4 p2'>
-                ${separatePagination
+                ${divideProductPagination
                   .map(
                     (page,i) =>
-                      `<div  data-index="${i}" class='col  col-12 w-lg-100 row'>
+                      `<div  data-index="${i}" class='col  col-12 w-lg-100 row  gy-2 gy-lg-4'>
                         
                     ${page
                       .map(
