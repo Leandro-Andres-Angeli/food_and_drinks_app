@@ -139,7 +139,8 @@ class CategoryComponent {
     if(!e.target.closest('ul') || !e.target.closest('ul').classList.contains('pagination')) return
    else{
      console.log('target')
-    this.app.querySelector('.product-category-cards').animate([{transform:'translateX(0px)'},{transform:'translateX(19px)'}],{duration:1000,fill:'forwards'}) }
+
+    this.app.querySelector('.product-category-cards').animate([{transform:'translateX(0px)'},{transform:'translateX(19px)'}],{duration:1000}) }
   }
 
 }
