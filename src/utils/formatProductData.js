@@ -1,6 +1,6 @@
 const formatProductData = function(productData){
     let formattedProdData = {price : productData.price}
-    console.log(productData)
+  
     for (const key in productData) {
         console.log(key)
         console.log(productData[`${key}`])

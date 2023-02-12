@@ -33,7 +33,7 @@ class App {
       console.log(route)
       asyncRender(routes[route].view, this.app);
     });
-   
+
     window.addEventListener('load', () => {
       const loading = document.createElement('div');
       loading.classList.add('loading');
@@ -45,17 +45,17 @@ class App {
       this.body.removeChild(loading);
       this.handleScroll()
     });
-   
+
     this.header.addEventListener('click', (e) => {
       const currentRoute = window.location.hash;
 
-   
+
       const changeRoute = handleNavbarLink(e, currentRoute);
 
-   
+
     });
     new Footer();
-   
+
     const renderSubscribe = function (callback) {
       const subscribeComponent = SubscribeComponent();
       document
@@ -70,27 +70,21 @@ class App {
         e.preventDefault();
       });
     });
-    
+
   }
-  handleScroll(){
+  handleScroll() {
     let positionY = window.pageYOffset;
-   
-    window.addEventListener('scroll',function(e){
+
+    window.addEventListener('scroll', function (e) {
       const currentScroll = (this.pageYOffset)
-      const header = document.body.querySelector('header');
+    
+      const header = e.target.body.querySelector('header');
       const setVisibleOnScrollUp = 'visible-on-scroll'
-      if( positionY > currentScroll && this.pageYOffset >  header.getBoundingClientRect().height * 2 ){
-          const nav = header.querySelector('nav')
-          header.classList.add(setVisibleOnScrollUp);
-          
-         
-          
-      } 
-      else{
-        header.classList.remove(setVisibleOnScrollUp)
-      }
+      positionY > currentScroll && this.pageYOffset > header.getBoundingClientRect().height * 2 ?
+       header.classList.add(setVisibleOnScrollUp)
+      : header.classList.remove(setVisibleOnScrollUp)
       positionY = currentScroll
-      
+
     })
   }
   handleRoute() {
