@@ -40,6 +40,9 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
     background-color: #{$value};
   }
 }
+.active-link{
+  background-color: var(--bs-dropdown-link-hover-bg);
+}
 .fs-7 {
   font-size: 0.9rem;
 }

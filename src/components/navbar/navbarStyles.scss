@@ -1,9 +1,14 @@
-.dropdown-menu {
-  li a {
-    transition: color 0.2s ease-in;
-    &:hover {
-      color: var(--bs-primary);
-    }
+@mixin highlightTextOnHover {
+  transition: color 0.2s ease-in;
+  &:hover {
+    color: var(--bs-primary)!important;
+  }
+}
+
+.dropdown-menu,.navbar-nav {
+  
+  li a,.nav-item,#navbarDropdown {
+  @include highlightTextOnHover()
   }
 }
 .navbar-brand_logo {
