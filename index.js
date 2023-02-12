@@ -33,7 +33,7 @@ class App {
       console.log(route)
       asyncRender(routes[route].view, this.app);
     });
-
+   
     window.addEventListener('load', () => {
       const loading = document.createElement('div');
       loading.classList.add('loading');
@@ -43,7 +43,9 @@ class App {
 
       asyncRender.call(this, Home, this.app);
       this.body.removeChild(loading);
+      this.handleScroll()
     });
+   
     this.header.addEventListener('click', (e) => {
       const currentRoute = window.location.hash;
 
@@ -62,12 +64,35 @@ class App {
       callback.call(document.querySelector('.subscribe-form'));
     };
     renderSubscribe(function () {
+      console.log('render')
+
       this.addEventListener('submit', (e) => {
         e.preventDefault();
       });
     });
+    
   }
-
+  handleScroll(){
+    let positionY = window.pageYOffset;
+   
+    window.addEventListener('scroll',function(e){
+      const currentScroll = (this.pageYOffset)
+      const header = document.body.querySelector('header');
+      const setVisibleOnScrollUp = 'visible-on-scroll'
+      if( positionY > currentScroll && this.pageYOffset >  header.getBoundingClientRect().height * 2 ){
+          const nav = header.querySelector('nav')
+          header.classList.add(setVisibleOnScrollUp);
+          
+         
+          
+      } 
+      else{
+        header.classList.remove(setVisibleOnScrollUp)
+      }
+      positionY = currentScroll
+      
+    })
+  }
   handleRoute() {
     return this.app;
   }

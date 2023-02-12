@@ -18,7 +18,7 @@ const Navbar = async () => {
     `${process.env.API_DRINKS_ENDPOINT}list.php?c=list`
   );
 
-  const view = ` <nav class="navbar nav header-nav navbar-expand-md ">
+  const view = ` <nav class="navbar nav header-nav navbar-expand-md navbar-light bg-light shadow ">
 
     <div class="container-fluid">
       <a class="navbar-brand" href="#/home">
