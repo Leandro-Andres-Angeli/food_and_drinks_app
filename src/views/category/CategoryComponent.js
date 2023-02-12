@@ -6,7 +6,7 @@ import CategorySection from './components/CategorySection';
 
 
 const checkDOMTarget = function(tag,classList){
-  console.log(this)
+ 
  return  !this.target.closest(tag) || !this.target.closest(tag).classList.contains(classList)
 
 }
