@@ -32,6 +32,7 @@ class App {
         .replaceAll('/', '');
       console.log(route)
       asyncRender(routes[route].view, this.app);
+      window.scrollY(0)
     });
 
     window.addEventListener('load', () => {
