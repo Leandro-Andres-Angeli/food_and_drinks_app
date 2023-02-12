@@ -5,7 +5,7 @@ const dropdownMenu = function(categories,type){
    return `  
     <li class="nav-item dropdown">
     <button class="nav-link dropdown-toggle  text-gray-800"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-   ${type}  ${Object.keys(categories)}
+   ${ Object.keys(categories) != type && type || ''}  ${Object.keys(categories)}
     </button>
       <ul class="dropdown-menu   border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
     ${arguments[0][`${objKey}`].map(

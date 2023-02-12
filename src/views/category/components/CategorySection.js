@@ -3,14 +3,17 @@ import PageSection, { mainHeader } from "../../../components/shared/PageSection"
 import divideArray from "../../../utils/divideArray";
 import previewCard from "./PreviewCard";
 import productCard from "./ProductCard";
+import productNav from "./ProductNav";
 
 const CategorySection = async () => {
     const split = window.location.hash.split('?');
     const category = split.pop().trim();
+    const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
+    console.log('api route',apiRoute)
     const categoryFetch = await getData(
-      `${process.env.API_ENDPOINT}filter.php?c=${category}`
+      `${apiRoute}filter.php?c=${category.trim().replaceAll(' ','_')}`
     );
-    // console.log(categoryFetch);
+    
     const  meals  = categoryFetch[`${Object.keys(categoryFetch)[0]}`] ;
       console.log(Object.keys(categoryFetch))
     const divideProductArray = (()=>{ 
@@ -32,23 +35,8 @@ const CategorySection = async () => {
   
     const divideProductPagination = divideArray(divideProductArray.rightSide, 9);
     console.log(divideProductPagination);
-    const productNav = (pages = Math.floor(divideProductArray.rightSide.length / 9)) => {
-      console.log(pages);
-     
-      return `<nav class='pe-4' aria-label="...">
-      <ul class="pagination">
-          ${(() => {
-            let listItems = '';
-            for (let i = 1; i < pages + 1; i++) {
-              listItems += `    <li class="page-item ">
-                 <a class="page-link" href="#" tabindex="${i-1}" aria-disabled="true">${i}</a>
-               </li>`;
-            }
-            return listItems;
-          })()}
-      </ul>
-    </nav>`;
-    };
+    const pages =  Math.floor(divideProductArray.rightSide.length / 9);
+    
     
     return `<section>
     <div class='container-fluid'>
@@ -57,12 +45,12 @@ const CategorySection = async () => {
         .outerHTML
     }
       <div class='row'>
-      <div class='col bg-light top-sellers-col p-md-2 col-12 col-lg-4'>
+      <div class='col bg-light top-sellers-col p-md-2 col-12 col-md-4'>
       <h2 class='position-relative text-capitalize top-sellers-title'>top sellers</h2>
-      <ul class='list-group top-sellers-list gap-2'>
+      <ul class='list-group top-sellers-list gap-2 '>
       ${divideProductArray.leftSide.map((item) => previewCard(item)).join('')}</ul>
       </div>
-        <div class='col product-category-cards  col-12 col-lg-8'>
+        <div class='col product-category-cards  col-12 col-md-8'>
            <div class='row flex-nowrap  gap-4 p2'>
                 ${divideProductPagination
                   .map(
@@ -81,7 +69,10 @@ const CategorySection = async () => {
                  
           </div>
         </div>
-        <div class='container d-flex justify-content-end pe-3 py-3'>${productNav()}</div>
+        ${ pages > 1 && 
+           `<div class='container d-flex justify-content-end pe-3 py-3'>${productNav(pages)}</div>` || ''
+        }
+        
       </div>
       
     </div>

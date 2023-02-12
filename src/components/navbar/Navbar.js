@@ -7,7 +7,7 @@ import { NavElement } from './NavLink';
 import dropdownMenu from './DropdownMenu';
 const Navbar = async () => {
   const [last, ...firsArt] = Object.keys(routes)
-    .filter((category) => category !== 'categories')
+    .filter((category) => category !== 'categories' &&  category !== 'drinks')
     .reverse();
 
   console.log(firsArt);
