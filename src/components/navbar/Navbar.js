@@ -17,27 +17,7 @@ const Navbar = async () => {
   const drinksCategories = await getData(
     `${process.env.API_DRINKS_ENDPOINT}list.php?c=list`
   );
-  // console.log(process.env.API_DRINKS_ENDPOINT)
- 
-//   <li class="nav-item dropdown">
-//   <button class="nav-link dropdown-toggle  text-gray-800"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-//    ${Object.keys(mealCategories)}
-//   </button>
-//   <ul class="dropdown-menu   border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
-//   ${mealCategories.categories
-//     .map(
-//       ({ idCategory: category, strCategory: name }) =>
-//         `<li><a class="dropdown-item" href="#/${Object.keys(
-//           mealCategories
-//         )}/?${name}"
-//         >${name}</a></li>`
-//     )
-//     .join('')}
-    
-    
-//   </ul>
 
-// </li>
   const view = ` <nav class="navbar nav header-nav navbar-expand-md ">
 
     <div class="container-fluid">
@@ -57,7 +37,7 @@ const Navbar = async () => {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-capitalize">
          ${firsArt
            .reverse()
            .map((link) => NavElement.setStrategy('navLink').build(link))

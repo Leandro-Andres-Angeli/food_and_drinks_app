@@ -47,20 +47,13 @@ class App {
     this.header.addEventListener('click', (e) => {
       const currentRoute = window.location.hash;
 
-      // handleNavbarLink(e);
+   
       const changeRoute = handleNavbarLink(e, currentRoute);
 
-      // changeRoute &&
-      //   asyncRender.call(
-      //     this,
-      //     routes[e.target.pathname.slice(1)].view,
-      //     this.app
-      //   );
+   
     });
     new Footer();
-    // const testf = (function () {
-    //   console.log(this);
-    // })
+   
     const renderSubscribe = function (callback) {
       const subscribeComponent = SubscribeComponent();
       document
