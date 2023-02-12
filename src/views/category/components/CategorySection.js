@@ -60,7 +60,7 @@ const CategorySection = async () => {
                     ${page
                       .map(
                         (prod , i) =>
-                          `<div class='col col-4'>${productCard(formatProductData(prod))}</div>`
+                          `<div class='col col-6 col-md-4'>${productCard(formatProductData(prod))}</div>`
                       )
                       .join('')}
                      </div>`
