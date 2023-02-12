@@ -17,7 +17,7 @@ export const mainHeader = (title, subtitle, classes) => {
   return `<div class='mt-4 p-5 text-center ${
     classes && classes.map((cl) => cl).join(' ')
   }  '>
-    <h1 >${title}</h1>
+    <h1 >${title.trim().replaceAll('%20','')}</h1>
     ${(subtitle && `<p>${subtitle}</p>`) || ''}
   </div>`;
 };

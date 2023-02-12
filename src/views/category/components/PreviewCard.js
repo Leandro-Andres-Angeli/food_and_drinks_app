@@ -1,6 +1,6 @@
 import RatingComponent from "./RatingComponent";
 const previewCard = function (data) {
-    console.log(data);
+   
     const [name, img] = Object.values(arguments[0]);
   
     return `<li class="list-group-item d-flex border-0 shadow-md">
