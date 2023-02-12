@@ -1,6 +1,5 @@
 const dropdownMenu = function(categories,type){
-    console.log(arguments)
-    console.log(arguments[0])
+  
    const objKey =  Object.keys(arguments[0])[0]
    return `  
     <li class="nav-item dropdown">

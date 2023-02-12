@@ -1,6 +1,7 @@
 import getData from "../../../apis/getData";
 import PageSection, { mainHeader } from "../../../components/shared/PageSection";
 import divideArray from "../../../utils/divideArray";
+import formatProductData from "../../../utils/formatProductData";
 import previewCard from "./PreviewCard";
 import productCard from "./ProductCard";
 import productNav from "./ProductNav";
@@ -14,10 +15,10 @@ const CategorySection = async () => {
       `${apiRoute}filter.php?c=${category.trim().replaceAll(' ','_')}`
     );
     
-    const  meals  = categoryFetch[`${Object.keys(categoryFetch)[0]}`] ;
+    const  products  = categoryFetch[`${Object.keys(categoryFetch)[0]}`] ;
       console.log(Object.keys(categoryFetch))
     const divideProductArray = (()=>{ 
-      let divideProductArray =  meals.reduce(
+      let divideProductArray =  products.reduce(
        (acc, curr, i, arr) => {
         (i <= 4 && acc.leftSide.push(arr[i])) || acc.rightSide.push(arr[i]);
         return acc;
@@ -31,10 +32,9 @@ const CategorySection = async () => {
   )()
   
     divideProductArray.rightSide.map((el) => (el.price = Math.random() * 10));
-    console.log(divideProductArray.rightSide);
   
     const divideProductPagination = divideArray(divideProductArray.rightSide, 9);
-    console.log(divideProductPagination);
+  
     const pages =  Math.floor(divideProductArray.rightSide.length / 9);
     
     
@@ -60,7 +60,7 @@ const CategorySection = async () => {
                     ${page
                       .map(
                         (prod , i) =>
-                          `<div class='col col-4'>${productCard(prod)}</div>`
+                          `<div class='col col-4'>${productCard(formatProductData(prod))}</div>`
                       )
                       .join('')}
                      </div>`
