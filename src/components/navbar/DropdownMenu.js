@@ -9,7 +9,7 @@ const dropdownMenu = function(categories,type){
       <ul class="dropdown-menu   border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
     ${arguments[0][`${objKey}`].map(
         ({ idCategory: category, strCategory: name }) =>
-          `<li><a class="dropdown-item" href="#/${Object.keys(
+          `<li  ><a class="dropdown-item" href="#/${Object.keys(
             categories
           )}/?${name}"
           >${name}</a></li>`

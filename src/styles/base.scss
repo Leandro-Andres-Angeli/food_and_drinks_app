@@ -40,6 +40,7 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
     background-color: #{$value};
   }
 }
+
 .active-link{
   background-color: var(--bs-dropdown-link-hover-bg);
 }
@@ -58,10 +59,17 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
 body {
   overflow-x: hidden;
 }
-$test: blue;
+.hover-secondary{
+  transition: color .2s ease;
+  &:hover{
+    color:map-get($yellows,'yellow-600' )!important
+  }
+ 
+}
 @mixin borderColor {
   border: 1px solid map-get($grays, '500');
 }
+
 :root {
   --light-yellow: #f5ebd9;
 }

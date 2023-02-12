@@ -3,7 +3,7 @@ import PageSection, { mainHeader } from "../../../components/shared/PageSection"
 import divideArray from "../../../utils/divideArray";
 import formatProductData from "../../../utils/formatProductData";
 import previewCard from "./PreviewCard";
-import productCard from "./ProductCard";
+import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 
 const CategorySection = async () => {
