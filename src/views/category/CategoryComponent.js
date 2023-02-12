@@ -5,6 +5,11 @@ import CategorySection from './components/CategorySection';
 
 
 
+const checkDOMTarget = function(tag,classList){
+  console.log(this)
+ return  !this.target.closest(tag) || !this.target.closest(tag).classList.contains(classList)
+
+}
 
 class CategoryComponent {
   constructor() {
@@ -14,11 +19,15 @@ class CategoryComponent {
       e.preventDefault()
       this.handlePaginationLink(e)
     })
+  
+
+  }
+  handleModal(){
 
   }
   handlePaginationLink(e) {
-
-    if (!e.target.closest('ul') || !e.target.closest('ul').classList.contains('pagination')) return
+    // !e.target.closest('ul') || !e.target.closest('ul').classList.contains('pagination')
+    if (checkDOMTarget.call(e,'ul','pagination')) return
     else {
 
 

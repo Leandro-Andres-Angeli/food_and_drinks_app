@@ -1,22 +1,49 @@
 @use '../../styles/mixins/mixins';
-.top-sellers-col{
+
+.top-sellers-col {
   z-index: 1;
 }
+
 .top-sellers-title {
   &::before {
     @include mixins.customUnderline(9);
   }
 }
+
 .top-sellers-list {
   img {
     min-width: 6rem;
     object-fit: cover;
   }
 }
+
 rating-container {
   letter-spacing: 0.5rem;
 }
-.category-aside-img {
+.img-container{
   max-height: 10rem;
+  overflow: hidden;
+}
+.category-aside-img {
+  
   object-fit: cover;
+  transition: scale .4s ease;
+  
+  &:hover {
+
+
+    scale: 1.2;
+ 
+
+  }
+}
+
+.product-card,
+.preview-card {
+  cursor: pointer;
+}
+
+.product-card {
+  overflow: hidden;
+
 }

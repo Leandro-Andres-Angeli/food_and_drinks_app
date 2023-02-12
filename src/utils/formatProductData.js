@@ -2,8 +2,7 @@ const formatProductData = function(productData){
     let formattedProdData = {price : productData.price}
   
     for (const key in productData) {
-        console.log(key)
-        console.log(productData[`${key}`])
+      
         if(key.includes('Thumb')){
           formattedProdData.img = productData[`${key}`]
         }
