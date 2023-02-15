@@ -5,6 +5,8 @@ import routes from '../../router/routes';
 import './navbarStyles.scss';
 import { NavElement } from './NavLink';
 import dropdownMenu from './DropdownMenu';
+import ButtonSearch from './ButtonSearch';
+import SearchComponent from './SearchComponent';
 const Navbar = async () => {
   const [last, ...firsArt] = Object.keys(routes)
     .filter((category) => category !== 'categories' &&  category !== 'drinks')
@@ -48,15 +50,7 @@ const Navbar = async () => {
       
          ${NavElement.setStrategy('navLink').build(last)}
         </ul>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+          ${new SearchComponent(new ButtonSearch().build() ).build()}
       </div>
     </div>
   </nav>`;
