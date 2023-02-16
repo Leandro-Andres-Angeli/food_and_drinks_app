@@ -19,7 +19,11 @@ class CategoryComponent {
       e.preventDefault()
       this.handlePaginationLink(e)
     })
-  
+    document.querySelector('.app').addEventListener('change',(e)=>{
+      if(!e.target.closest('select')){
+        return
+      }
+    })
 
   }
   handleModal(){

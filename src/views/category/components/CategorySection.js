@@ -12,7 +12,7 @@ class SelectSortEl {
     <form class='container '>
     <label class='d-block text-primary text-capitalize'>sort</label>
     <select>
-      ${this.fields.map((field,i)=>   `<option value ="${field}" ${i === 0 && "required"}>${field}</option>`   )}
+      ${this.fields.map((field,i)=>   `<option value ="${field}" ${i === 0 && "required"}>${field}</option>`   ).join('')}
       </select>
       </form>`
   }
@@ -44,7 +44,7 @@ const CategorySection = async () => {
   
     divideProductArray.rightSide.map((el) => (el.price = Math.random() * 10));
   
-    const divideProductPagination = divideArray(divideProductArray.rightSide, 9);
+    const divideProductPagination = [...divideArray(divideProductArray.rightSide, 9)];
   
     const pages =  Math.floor(divideProductArray.rightSide.length / 9);
     
