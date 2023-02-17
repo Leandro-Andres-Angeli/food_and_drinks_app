@@ -7,8 +7,7 @@ import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
 
-const CategorySection = async (sort) => {
-  console.log(sort)
+const CategorySection = async () => {
     const split = window.location.hash.split('?');
     const category = split.pop().trim();
     const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
@@ -39,7 +38,9 @@ const CategorySection = async (sort) => {
   
     const pages =  Math.floor(divideProductArray.rightSide.length / 9);
     
-    
+    const selectForm = new SelectSortEl();
+    selectForm.order(function(){document.querySelector('.n').textContent =  arguments[0]})
+   
     return `<section>
     <div class='container-fluid'>
     ${
@@ -53,7 +54,8 @@ const CategorySection = async (sort) => {
       ${divideProductArray.leftSide.map((item) => previewCard(item)).join('')}</ul>
       </div>
         <div class='col product-category-cards  col-12 col-md-8'>
-        ${new SelectSortEl().root}
+        ${selectForm.root}
+        <div class='n'></div>
            <div class='row flex-nowrap  gap-4 p2'>
                 ${divideProductPagination
                   .map(
