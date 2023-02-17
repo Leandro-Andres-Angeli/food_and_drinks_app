@@ -15,15 +15,24 @@ class CategoryComponent {
   constructor() {
     this.root = CategorySection
     this.app = document.querySelector('.app')
+
     document.querySelector('.app').addEventListener('click', (e) => {
       e.preventDefault()
       this.handlePaginationLink(e)
     })
-    document.querySelector('.app').addEventListener('change',(e)=>{
-      if(!e.target.closest('select')){
-        return
-      }
-    })
+    // document.querySelector('.app').addEventListener('change',(e)=>{
+    //   if(!e.target.closest('select')){
+    //     return
+    //   }
+    // })
+    // document.querySelector('.app').addEventListener('change',(e)=>{
+    //   if(!e.target.closest('select')){
+    //     return
+    //   }
+    //   this.sortOrder += 1;
+    //   console.log(this.sortOrder)
+      
+    // })
 
   }
   handleModal(){

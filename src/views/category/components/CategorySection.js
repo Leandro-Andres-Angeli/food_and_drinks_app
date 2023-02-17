@@ -5,19 +5,10 @@ import formatProductData from "../../../utils/formatProductData";
 import previewCard from "./PreviewCard";
 import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
-class SelectSortEl {
-  constructor(){
-    this.fields = ['name','name-reverse','price','price-reverse']
-    this.root = `
-    <form class='container '>
-    <label class='d-block text-primary text-capitalize'>sort</label>
-    <select>
-      ${this.fields.map((field,i)=>   `<option value ="${field}" ${i === 0 && "required"}>${field}</option>`   ).join('')}
-      </select>
-      </form>`
-  }
-}
-const CategorySection = async () => {
+import SelectSortEl from "./SelectSortEl";
+
+const CategorySection = async (sort) => {
+  console.log(sort)
     const split = window.location.hash.split('?');
     const category = split.pop().trim();
     const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
