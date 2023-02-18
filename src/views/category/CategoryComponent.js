@@ -16,7 +16,7 @@ class CategoryComponent {
    
     this.root = CategorySection
     this.app = document.querySelector('.app')
-
+   
     document.querySelector('.app').addEventListener('click', (e) => {
       e.preventDefault()
       this.handlePaginationLink(e)
@@ -29,7 +29,7 @@ class CategoryComponent {
 
   }
   handlePaginationLink(e) {
-    // !e.target.closest('ul') || !e.target.closest('ul').classList.contains('pagination')
+   
     if (checkDOMTarget.call(e,'ul','pagination')) return
     else {
 

@@ -6,8 +6,31 @@ import previewCard from "./PreviewCard";
 import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
-
-const CategorySection = async () => {
+const sortsOptions = Object.freeze({
+  // name:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))},
+  // reverseName:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))}
+})
+const renderProducts = function(productList){
+  console.log(document.querySelector('.app'))
+  console.log()
+return`  ${ divideArray(productList, 9)
+    .map(
+      (page,i) =>
+        `<div  data-index="${i}" class='col  col-12 w-lg-100 row  gy-2 gy-lg-4'>
+          
+      ${page
+        .map(
+          (prod , i) =>
+            `<div class='col col-6 col-md-4'>${productCard(formatProductData(prod))}</div>`
+        )
+        .join('')}
+       </div>`
+    )
+    .join('')} `
+  
+}
+const CategorySection = async()=>{
+  
     const split = window.location.hash.split('?');
     const category = split.pop().trim();
     const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
@@ -15,7 +38,7 @@ const CategorySection = async () => {
     const categoryFetch = await getData(
       `${apiRoute}filter.php?c=${category.trim().replaceAll(' ','_')}`
     );
-    
+  
     const  products  = categoryFetch[`${Object.keys(categoryFetch)[0]}`] ;
       console.log(Object.keys(categoryFetch))
     const divideProductArray = (()=>{ 
@@ -32,15 +55,17 @@ const CategorySection = async () => {
     }
   )()
   
-    divideProductArray.rightSide.map((el) => (el.price = Math.random() * 10));
+    divideProductArray.rightSide.map((el) => (el.price = Math.ceil(Math.random() * 100)));
   
-    const divideProductPagination = [...divideArray(divideProductArray.rightSide, 9)];
+    const divideProductPagination = divideArray(divideProductArray.rightSide, 9);
   
     const pages =  Math.floor(divideProductArray.rightSide.length / 9);
     
     const selectForm = new SelectSortEl();
-    selectForm.order(function(){document.querySelector('.n').textContent =  arguments[0]})
-   
+    selectForm.order(function(data){
+      console.log(data)
+      document.querySelector('.n').textContent =data +" "+  arguments[0]})
+      renderProducts.call(document.querySelector('.app'),divideProductArray.rightSide)
     return `<section>
     <div class='container-fluid'>
     ${
@@ -56,21 +81,8 @@ const CategorySection = async () => {
         <div class='col product-category-cards  col-12 col-md-8'>
         ${selectForm.root}
         <div class='n'></div>
-           <div class='row flex-nowrap  gap-4 p2'>
-                ${divideProductPagination
-                  .map(
-                    (page,i) =>
-                      `<div  data-index="${i}" class='col  col-12 w-lg-100 row  gy-2 gy-lg-4'>
-                        
-                    ${page
-                      .map(
-                        (prod , i) =>
-                          `<div class='col col-6 col-md-4'>${productCard(formatProductData(prod))}</div>`
-                      )
-                      .join('')}
-                     </div>`
-                  )
-                  .join('')} 
+           <div class='row flex-nowrap product-cards-list  gap-4 p2'>
+           ${renderProducts(divideProductArray.rightSide)} 
                  
           </div>
         </div>
@@ -82,5 +94,6 @@ const CategorySection = async () => {
       
     </div>
     </section>`;
+   
   };
   export default CategorySection
