@@ -6,16 +6,17 @@ import previewCard from "./PreviewCard";
 import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
-const sortsOptions = Object.freeze({
-  name:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))},
-  reverseName:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))},
-  price:{renderFunc:objs.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))},
-  priceReverse:{renderFunc:objs.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))},
+
+const sortOptions = Object.freeze({
+  name:{orderFunc:(a,b) => (a.name > b.name) ? 1 : ((b.name < a.name) ? -1 : 0)},
+  nameReverse:{orderFunc:(a,b) => (a.name < b.name) ? 1 : ((b.name > a.name) ? -1 : 0)},
+  price:{orderFunc:(a,b) => (a.price > b.price) ? 1 : ((b.price < a.price) ? -1 : 0)},
+  priceReverse:{orderFunc:(a,b) => (a.price > b.price) ? -1 : ((b.price < a.price) ? 1 : 0)},
     
   
 })
 const renderProducts = function(productList){
-  console.log(document.querySelector('.app'))
+ 
  
 return`  ${ divideArray(productList, 9)
     .map(
@@ -44,7 +45,7 @@ const CategorySection = async()=>{
     );
   
     const  products  = categoryFetch[`${Object.keys(categoryFetch)[0]}`] ;
-      console.log(Object.keys(categoryFetch))
+    
     const divideProductArray = (()=>{ 
       let divideProductArray =  products.reduce(
        (acc, curr, i, arr) => {
@@ -66,10 +67,20 @@ const CategorySection = async()=>{
     const pages =  Math.floor(divideProductArray.rightSide.length / 9);
     
     const selectForm = new SelectSortEl();
-    selectForm.order(function(data){
-      console.log(data)
-      document.querySelector('.n').textContent =data +" "+  arguments[0]})
-      renderProducts.call(document.querySelector('.app'),divideProductArray.rightSide)
+    // selectForm.order(function(data){
+    //   console.log(data)
+    //   console.log(arguments)
+    //   document.querySelector('.n').textContent =data +" "+  arguments[0]})
+    const handleOrder = function(){
+    
+      const [sortOption] = arguments;
+  
+      const {orderFunc} =sortOptions[`${sortOption}`];
+      console.log(orderFunc)
+       console.log(divideProductArray.rightSide.sort((a,b)=>orderFunc(a,b)));
+       document.querySelector('.n').textContent =  arguments[0]
+    }
+    selectForm.order(handleOrder)
     return `<section>
     <div class='container-fluid'>
     ${

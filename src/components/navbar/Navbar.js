@@ -12,7 +12,7 @@ const Navbar = async () => {
     .filter((category) => category !== 'categories' &&  category !== 'drinks')
     .reverse();
 
-  console.log(firsArt);
+ 
   const mealCategories = await getData(
     `${process.env.API_ENDPOINT}categories.php`
   );

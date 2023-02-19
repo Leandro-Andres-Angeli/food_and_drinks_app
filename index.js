@@ -30,7 +30,7 @@ class App {
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
-      console.log(route)
+   
       asyncRender(routes[route].view, this.app);
       window.scrollTo(0,0)
     });
@@ -65,8 +65,7 @@ class App {
       callback.call(document.querySelector('.subscribe-form'));
     };
     renderSubscribe(function () {
-      console.log('render')
-
+   
       this.addEventListener('submit', (e) => {
         e.preventDefault();
       });

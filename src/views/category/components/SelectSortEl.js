@@ -20,7 +20,7 @@ class SelectSortEl {
         if(!e.target.closest('select')){
           return
         }
-        console.log('call')
+       
          callback(e.target.value)
         
       })
