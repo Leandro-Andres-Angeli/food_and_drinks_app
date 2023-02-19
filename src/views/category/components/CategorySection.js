@@ -7,12 +7,16 @@ import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
 const sortsOptions = Object.freeze({
-  // name:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))},
-  // reverseName:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))}
+  name:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))},
+  reverseName:{renderFunc:objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0))},
+  price:{renderFunc:objs.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))},
+  priceReverse:{renderFunc:objs.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))},
+    
+  
 })
 const renderProducts = function(productList){
   console.log(document.querySelector('.app'))
-  console.log()
+ 
 return`  ${ divideArray(productList, 9)
     .map(
       (page,i) =>
