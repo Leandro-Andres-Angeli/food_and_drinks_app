@@ -1,5 +1,8 @@
 import {iconsList} from '../../../../utils/icons/icons'
-console.log(iconsList)
+
+const { eyeOutline:{ component : eyeOutline} ,linkOutline:{ component : linkOutline },facebookIcon:{ component : facebookIcon }} = iconsList;
+const productCardButtons = Object.freeze({eye:{icon: eyeOutline,tag:'button'},link:{icon:linkOutline,tag:'a'},facebook:{icon:facebookIcon,tag:'a'}})
+
 class cardFooter {
   constructor(){
     this.tag =`<div class='card-footer text-white product-card-footer text-capitalize d-flex align-items-center'>
@@ -12,6 +15,26 @@ class cardFooter {
   }
    
 }
+class cardLink {
+  constructor({icon,tag}){
+    this.tag = `<${tag} class='btn product-card-link background-gray-400  '>${icon}</${tag}>`
+  }
+  build (){
+    return this.tag;
+  }
+}
+const cardButtonsContainer = (buttonsArray)=>{
+  let btnsContainer = document.createElement('div')
+
+btnsContainer.classList.add('product-card-btn-container')
+
+     for (const key in buttonsArray) {
+        btnsContainer.insertAdjacentHTML('beforeend', new cardLink(buttonsArray[key]).build())
+     }
+     return btnsContainer.outerHTML
+}
+const fI = new cardLink(productCardButtons.facebook)
+console.log(fI)
 
 const productCard = function({id,img,product,price}) {
   
@@ -21,6 +44,7 @@ const productCard = function({id,img,product,price}) {
          </div>
          <div class='card-body'>
          <h2 class='fs-5  card-title text-truncate text-primary hover-secondary '>${product}</h2> 
+         ${cardButtonsContainer(productCardButtons)}
          <p class='card-text fw-bold text-muted'>
           ${new Intl.NumberFormat('es-AR', {
             style: 'currency',

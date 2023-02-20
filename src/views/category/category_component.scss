@@ -1,15 +1,16 @@
-
-
-
 @use '../../styles/mixins/mixins';
-$footerPosition :translateY( 100%);
-@mixin handlePosition($property){
+$footerPosition :translateY(100%);
+$linksBoxPosition :translateX(100%);
+
+@mixin handlePosition($property) {
   @media (min-width:768px) {
-    transform: $property;    
+    transform: $property;
+    display: none;
   }
 
 
 }
+
 .top-sellers-col {
   z-index: 1;
 }
@@ -30,20 +31,22 @@ $footerPosition :translateY( 100%);
 rating-container {
   letter-spacing: 0.5rem;
 }
-.img-container{
+
+.img-container {
   max-height: 15rem;
   overflow: hidden;
 }
+
 .category-aside-img {
-  
+
   object-fit: cover;
   transition: scale .4s ease;
-  
+
   &:hover {
 
 
     scale: 1.2;
- 
+
 
   }
 }
@@ -55,13 +58,39 @@ rating-container {
 
 .product-card {
   overflow: hidden;
-  svg{
-    max-width: 20px;
-    max-height: 20px;
-  }
- &-footer{
-  @include handlePosition( $footerPosition );
-    background-color:gray;
 
- }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &-link {
+    svg {
+
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &-btn-container {
+    position: absolute;
+    right: 0;
+    
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap: 1rem;
+    @include handlePosition($linksBoxPosition );
+    &.btn:hover{
+      background-color: gainsboro
+    }
+  }
+
+  &-footer {
+    @include handlePosition($footerPosition );
+    background-color: gray;
+
+  }
 }
