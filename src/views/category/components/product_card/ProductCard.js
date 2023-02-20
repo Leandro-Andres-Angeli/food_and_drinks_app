@@ -1,3 +1,18 @@
+import {iconsList} from '../../../../utils/icons/icons'
+console.log(iconsList)
+class cardFooter {
+  constructor(){
+    this.tag =`<div class='card-footer text-white product-card-footer text-capitalize d-flex align-items-center'>
+    ${iconsList.cartOutline.component}
+    add to cart
+    </div>`
+  }
+   build (){
+    return this.tag;
+  }
+   
+}
+
 const productCard = function({id,img,product,price}) {
   
     return `<div class='card product-card' data-id="${id}">
@@ -14,6 +29,7 @@ const productCard = function({id,img,product,price}) {
           
         </p>
         </div>
+        ${ new cardFooter().build()}
          </div>`;
   };
   export default productCard

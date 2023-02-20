@@ -1,5 +1,15 @@
-@use '../../styles/mixins/mixins';
 
+
+
+@use '../../styles/mixins/mixins';
+$footerPosition :translateY( 100%);
+@mixin handlePosition($property){
+  @media (min-width:768px) {
+    transform: $property;    
+  }
+
+
+}
 .top-sellers-col {
   z-index: 1;
 }
@@ -45,5 +55,13 @@ rating-container {
 
 .product-card {
   overflow: hidden;
+  svg{
+    max-width: 20px;
+    max-height: 20px;
+  }
+ &-footer{
+  @include handlePosition( $footerPosition );
+    background-color:gray;
 
+ }
 }

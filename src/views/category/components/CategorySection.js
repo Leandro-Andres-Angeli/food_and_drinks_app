@@ -17,8 +17,8 @@ const getNameProp = function () {
 }
 
 const sortOptions = Object.freeze({
-  priceReverse: { orderFunc: function (products) { return products.sort((a, b) => a.price - b.price) } },
-  price: { orderFunc: function (products) { return products.sort((a, b) => b.price - a.price) } },
+  price: { orderFunc: function (products) { return products.sort((a, b) => a.price - b.price) } },
+  priceReverse: { orderFunc: function (products) { return products.sort((a, b) => b.price - a.price) } },
   name: {
     orderFunc: function (products) {
       return products.sort((a, b) => {
@@ -81,7 +81,7 @@ const CategorySection = async () => {
     return divideProductArray
   }
   )()
-  // test.sort((a,b)=>a.name > b.name ? -1  : 1 ) 
+
   divideProductArray.rightSide.map((el) => (el.price = Math.ceil(Math.random() * 100)));
 
   const divideProductPagination = divideArray(divideProductArray.rightSide, 9);
