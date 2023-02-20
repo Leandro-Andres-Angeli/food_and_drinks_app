@@ -96,8 +96,8 @@ const CategorySection = async () => {
     const sortOption = arguments[0];
     console.log(sortOption)
 
-    document.querySelector('.product-cards-list').innerHTML =   renderProducts(sortOptions[`${sortOption}`].orderFunc(divideProductArray.rightSide))
-  
+    document.querySelector('.product-cards-list').innerHTML = renderProducts(sortOptions[`${sortOption}`].orderFunc(divideProductArray.rightSide))
+
   }
   selectForm.order(handleOrder)
   return `<section>
@@ -105,15 +105,16 @@ const CategorySection = async () => {
     ${new PageSection('main', undefined).setContent(mainHeader(category)).build()
       .outerHTML
     }
-    ${selectForm.root}
+  
       <div class='row'>
-      <div class='col bg-light top-sellers-col p-md-2 col-12 col-md-4'>
-      <h2 class='position-relative text-capitalize top-sellers-title'>top sellers</h2>
+      <div class='col bg-light top-sellers-col p-0 p-md-2 col-12 col-md-4'>
+      <h2 class='position-relative text-capitalize top-sellers-title  w-75 ms-3'>top sellers</h2>
       <ul class='list-group top-sellers-list gap-2 '>
       ${divideProductArray.leftSide.map((item) => previewCard(item)).join('')}</ul>
       </div>
-     
-        <div class='col product-category-cards  col-12 col-md-8'>
+     <div class='col col-12 col-md-8 product-cards-container'>
+     ${selectForm.root}
+        <div class=' product-category-cards  '>
       
     
            <div class='row flex-nowrap product-cards-list  gap-4 p2'>
@@ -124,7 +125,7 @@ const CategorySection = async () => {
         ${pages > 1 &&
     `<div class='container d-flex justify-content-end pe-3 py-3'>${productNav(pages)}</div>` || ''
     }
-        
+    <div>
       </div>
       
     </div>

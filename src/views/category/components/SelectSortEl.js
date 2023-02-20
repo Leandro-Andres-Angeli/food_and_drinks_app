@@ -4,7 +4,7 @@ class SelectSortEl {
       
       this.fields = ['name','name-reverse','price','price-reverse']
       this.root = `
-      <form class='container  text-end pe-3 gap-2'>
+      <form class='container-fluid  text-end pe-4 gap-2'>
       <label class='d-block text-primary text-capitalize mb-2'>sort by</label>
       <select>
         ${this.fields.map((field,i)=>   `<option value ="${this.formatOptionValue(field)}" ${i === 0 && "required"}>${field}</option>`   ).join('')}
