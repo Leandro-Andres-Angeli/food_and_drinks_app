@@ -17,7 +17,7 @@ class cardFooter {
 }
 class cardLink {
   constructor({icon,tag}){
-    this.tag = `<${tag} class='btn product-card-link background-gray-400  '>${icon}</${tag}>`
+    this.tag = `<${tag} class='btn btn-light btn-sm product-card-link background-gray-400  '>${icon}</${tag}>`
   }
   build (){
     return this.tag;

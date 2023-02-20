@@ -65,16 +65,12 @@ rating-container {
   }
 
   &-link {
-    svg {
-
-      width: 25px;
-      height: 25px;
-    }
+   
   }
 
   &-btn-container {
     position: absolute;
-    right: 0;
+    right: 8px;
     
     top: 0;
     display: flex;
