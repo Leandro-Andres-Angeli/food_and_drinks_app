@@ -2,10 +2,12 @@
 $footerPosition :translateY(100%);
 $linksBoxPosition :translateX(100%);
 
-@mixin handlePosition($property) {
+@mixin handlePosition($property,$opacity:0) {
   @media (min-width:768px) {
     transform: $property;
-    display: none;
+    pointer-events: none;
+    opacity: $opacity;
+
   }
 
 
@@ -64,14 +66,12 @@ rating-container {
     height: 20px;
   }
 
-  &-link {
-   color:red
-  }
+  &-link {}
 
   &-btn-container {
     position: absolute;
     right: 8px;
-    
+    transition: all .2s ease;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -79,7 +79,8 @@ rating-container {
     justify-content: center;
     gap: 1rem;
     @include handlePosition($linksBoxPosition );
-    &.btn:hover{
+
+    &.btn:hover {
       background-color: gainsboro
     }
   }
@@ -87,6 +88,21 @@ rating-container {
   &-footer {
     @include handlePosition($footerPosition );
     background-color: gray;
+    pointer-events: initial;
+    opacity: 1;
+    transition: all .2s ease;
 
+  }
+
+  &-footer.visible {
+    pointer-events: initial;
+    opacity: 1;
+    @include handlePosition(translateY(0%),1);
+
+  }
+  &-btn-container.visible {
+    pointer-events: initial;
+    opacity: 1;
+    @include handlePosition(translateX(0%),1);
   }
 }
