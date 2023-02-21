@@ -37,24 +37,59 @@ const fI = new cardLink(productCardButtons.facebook)
 console.log(fI)
 
 const productCard = function ({ id, img, product, price }) {
+[{ev:'mouseover',action:(el)=>el.classList.add('visible')},{ev:'mouseout',action:(el)=>el.classList.remove('visible')}].forEach(({ev,action})=>{
+  document.querySelector('.app').addEventListener(ev, function (e) {
 
-    document.querySelector('.app').addEventListener('mouseover', function (e) {
 
+    if (!e.target.closest('.product-card') || !e.target) {
+      return
+    }
    
-      if (!e.target.closest('.product-card') || !e.target) {
-        return
-      }
-      console.log(e)
-      if (e.target.closest('.product-card')) {
-        
-       [e.target.closest('.product-card').querySelector('.product-card-btn-container'),e.target.closest('.product-card').querySelector('.card-footer')].forEach(el => el.classList.add('visible')) 
+    if (e.target.closest('.product-card')) {
+    
+    if( !!action) [e.target.closest('.product-card').querySelector('.product-card-btn-container'), e.target.closest('.product-card').querySelector('.card-footer')].forEach(el =>action(el))
 
 
-      }
+    }
 
 
-  
+
   })
+})
+  // document.querySelector('.app').addEventListener('mouseover', function (e) {
+
+
+  //   if (!e.target.closest('.product-card') || !e.target) {
+  //     return
+  //   }
+   
+  //   if (e.target.closest('.product-card')) {
+
+  //     [e.target.closest('.product-card').querySelector('.product-card-btn-container'), e.target.closest('.product-card').querySelector('.card-footer')].forEach(el => el.classList.add('visible'))
+
+
+  //   }
+
+
+
+  // })
+  // document.querySelector('.app').addEventListener('mouseout', function (e) {
+
+
+  //   if (!e.target.closest('.product-card') || !e.target) {
+  //     return
+  //   }
+  //   console.log(e)
+  //   if (e.target.closest('.product-card')) {
+
+  //     [e.target.closest('.product-card').querySelector('.product-card-btn-container'), e.target.closest('.product-card').querySelector('.card-footer')].forEach(el => el.classList.remove('visible'))
+
+
+  //   }
+
+
+
+  // })
   return `<div class='card product-card' data-id="${id}">
         <div class='img-container'>
          <img src="${img}" class="  card-img-top category-aside-img" alt="..." > 
