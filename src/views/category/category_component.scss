@@ -70,10 +70,11 @@ rating-container {
 
   &-btn-container {
     position: absolute;
-    right: 8px;
+    right: 10px;
     transition: all .2s ease;
     top: 0;
     display: flex;
+    width: 0;
     flex-direction: column;
     height: 100%;
     justify-content: center;
@@ -102,6 +103,7 @@ rating-container {
   }
   &-btn-container.visible {
     pointer-events:all;
+    width: fit-content;
     opacity: 1;
     @include handlePosition(translateX(0%),1,all);
   }
