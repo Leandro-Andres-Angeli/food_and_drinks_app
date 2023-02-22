@@ -45,6 +45,7 @@ class App {
       asyncRender.call(this, Home, this.app);
       this.body.removeChild(loading);
       this.handleScroll()
+     
     });
 
     this.header.addEventListener('click', (e) => {
@@ -55,6 +56,7 @@ class App {
 
 
     });
+  
     new Footer();
 
     const renderSubscribe = function (callback) {

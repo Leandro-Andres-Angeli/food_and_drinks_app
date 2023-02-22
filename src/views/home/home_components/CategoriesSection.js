@@ -1,6 +1,7 @@
 import getData from '../../../apis/getData';
 import './category_card.scss';
 import divideArray from '../../../utils/divideArray';
+import handleNavbarLink from '../../../utils/handleNavbarLinks';
 
 const CategoriesSection = async () => {
   const getCategories = await getData(
@@ -8,9 +9,17 @@ const CategoriesSection = async () => {
   );
 
   const dividedCatergories = divideArray(getCategories.categories, 4);
-  // console.log(dividedCatergories);
+  
+ document.querySelector('.app').addEventListener('click',function(e){
+ const {target} = e;
+  if(!target.classList.contains('category-card'))return
+  const {hash : newHash } = target.closest('a')
+  console.log(newHash)
+    window.location.hash = newHash;
 
-  // console.log(getCategories.categories);
+
+  
+    } )
   return `<section class='background-yellow-100'>
 
             <div class='container'>
@@ -24,7 +33,7 @@ const CategoriesSection = async () => {
                        .map(
                          ({ strCategoryThumb, strCategory }) =>
                            `<div class ='col col-12 col-md-6 col-lg-3 my-2  '>
-                           <a href="#" class="text-decoration-none">
+                           <a href="#/categories/?${strCategory}" class="text-decoration-none category-card-link">
                            <div data-category="${strCategory}" class='category-card card background-yellow-100 p-2 text-center shadow-lg'>
                          
                            <picture>

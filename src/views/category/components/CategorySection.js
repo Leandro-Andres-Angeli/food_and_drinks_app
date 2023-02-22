@@ -106,7 +106,7 @@ const CategorySection = async () => {
       .outerHTML
     }
   
-      <div class='row'>
+      <div class='row my-4'>
       <div class='col bg-light top-sellers-col p-0 p-md-2 col-12 col-md-4'>
       <h2 class='position-relative text-capitalize top-sellers-title  w-75 ms-3'>top sellers</h2>
       <ul class='list-group top-sellers-list gap-2 '>
