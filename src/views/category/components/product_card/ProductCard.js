@@ -1,44 +1,19 @@
 import { iconsList } from '../../../../utils/icons/icons'
+import CardFooter from './product_card_components/CardFooter';
+import CardLink from './product_card_components/CardLink';
 
 const { eyeOutline: { component: eyeOutline }, linkOutline: { component: linkOutline }, facebookIcon: { component: facebookIcon } } = iconsList;
-const productCardButtons = Object.freeze({ eye: { icon: eyeOutline, tag: 'button' }, link: { icon: linkOutline, tag: 'a' }, facebook: { icon: facebookIcon, tag: 'a' } })
+const productCardButtons = Object.freeze({ eye: { icon: eyeOutline, tag: 'button',action:'modal' }, link: { icon: linkOutline, tag: 'a',action:'link' }, facebook: { icon: facebookIcon, tag: 'a',action:'facebook' } })
 
-class cardFooter {
-  constructor() {
-    this.tag = `<div class='card-footer text-white product-card-footer text-capitalize d-flex align-items-center'>
-    ${iconsList.cartOutline.component}
-    add to cart
-    </div>`
-  }
-  build() {
-    return this.tag;
-  }
 
-}
-class cardLink {
-  constructor({ icon, tag }) {
-    this.tag = `<${tag} class='btn btn-light btn-sm product-card-link background-gray-400  '>${icon}</${tag}>`
-    document.querySelector('.app').addEventListener('click',function(e){
-      console.log(e)
-      console.log(e.target.closest('button'))
-      if(!e.target.classList.contains('.product-card-link')) return
-      // console.log(e.target)
-    })
-  }
-  handleBtnAction(e){
-    console.log(e)
-  }
-  build() {
-    return this.tag;
-  }
-}
+
 const cardButtonsContainer = (buttonsArray) => {
   let btnsContainer = document.createElement('div')
 
   btnsContainer.classList.add('product-card-btn-container')
 
   for (const key in buttonsArray) {
-    btnsContainer.insertAdjacentHTML('beforeend', new cardLink(buttonsArray[key]).build())
+    btnsContainer.insertAdjacentHTML('beforeend', new CardLink(buttonsArray[key]).build())
   }
   return btnsContainer.outerHTML
 }
@@ -80,7 +55,7 @@ const productCard = function ({ id, img, product, price }) {
           
         </p>
         </div>
-        ${new cardFooter().build()}
+        ${new CardFooter().build()}
          </div>`;
 };
 export default productCard
