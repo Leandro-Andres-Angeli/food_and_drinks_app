@@ -18,6 +18,15 @@ class cardFooter {
 class cardLink {
   constructor({ icon, tag }) {
     this.tag = `<${tag} class='btn btn-light btn-sm product-card-link background-gray-400  '>${icon}</${tag}>`
+    document.querySelector('.app').addEventListener('click',function(e){
+      console.log(e)
+      console.log(e.target.closest('button'))
+      if(!e.target.classList.contains('.product-card-link')) return
+      // console.log(e.target)
+    })
+  }
+  handleBtnAction(e){
+    console.log(e)
   }
   build() {
     return this.tag;
@@ -56,7 +65,7 @@ const productCard = function ({ id, img, product, price }) {
   })
 })
  
-  return `<div class='card product-card' data-id="${id}">
+  return `<div class='card product-card' data-id="${id}" data-category=${window.location.hash.slice(2,window.location.hash.indexOf('?')-1)}>
         <div class='img-container'>
          <img src="${img}" class="  card-img-top category-aside-img" alt="..." > 
          </div>

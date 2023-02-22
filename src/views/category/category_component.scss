@@ -2,10 +2,10 @@
 $footerPosition :translateY(100%);
 $linksBoxPosition :translateX(100%);
 
-@mixin handlePosition($property,$opacity:0) {
+@mixin handlePosition($property,$opacity:0,$mouseEvents :none) {
   @media (min-width:768px) {
     transform: $property;
-    pointer-events: none;
+    pointer-events: $mouseEvents;
     opacity: $opacity;
 
   }
@@ -95,14 +95,14 @@ rating-container {
   }
 
   &-footer.visible {
-    pointer-events: initial;
+   
     opacity: 1;
-    @include handlePosition(translateY(0%),1);
+    @include handlePosition(translateY(0%),1,all);
 
   }
   &-btn-container.visible {
-    pointer-events: initial;
+    pointer-events:all;
     opacity: 1;
-    @include handlePosition(translateX(0%),1);
+    @include handlePosition(translateX(0%),1,all);
   }
 }
