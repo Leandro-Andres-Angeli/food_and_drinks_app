@@ -2,7 +2,7 @@
 import './category_component.scss';
 
 import CategorySection from './components/CategorySection';
-import { handleProductCardButtons } from './components/product_card/product_card_components/utils';
+import { handleProductCardButtons, productModal } from './components/product_card/product_card_components/utils';
 
 
 
@@ -24,9 +24,10 @@ class CategoryComponent {
       e.preventDefault()
       this.handlePaginationLink(e)
       handleProductCardButtons(e)
+     
     })
 
-
+   productModal(this.app) 
 
   }
   handleModal() {
