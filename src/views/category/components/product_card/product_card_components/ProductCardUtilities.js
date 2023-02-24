@@ -1,3 +1,6 @@
+import { async } from "regenerator-runtime";
+import getData from "../../../../../apis/getData";
+
 export const productModal = (targ) => {
     console.log(targ);
     [...document.body.querySelectorAll('.modal')].forEach(modal => targ.removeChild(modal))
@@ -38,15 +41,24 @@ const addModal = () => {
 
 export const buttonActions = Object.freeze({ modal: { attributes:function(){
      return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
-} }, link: { attributes: ()=>{return }}, facebook: { attributes: ()=>{return } } })
+},btnAction:async function({apiRoute,prodId}){
+const data =  await getData(`${apiRoute}lookup.php?i=${prodId}`)
+document.querySelector('.modal-content').innerHTML = JSON.stringify(data)
+} }, link: { attributes: ()=>{return },btnAction:function(){}}, facebook: { attributes: ()=>{return },btnAction:function(){} } })
 export const handleProductCardButtons = function (e) {
 
     if (!e.target.closest('.product-card-link')) return
    
 
     const button = e.target.closest('.product-card-link')
-    console.log(button)
-    console.log(button.dataset.action)
+    // console.log(button)
+    const{ action : type} = button.dataset;
+
+    const { id : prodId } =  e.target.closest('.product-card').dataset;
+    const apiRoute = e.target.closest('.product-card').dataset.category === 'categories' ? process.env.API_ENDPOINT : process.env.API_DRINKS_ENDPOINT ;
+    // console.log(prodId);
+    // console.log(type);
+    buttonActions[`${type}`].btnAction({apiRoute , prodId})
    
 
 }

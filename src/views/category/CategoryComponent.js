@@ -2,7 +2,7 @@
 import './category_component.scss';
 
 import CategorySection from './components/CategorySection';
-import { handleProductCardButtons, productModal } from './components/product_card/product_card_components/Utils';
+import { handleProductCardButtons, productModal } from './components/product_card/product_card_components/ProductCardUtilities';
 
 
 
