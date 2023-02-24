@@ -36,15 +36,16 @@ const addModal = () => {
     return document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
 }
 
-const buttonActions = Object.freeze({ modal: { fireAction: addModal }, link: { fireAction: addModal }, facebook: { fireAction: addModal } })
+export const buttonActions = Object.freeze({ modal: { fireAction:function(){
+     return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
+} }, link: { fireAction: ()=>{return }}, facebook: { fireAction: ()=>{return } } })
 export const handleProductCardButtons = function (e) {
 
     if (!e.target.closest('.product-card-link')) return
-    // console.log(e.target)
+   
 
     const button = e.target.closest('.product-card-link')
     console.log(button)
-    //   console.log(button.dataset.action)
-    //   buttonActions[`${button.dataset.action}`].fireAction()
+   
 
 }
