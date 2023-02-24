@@ -1,5 +1,8 @@
 
 export class formatApiData {
+  constructor(){
+   
+  }
   static card (productData) {
    
     let formattedProdData = { price: productData.price }
@@ -20,8 +23,11 @@ export class formatApiData {
     return formattedProdData;
   }
   static modal (productData){
-    console.log(this)
-    this.card(productData)
+  
+    console.log(  Object.entries(productData)[0][1])
+  
+  
+   return this.card( ...Object.entries(productData)[0][1])
   }
 }
 const formatProductData = function (productData,type = 'card') {

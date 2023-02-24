@@ -47,7 +47,7 @@ export const buttonActions = Object.freeze({ modal: { attributes:function(){
      return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
 },btnAction:async function({apiRoute,prodId}){
 const data =  await getData(`${apiRoute}lookup.php?i=${prodId}`)
-document.querySelector('.modal-content').innerHTML = JSON.stringify(formatApiData.modal(data) )
+return document.querySelector('.modal-content').innerHTML = JSON.stringify(formatApiData.modal(data) )
 } }, link: { attributes: ()=>{return },btnAction:function(){}}, facebook: { attributes: ()=>{return },btnAction:function(){} } })
 export const handleProductCardButtons = function (e) {
 
