@@ -36,9 +36,9 @@ const addModal = () => {
     return document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
 }
 
-export const buttonActions = Object.freeze({ modal: { fireAction:function(){
+export const buttonActions = Object.freeze({ modal: { attributes:function(){
      return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
-} }, link: { fireAction: ()=>{return }}, facebook: { fireAction: ()=>{return } } })
+} }, link: { attributes: ()=>{return }}, facebook: { attributes: ()=>{return } } })
 export const handleProductCardButtons = function (e) {
 
     if (!e.target.closest('.product-card-link')) return
@@ -46,6 +46,7 @@ export const handleProductCardButtons = function (e) {
 
     const button = e.target.closest('.product-card-link')
     console.log(button)
+    console.log(button.dataset.action)
    
 
 }
