@@ -23,11 +23,11 @@ export class formatApiData {
     return formattedProdData;
   }
   static modal (productData){
+  console.log(Object.keys(arguments[0]))
   
-    console.log(  Object.entries(productData)[0][1])
   
   
-   return this.card( ...Object.entries(productData)[0][1])
+   return [...Object.entries(productData)[0][1]]
   }
 }
 const formatProductData = function (productData,type = 'card') {
