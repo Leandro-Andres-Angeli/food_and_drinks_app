@@ -6,10 +6,10 @@ import { formatApiData } from "../../../../../utils/formatProductData";
 
 
 export const productModal = (targ) => {
-    console.log(targ);
-    [...document.body.querySelectorAll('.modal')].forEach(modal => targ.removeChild(modal))
+  console.log(targ);
+  [...document.body.querySelectorAll('.modal')].forEach(modal => targ.removeChild(modal))
 
-    const modal = ` <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  const modal = ` <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
@@ -35,34 +35,38 @@ export const productModal = (targ) => {
   </div>
 </div>
 </div> `
-  return  targ.insertAdjacentHTML('afterend', modal)
+  return targ.insertAdjacentHTML('afterend', modal)
 
 }
 const addModal = () => {
-    console.log('func')
-    return document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
+  console.log('func')
+  return document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
 }
 
-export const buttonActions = Object.freeze({ modal: { attributes:function(){
-     return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
-},btnAction:async function({apiRoute,prodId}){
-const data =  await getData(`${apiRoute}lookup.php?i=${prodId}`)
-return document.querySelector('.modal-content').innerHTML = JSON.stringify(formatApiData.modal(data) )
-} }, link: { attributes: ()=>{return },btnAction:function(){}}, facebook: { attributes: ()=>{return },btnAction:function(){} } })
+export const buttonActions = Object.freeze({
+  modal: {
+    attributes: function () {
+      return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
+    }, btnAction: async function ({ apiRoute, prodId }) {
+      const data = await getData(`${apiRoute}lookup.php?i=${prodId}`)
+      return document.querySelector('.modal-content').innerHTML = JSON.stringify(formatApiData.modal(data))
+    }
+  }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
+})
 export const handleProductCardButtons = function (e) {
 
-    if (!e.target.closest('.product-card-link')) return
-   
+  if (!e.target.closest('.product-card-link')) return
 
-    const button = e.target.closest('.product-card-link')
-    // console.log(button)
-    const{ action : type} = button.dataset;
 
-    const { id : prodId } =  e.target.closest('.product-card').dataset;
-    const apiRoute = e.target.closest('.product-card').dataset.category === 'categories' ? process.env.API_ENDPOINT : process.env.API_DRINKS_ENDPOINT ;
-    // console.log(prodId);
-    // console.log(type);
-    buttonActions[`${type}`].btnAction({apiRoute , prodId})
-   
+  const button = e.target.closest('.product-card-link')
+  // console.log(button)
+  const { action: type } = button.dataset;
+
+  const { id: prodId } = e.target.closest('.product-card').dataset;
+  const apiRoute = e.target.closest('.product-card').dataset.category === 'categories' ? process.env.API_ENDPOINT : process.env.API_DRINKS_ENDPOINT;
+  // console.log(prodId);
+  // console.log(type);
+  buttonActions[`${type}`].btnAction({ apiRoute, prodId })
+
 
 }
