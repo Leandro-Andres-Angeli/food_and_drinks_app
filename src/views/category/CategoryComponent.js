@@ -2,7 +2,7 @@
 import './category_component.scss';
 
 import CategorySection from './components/CategorySection';
-import { handleProductCardButtons, productModal } from './components/product_card/product_card_components/ProductCardUtilities';
+import { addModal, handleProductCardButtons, productModal } from './components/product_card/product_card_components/ProductCardUtilities';
 
 
 
@@ -27,12 +27,10 @@ class CategoryComponent {
      
     })
 
-   productModal(this.app) 
+ addModal.call(this) 
 
   }
-  handleModal() {
-
-  }
+ 
   handlePaginationLink(e) {
 
     if (checkDOMTarget.call(e, 'ul', 'pagination')) return

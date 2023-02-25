@@ -5,42 +5,63 @@ import { formatApiData } from "../../../../../utils/formatProductData";
 
 
 
-export const productModal = (targ) => {
-  console.log(targ);
-  [...document.body.querySelectorAll('.modal')].forEach(modal => targ.removeChild(modal))
+export const productModal = (data) => {
+
+
 
   const modal = ` <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+      
     </div>
     <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label for="recipient-name" class="col-form-label">Recipient:</label>
-          <input type="text" class="form-control" id="recipient-name">
-        </div>
-        <div class="mb-3">
-          <label for="message-text" class="col-form-label">Message:</label>
-          <textarea class="form-control" id="message-text"></textarea>
-        </div>
-      </form>
+     
+     
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Send message</button>
-    </div>
+   
   </div>
 </div>
 </div> `
-  return targ.insertAdjacentHTML('afterend', modal)
+  return modal
 
 }
-const addModal = () => {
-  console.log('func')
-  return document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
+const updateModalContent = function (data) {
+  console.log(this);
+  console.log(data);
+
+  const { category, name, id, img, ingredients } = data;
+  this.dataset.id = id;
+  this.querySelector('.modal-header').innerHTML = `<ol class="breadcrumb">
+  <li class="breadcrumb-item">${category}</a></li>
+  <li class="breadcrumb-item active text-primary" aria-current="page">${name}</li>
+</ol><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`
+  this.querySelector('.modal-body').innerHTML = `<img src="${img} " class="img-fluid" />
+<div class="accordion" id="accordionExample">
+ 
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Ingredients
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <ul class="list-group">
+      ${Object.entries(ingredients).map(([key, val]) => `<li class="list-group-item">${key} : ${val}</li>`).join('')}
+      </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+`
+
+}
+export const addModal = function () {
+
+  document.body.insertAdjacentHTML('beforeend', productModal())
 }
 
 export const buttonActions = Object.freeze({
@@ -48,8 +69,11 @@ export const buttonActions = Object.freeze({
     attributes: function () {
       return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
-      const data = await getData(`${apiRoute}lookup.php?i=${prodId}`)
-      return document.querySelector('.modal-content').innerHTML = JSON.stringify(formatApiData.modal(data))
+      const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
+      
+        return document.body.insertAdjacentHTML('beforeend',  updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data)))
+      
+      
     }
   }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
 })
@@ -59,13 +83,12 @@ export const handleProductCardButtons = function (e) {
 
 
   const button = e.target.closest('.product-card-link')
-  // console.log(button)
+
   const { action: type } = button.dataset;
 
   const { id: prodId } = e.target.closest('.product-card').dataset;
   const apiRoute = e.target.closest('.product-card').dataset.category === 'categories' ? process.env.API_ENDPOINT : process.env.API_DRINKS_ENDPOINT;
-  // console.log(prodId);
-  // console.log(type);
+
   buttonActions[`${type}`].btnAction({ apiRoute, prodId })
 
 
