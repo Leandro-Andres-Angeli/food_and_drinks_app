@@ -68,7 +68,9 @@ export const addModal = function () {
 
   document.body.insertAdjacentHTML('beforeend', productModal())
 }
-
+const renderProductPage = (id)=>{
+  document.querySelector('.app').innerHTML=`<div> id = ${id}</div>`
+}
 export const buttonActions = Object.freeze({
   modal: {
     attributes: function () {
@@ -82,7 +84,13 @@ export const buttonActions = Object.freeze({
     
 
     }
-  }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
+  }, link: { attributes:function ()  { 
+    console.log(this)
+    return  `href=${window.location}`}, btnAction: ({prodId : id})=>{
+   
+    document.querySelector('.app').innerHTML=`<div> id = ${id}</div>`;
+
+  } }, facebook: { attributes: () => { return }, btnAction: function () { } }
 })
 export const handleProductCardButtons = function (e) {
 
