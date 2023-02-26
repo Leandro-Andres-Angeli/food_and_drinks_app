@@ -40,7 +40,12 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
     background-color: #{$value};
   }
 }
-
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
 .active-link{
   background-color: var(--bs-dropdown-link-hover-bg);
 }

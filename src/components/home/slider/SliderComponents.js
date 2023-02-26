@@ -20,7 +20,7 @@ class SliderTextContent extends SliderComponent {
     <div class='col-12 col-md-6 p-2 p-md-4  d-flex flex-column gap-4 '>
     <h6>Welcome to out store</h6>
         <h2 class='text-primary'>${title}</h2>
-        <p>${textContext}</p>
+        <p class='line-clamp'>${textContext}</p>
         ${btn}
                   
         </div>
