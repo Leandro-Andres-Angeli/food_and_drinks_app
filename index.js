@@ -31,6 +31,7 @@ class App {
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
+        console.log(window.location.hash)
       console.log(route)
       asyncRender(routes[route].view, this.app);
       window.scrollTo(0,0)
