@@ -79,7 +79,7 @@ export const buttonActions = Object.freeze({
       const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
 
       updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data))
-      // return document.body.insertAdjacentHTML('beforeend',handleLoading.call(document.body.querySelector('.modal-content'),formatApiData.modal(data)))
+    
 
     }
   }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
