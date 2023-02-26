@@ -26,11 +26,12 @@ class App {
     this.header = document.querySelector('header');
     window.location.hash = '#/home';
     window.addEventListener('hashchange', () => {
+      console.log('change')
       let route = window.location.hash
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
-   
+      console.log(route)
       asyncRender(routes[route].view, this.app);
       window.scrollTo(0,0)
     });

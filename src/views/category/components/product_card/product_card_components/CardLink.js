@@ -14,7 +14,7 @@ class CardLink {
     build() {
       const link = document.createElement('div');
       link.insertAdjacentHTML('afterbegin',this.tag);
-      console.log(link)
+      
       if(this.id !== undefined)link.firstChild.href= `${window.location.hash}&id=${this.id}`;
       return link.innerHTML;
     }
