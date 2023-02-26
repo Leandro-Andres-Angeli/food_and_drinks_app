@@ -13,6 +13,7 @@ export const productModal = () => {
   const modal = ` <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
+  
     <div class="modal-header">
     
       
@@ -28,21 +29,23 @@ export const productModal = () => {
   return modal
 
 }
-
 const  handleLoading = function(data,callback = updateModalContent){
-  this.innerHTML +=`<div class='loader-container d-flex justify-content-center align-items-center'> ${iconsList.loader.component}</div>` ;
- setTimeout(()=>{
-  console.log(this)
-  const spinner = this.querySelector('.loader-container');
-  console.log(spinner)
-  this.removeChild(spinner);
- },0)
+  // document.querySelector('.modal-content').innerHTML =productModal()
+
   
  callback.call(this,data);
 
 };
 
-const updateModalContent = function (product) {
+// const  handleLoading = function(data,callback = updateModalContent){
+//   this.innerHTML =productModal()
+
+  
+//  callback.call(this,data);
+
+// };
+
+const updateModalContent = function (product ) {
   
   const { category, name, id, img, ingredients } = product
   this.dataset.id = id;
@@ -70,6 +73,7 @@ const updateModalContent = function (product) {
 
 </div>
 `
+console.log(this)
 
 }
 export const addModal = function () {
@@ -82,10 +86,12 @@ export const buttonActions = Object.freeze({
     attributes: function () {
       return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
-      const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
+      console.log(this)
       
-        // return document.body.insertAdjacentHTML('beforeend',  updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data)))
-        return document.body.insertAdjacentHTML('beforeend',handleLoading.call(document.body.querySelector('.modal-content'),formatApiData.modal(data)))
+      const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
+     
+         return document.body.insertAdjacentHTML('beforeend',  updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data)))
+          // return document.body.insertAdjacentHTML('beforeend',handleLoading.call(document.body.querySelector('.modal-content'),formatApiData.modal(data)))
       
     }
   }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
