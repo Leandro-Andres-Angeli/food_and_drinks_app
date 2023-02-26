@@ -14,13 +14,13 @@ const CategoriesSection = async () => {
  const {target} = e;
   if(!target.classList.contains('category-card'))return
   const {hash : newHash } = target.closest('a')
-  console.log(newHash)
+  
     window.location.hash = newHash;
 
 
   
     } )
-  return `<section class='background-yellow-100'>
+  return `<section class='background-yellow-100 py-5'>
 
             <div class='container'>
                 <h2 class='text-primary'>Categories</h2>

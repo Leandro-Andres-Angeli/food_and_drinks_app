@@ -4,7 +4,7 @@ const btnSliderArticle = new AnimatedButton('order now')
   .addClassLists(['carousel-btn'])
   .build();
 class SliderComponent {
-  constructor() {}
+  constructor() { }
   build() {
     return this.tag;
   }

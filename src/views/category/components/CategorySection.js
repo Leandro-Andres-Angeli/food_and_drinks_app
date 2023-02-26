@@ -31,7 +31,7 @@ const sortOptions = Object.freeze({
   nameReverse: {
     orderFunc: function (products) {
       const nameType = nameTypes[getNameProp()];
-      console.log(nameType)
+    
       return products.sort((a, b) => a[`${nameType}`] < b[`${nameType}`] ? 1 : a[`${nameType}`] < b[`${nameType}`] ? -1 : 0)
     }
   }
@@ -61,7 +61,7 @@ const CategorySection = async () => {
   const split = window.location.hash.split('?');
   const category = split.pop().trim();
   const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
-  console.log('api route', apiRoute)
+ 
   const categoryFetch = await getData(
     `${apiRoute}filter.php?c=${category.trim().replaceAll(' ', '_')}`
   );
