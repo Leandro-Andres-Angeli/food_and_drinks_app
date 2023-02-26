@@ -12,6 +12,7 @@ export const productModal = () => {
 
   const modal = ` <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
+<div class='loader-container'>${iconsList.loader.component}</div>
   <div class="modal-content">
   
     <div class="modal-header">
@@ -29,21 +30,8 @@ export const productModal = () => {
   return modal
 
 }
-const  handleLoading = function(data,callback = updateModalContent){
-  // document.querySelector('.modal-content').innerHTML =productModal()
 
-  
- callback.call(this,data);
 
-};
-
-// const  handleLoading = function(data,callback = updateModalContent){
-//   this.innerHTML =productModal()
-
-  
-//  callback.call(this,data);
-
-// };
 
 const updateModalContent = function (product ) {
   
