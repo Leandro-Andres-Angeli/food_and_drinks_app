@@ -18,19 +18,6 @@ const dropdownMenu = function(categories,type){
       
       
     </ul>
-    </li>` || console.log('bug')
+    </li>`
 }
 export default dropdownMenu;
-{/* <ul class="dropdown-menu   border-top-2 border-primary border-bottom-0 border-end-0 border-start-0" aria-labelledby="navbarDropdown">
-${mealCategories.categories
-  .map(
-    ({ idCategory: category, strCategory: name }) =>
-      `<li><a class="dropdown-item" href="#/${Object.keys(
-        mealCategories
-      )}/?${name}"
-      >${name}</a></li>`
-  )
-  .join('')}
-  
-  
-</ul> */}

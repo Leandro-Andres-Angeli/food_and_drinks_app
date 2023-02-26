@@ -12,7 +12,7 @@ const nameTypes = Object.freeze({
 })
 const getNameProp = function () {
   const name = window.location.hash.toString().slice(2, window.location.hash.toString().lastIndexOf("/"))
-  console.log(name)
+
   return name;
 }
 
@@ -23,7 +23,7 @@ const sortOptions = Object.freeze({
     orderFunc: function (products) {
       return products.sort((a, b) => {
         const nameType = nameTypes[getNameProp()];
-        console.log(nameType)
+    
         return a[`${nameType}`] > b[`${nameType}`] ? 1 : a[`${nameType}`] > b[`${nameType}`] ? 1 : 0
       })
     }
@@ -91,10 +91,9 @@ const CategorySection = async () => {
   const selectForm = new SelectSortEl();
 
   const handleOrder = function () {
-    console.log(getNameProp())
-    console.log(arguments)
+   
     const sortOption = arguments[0];
-    console.log(sortOption)
+   
 
     document.querySelector('.product-cards-list').innerHTML = renderProducts(sortOptions[`${sortOption}`].orderFunc(divideProductArray.rightSide))
 

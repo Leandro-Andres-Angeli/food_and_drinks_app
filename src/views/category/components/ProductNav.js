@@ -1,5 +1,5 @@
 const productNav = (pages ) => {
-    console.log(pages);
+    
    
     return `<nav class='pe-4' aria-label="...">
     <ul class="pagination">
