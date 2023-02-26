@@ -1,11 +1,12 @@
-import { async } from "regenerator-runtime";
+
 import getData from "../../../../../apis/getData";
 import { formatApiData } from "../../../../../utils/formatProductData";
+import { iconsList } from "../../../../../utils/icons/icons";
 
 
 
 
-export const productModal = (data) => {
+export const productModal = () => {
 
 
 
@@ -27,11 +28,23 @@ export const productModal = (data) => {
   return modal
 
 }
-const updateModalContent = function (data) {
-  console.log(this);
-  console.log(data);
 
-  const { category, name, id, img, ingredients } = data;
+const  handleLoading = function(data,callback = updateModalContent){
+  this.innerHTML +=`<div class='loader-container d-flex justify-content-center align-items-center'> ${iconsList.loader.component}</div>` ;
+ setTimeout(()=>{
+  console.log(this)
+  const spinner = this.querySelector('.loader-container');
+  console.log(spinner)
+  this.removeChild(spinner);
+ },0)
+  
+ callback.call(this,data);
+
+};
+
+const updateModalContent = function (product) {
+  
+  const { category, name, id, img, ingredients } = product
   this.dataset.id = id;
   this.querySelector('.modal-header').innerHTML = `<ol class="breadcrumb">
   <li class="breadcrumb-item">${category}</a></li>
@@ -71,8 +84,8 @@ export const buttonActions = Object.freeze({
     }, btnAction: async function ({ apiRoute, prodId }) {
       const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
       
-        return document.body.insertAdjacentHTML('beforeend',  updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data)))
-      
+        // return document.body.insertAdjacentHTML('beforeend',  updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data)))
+        return document.body.insertAdjacentHTML('beforeend',handleLoading.call(document.body.querySelector('.modal-content'),formatApiData.modal(data)))
       
     }
   }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
