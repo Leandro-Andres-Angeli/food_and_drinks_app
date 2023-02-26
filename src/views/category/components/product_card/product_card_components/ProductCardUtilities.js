@@ -32,9 +32,9 @@ export const productModal = () => {
 }
 
 
+const handleLoaderDisplay = (action) => document.querySelector('.loader-container').classList[`${action}`]('hide')
+const updateModalContent = function (product, callback = handleLoaderDisplay('add')) {
 
-const updateModalContent = function (product ) {
-  
   const { category, name, id, img, ingredients } = product
   this.dataset.id = id;
   this.querySelector('.modal-header').innerHTML = `<ol class="breadcrumb">
@@ -61,7 +61,7 @@ const updateModalContent = function (product ) {
 
 </div>
 `
-console.log(this)
+  callback
 
 }
 export const addModal = function () {
@@ -74,13 +74,13 @@ export const buttonActions = Object.freeze({
     attributes: function () {
       return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
-      console.log(this)
-      
+      handleLoaderDisplay('remove')
+
       const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
-     
-         return document.body.insertAdjacentHTML('beforeend',  updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data)))
-          // return document.body.insertAdjacentHTML('beforeend',handleLoading.call(document.body.querySelector('.modal-content'),formatApiData.modal(data)))
-      
+
+      updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data))
+      // return document.body.insertAdjacentHTML('beforeend',handleLoading.call(document.body.querySelector('.modal-content'),formatApiData.modal(data)))
+
     }
   }, link: { attributes: () => { return }, btnAction: function () { } }, facebook: { attributes: () => { return }, btnAction: function () { } }
 })
