@@ -87,22 +87,14 @@ export const buttonActions = Object.freeze({
   }, link: { attributes:function ()  { 
   
     return;
-    // return  `href=${window.location.hash}`}, btnAction: ({prodId : id})=>{
-   
-    // document.querySelector('.app').innerHTML=`<div> id = ${id}</div>`;
+
 
   }, btnAction: function ({apiRoute,prodId}){ 
-    console.log(123);
-    // console.log(this);
-    console.log(apiRoute);
-    console.log(prodId);
+  
     const prevLocation = window.location.hash.split('&')[0]
-      console.log('prev',prevLocation)
+  
      window.location.hash=`${prevLocation}&id=${prodId}`
-      // console.log(newLocation)
-    // //  btnAction: ({prodId : id})=>{
-   
-    // return document.querySelector('.app').innerHTML=`<div> id = ${prodId}</div>`;
+     
 
   } }, facebook: { attributes: () => { return }, btnAction: function () { } }
 })

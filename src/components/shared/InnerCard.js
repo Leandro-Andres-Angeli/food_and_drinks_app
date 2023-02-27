@@ -7,7 +7,7 @@ export const innerCard = (
   pTagFs = undefined
 ) => {
   return `<div class="${classLists}"   >
-  <div  class='inner-card position-relative background-gray-800 p-4' ${
+  <div  class='inner-card position-relative background-gray-800 p-5' ${
     dataAttr && `data-index="${dataAttr}"`
   } >
     <${tags.titleTag} >${title}</${tags.titleTag}>

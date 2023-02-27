@@ -27,8 +27,7 @@ class App {
     this.header = document.querySelector('header');
     window.location.hash = '#/home';
     window.addEventListener('hashchange', () => {
-      console.log('change')
-      let routing ={};
+     
       let route =window.location.hash
         .slice(2)
         .split('?')[0]
@@ -42,8 +41,8 @@ class App {
      asyncRender( view, this.app)
       }
       catch(e){
-        console.log(e)
-      //  window.location.hash='/error'
+    
+      window.location.hash='/error'
       }
    
      
