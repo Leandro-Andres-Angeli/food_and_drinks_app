@@ -24,7 +24,7 @@ class ProductPage {
         <div class='container p-2 p-md-5'>
         <div class='card'>
          
-            <div class="card-body">
+            <div class="card-body d-flex flex-column ">
             <h5 class="card-title">
             <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
