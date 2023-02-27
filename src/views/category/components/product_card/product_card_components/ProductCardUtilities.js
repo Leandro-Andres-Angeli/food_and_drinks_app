@@ -96,9 +96,9 @@ export const buttonActions = Object.freeze({
     // console.log(this);
     console.log(apiRoute);
     console.log(prodId);
- 
-      
-     window.location.hash+=`?id=${prodId}`
+    const prevLocation = window.location.hash.split('&')[0]
+      console.log('prev',prevLocation)
+     window.location.hash=`${prevLocation}&id=${prodId}`
       // console.log(newLocation)
     // //  btnAction: ({prodId : id})=>{
    

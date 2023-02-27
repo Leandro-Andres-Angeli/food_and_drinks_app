@@ -4,12 +4,13 @@ import * as bootstrap from 'bootstrap';
 import 'core-js/stable';
 import Navbar from './src/components/navbar/Navbar';
 import Home from './src/views/home/Home';
-import { async } from 'regenerator-runtime';
+
 import { asyncRender } from './src/utils/renders';
 import routes from './src/router/routes';
 import handleNavbarLink from './src/utils/handleNavbarLinks';
 import Footer from './src/components/footer/Footer';
 import SubscribeComponent from './src/components/footer/SubscribeComponent';
+import getId from './src/utils/getId';
 
 if (module.hot) {
   module.hot.accept();
@@ -27,13 +28,26 @@ class App {
     window.location.hash = '#/home';
     window.addEventListener('hashchange', () => {
       console.log('change')
-      let route = window.location.hash
+      let routing ={};
+      let route =window.location.hash
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
-        console.log(window.location.hash)
-      console.log(route)
-      asyncRender(routes[route].view, this.app);
+      
+       let view ; 
+     
+      
+  try{       
+     view = getId() && routes.product.view ||  routes[route].view 
+     asyncRender( view, this.app)
+      }
+      catch(e){
+        console.log(e)
+      //  window.location.hash='/error'
+      }
+   
+     
+   
       window.scrollTo(0,0)
     });
 

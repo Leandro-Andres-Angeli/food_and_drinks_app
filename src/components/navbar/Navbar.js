@@ -9,7 +9,7 @@ import ButtonSearch from './ButtonSearch';
 import SearchComponent from './SearchComponent';
 const Navbar = async () => {
   const [last, ...firsArt] = Object.keys(routes)
-    .filter((category) => category !== 'categories' &&  category !== 'drinks')
+    .filter((category) => category !== 'categories' &&  category !== 'drinks' && category !== 'error' && category !== 'product')
     .reverse();
 
  
