@@ -65,8 +65,13 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
 
 }
 export const addModal = function () {
+ 
+ [...this.children].push(productModal())
+  // document.body.insertAdjacentHTML('beforeend', productModal())
 
-  document.body.insertAdjacentHTML('beforeend', productModal())
+ 
+ 
+  
 }
 
 export const buttonActions = Object.freeze({

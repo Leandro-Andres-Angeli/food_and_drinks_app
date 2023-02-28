@@ -27,7 +27,7 @@ class CategoryComponent {
      
     })
 
- addModal.call(this) 
+ addModal.call(this.app) 
 
   }
  
