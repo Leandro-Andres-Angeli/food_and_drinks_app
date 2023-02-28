@@ -93,6 +93,7 @@ class App {
     let positionY = window.pageYOffset;
 
     window.addEventListener('scroll', function (e) {
+      if(this.window.innerWidth < 800 ){return}
       const currentScroll = (this.pageYOffset)
     
       const header = e.target.body.querySelector('header');
