@@ -22,7 +22,7 @@ class ProductPage {
             const div = await `
     
         <div class='container p-2 p-md-5'>
-        <div class='card'>
+        <div class='card mb-5'>
          
             <div class="card-body d-flex flex-column ">
             <h5 class="card-title">
