@@ -66,11 +66,9 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
 }
 export const addModal = function () {
 
-  document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
+  document.body.insertAdjacentHTML('beforeend', productModal())
 }
-const renderProductPage = (id)=>{
-  document.querySelector('.app').innerHTML=`<div> id = ${id}</div>`
-}
+
 export const buttonActions = Object.freeze({
   modal: {
     attributes: function () {
