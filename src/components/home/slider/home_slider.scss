@@ -16,9 +16,13 @@
     // height: calc(100vh - var(--navbar-height));
 
     .col-12:nth-child(1) {
+    
       border: 5px dashed black;
       border-right: none;
       position: relative;
+      @media (max-width:600px) {
+        border-color: transparent;
+      }
       &::after {
         content: '';
         background-color: var(--light-yellow);

@@ -17,9 +17,9 @@ class SliderTextContent extends SliderComponent {
 
     this.btn = btn;
     this.tag = ` 
-    <div class='col-12 col-md-6 p-2 p-md-4 order-1 order-md-0 d-flex flex-column gap-4  border border-0 border-md-primary '>
+    <div class='col-12 col-md-6 p-2 p-md-4 order-1 order-md-0 d-flex flex-column gap-4  '>
     <h6>Welcome to out store</h6>
-        <h2 class='text-primary'>${title}</h2>
+        <h2 class='text-primary text-truncate'>${title}</h2>
         <p class='line-clamp'>${textContext}</p>
         ${btn}
                   
