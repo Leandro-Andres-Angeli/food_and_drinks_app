@@ -66,7 +66,7 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
 }
 export const addModal = function () {
 
-  document.body.insertAdjacentHTML('beforeend', productModal())
+  document.querySelector('.app').insertAdjacentHTML('beforeend', productModal())
 }
 const renderProductPage = (id)=>{
   document.querySelector('.app').innerHTML=`<div> id = ${id}</div>`
