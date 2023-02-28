@@ -11,7 +11,10 @@
 }
 
 #carouselExampleControls .carousel-inner .col-12:nth-child(1) {
-  border: 5px dashed black;
+  
+    border: 5px dashed black;  
+  
+  
   border-right: none;
   position: relative;
 }

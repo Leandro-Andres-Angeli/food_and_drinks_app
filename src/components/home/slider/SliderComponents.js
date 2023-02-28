@@ -17,7 +17,7 @@ class SliderTextContent extends SliderComponent {
 
     this.btn = btn;
     this.tag = ` 
-    <div class='col-12 col-md-6 p-2 p-md-4  d-flex flex-column gap-4 '>
+    <div class='col-12 col-md-6 p-2 p-md-4 order-1 order-md-0 d-flex flex-column gap-4  border border-0 border-md-primary '>
     <h6>Welcome to out store</h6>
         <h2 class='text-primary'>${title}</h2>
         <p class='line-clamp'>${textContext}</p>
@@ -31,8 +31,8 @@ class SliderImg extends SliderComponent {
   constructor(src) {
     super();
     this.tag = ` 
-      <div class='col-6 d-none d-md-block'   >
-            <img src="${src}" class="img-fluid carousel-img rounded" alt="...">
+      <div class='col-md-6 mb-3 mb-md-2 d-block col-12 col p-3 text-center'   >
+            <img src="${src}" class="img-fluid carousel-img rounded w-75 w-md-100" alt="...">
   </div>
       `;
   }
