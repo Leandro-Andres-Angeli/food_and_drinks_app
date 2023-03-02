@@ -20,25 +20,24 @@ class CategoryComponent {
     this.root = CategorySection
     this.app = document.querySelector('.app')
 
-    document.querySelector('.app').addEventListener('click', (e) => {
-      e.preventDefault()
-      this.handlePaginationLink(e)
-      handleProductCardButtons(e)
-     
-    })
-    document.querySelector('.app').addEventListener('touchmove', (e) => {
-      if(e.target.closest('.product-cards-container')){
-     
-        e.preventDefault();
-      
-      }      
-      
-    })
+   
+   
+   ['touchstart','touchmove'].forEach(ev => document.querySelector('.app').addEventListener(ev, (e) => {
+    if (e.target.closest('.product-cards-container')) {
+      console.log(e)
+      e.stopPropagation()
+      e.preventDefault();
 
-  // addModal.call(this.app) 
+    }
+  }))
+
+
+  
+
+    // addModal.call(this.app) 
 
   }
- 
+
   handlePaginationLink(e) {
 
     if (checkDOMTarget.call(e, 'ul', 'pagination')) return
