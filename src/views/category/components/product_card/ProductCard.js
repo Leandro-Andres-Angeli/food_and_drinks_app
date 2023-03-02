@@ -1,6 +1,7 @@
 import { iconsList } from '../../../../utils/icons/icons'
 import CardFooter from './product_card_components/CardFooter';
 import CardLink from './product_card_components/CardLink';
+import { productModal } from './product_card_components/ProductCardUtilities';
 
 const { eyeOutline: { component: eyeOutline }, linkOutline: { component: linkOutline }, facebookIcon: { component: facebookIcon } } = iconsList;
 const productCardButtons = function (id) {
@@ -66,6 +67,7 @@ const productCard = function ({ id, img, product, price }) {
         </div>
         ${cardButtonsContainer(productCardButtons(id) || undefined).outerHTML}
         ${new CardFooter().build()}
+        ${productModal(id)}
          </div>`;
 };
 export default productCard

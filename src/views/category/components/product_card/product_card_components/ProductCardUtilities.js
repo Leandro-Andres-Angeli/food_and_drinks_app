@@ -6,11 +6,11 @@ import { iconsList } from "../../../../../utils/icons/icons";
 
 
 
-export const productModal = () => {
+export const productModal = (id) => {
 
 
 
-  const modal = ` <div class="modal fade w-100" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  const modal = ` <div class="modal fade w-100" id="modal-${id}" tabindex="-1" aria-labelledby="#${id}-modal" aria-hidden="true">
 <div class="modal-dialog">
 <div class='loader-container'>${iconsList.loader.component}</div>
   <div class="modal-content">
@@ -77,7 +77,7 @@ export const addModal = function () {
 export const buttonActions = Object.freeze({
   modal: {
     attributes: function (id = 1) {
-      return ` data-bs-toggle="modal-${id}" data-bs-target="#example-${id}-Modal" `
+      return ` data-bs-toggle="modal-${id}" data-bs-target="#modal-${id}" `
     }, btnAction: async function ({ apiRoute, prodId }) {
       handleLoaderDisplay('remove')
 
