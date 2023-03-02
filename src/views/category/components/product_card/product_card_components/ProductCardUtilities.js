@@ -76,8 +76,8 @@ export const addModal = function () {
 
 export const buttonActions = Object.freeze({
   modal: {
-    attributes: function () {
-      return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
+    attributes: function (id = 1) {
+      return ` data-bs-toggle="modal-${id}" data-bs-target="#example-${id}-Modal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
       handleLoaderDisplay('remove')
 

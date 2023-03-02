@@ -69,32 +69,32 @@ rating-container {
 
   &-link {}
 
-  &-btn-container {
-    position: absolute;
-    right: 10px;
-    transition: all .2s ease;
-    top: 0;
-    display: flex;
-    width: 0;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    gap: 1rem;
-    @include handlePosition($linksBoxPosition );
+  // &-btn-container {
+  //   position: absolute;
+  //   right: 10px;
+  //   transition: all .2s ease;
+  //   top: 0;
+  //   display: flex;
+  //   width: 0;
+  //   flex-direction: column;
+  //   height: 100%;
+  //   justify-content: center;
+  //   gap: 1rem;
+  //   @include handlePosition($linksBoxPosition );
 
-    &.btn:hover {
-      background-color: gainsboro
-    }
-  }
+  //   &.btn:hover {
+  //     background-color: gainsboro
+  //   }
+  // }
 
-  &-footer {
-    @include handlePosition($footerPosition );
-    background-color: gray;
-    pointer-events: initial;
-    opacity: 1;
-    transition: all .2s ease;
+  // &-footer {
+  //   @include handlePosition($footerPosition );
+  //   background-color: gray;
+  //   pointer-events: initial;
+  //   opacity: 1;
+  //   transition: all .2s ease;
 
-  }
+  // }
 
   &-footer.visible {
    
