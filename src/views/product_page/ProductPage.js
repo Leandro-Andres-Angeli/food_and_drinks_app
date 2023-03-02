@@ -9,7 +9,7 @@ class ProductPage {
         this.test = test;
         this.fetchData = getData;
         this.endpoint;
-        addModal.call(this)
+        // addModal.call(this)
     }
     build() {
         return async function () {
