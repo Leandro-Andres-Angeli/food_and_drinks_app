@@ -11,7 +11,7 @@ export const productModal = () => {
 
 
   const modal = ` <div class="modal  fade w-100" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-fullscreen">
+<div class="modal-dialog ">
 <div class='loader-container'>${iconsList.loader.component}</div>
   <div class="modal-content">
   
