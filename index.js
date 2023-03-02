@@ -60,6 +60,8 @@ class App {
       asyncRender.call(this, Home, this.app);
       this.body.removeChild(loading);
       this.handleScroll()
+      document.addEventListener('touchstart',(e)=>e.preventDefault())
+      document.addEventListener('touchmove',(e)=>e.preventDefault())
      
     });
 
