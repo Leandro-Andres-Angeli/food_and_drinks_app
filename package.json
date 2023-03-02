@@ -35,7 +35,6 @@
     "bootstrap-icons": "^1.10.3",
     "bootstrap-icons-sass": "^1.1002.1",
     "core-js": "^3.26.1",
-    "dotenv": "^16.0.3",
     "regenerator-runtime": "^0.13.10"
   }
 }
