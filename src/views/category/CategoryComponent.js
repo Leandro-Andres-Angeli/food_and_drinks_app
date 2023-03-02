@@ -20,19 +20,28 @@ class CategoryComponent {
     this.root = CategorySection
     this.app = document.querySelector('.app')
 
-   
-   
-   ['touchstart','touchmove'].forEach(ev => document.querySelector('.app').addEventListener(ev, (e) => {
-    if (e.target.closest('.product-cards-container')) {
-      console.log(e)
-      e.stopPropagation()
-      e.preventDefault();
 
-    }
-  }))
+['touchstart'].forEach ((ev)=>document.querySelector('.app').addEventListener((ev), (e) => {
+  if (!e.target.closest('.product-cards-container') || !e.target) {
+
+    return
+  }
+  console.log(e)
+  e.stopPropagation()
+  e.preventDefault();
+}))
+  //  document.querySelector('.app').addEventListener('touchstart', (e) => {
+  //     if (!e.target.closest('.product-cards-container') || !e.target) {
+
+  //       return
+  //     }
+  //     console.log(e)
+  //     e.stopPropagation()
+  //     e.preventDefault();
+  //   })
 
 
-  
+
 
     // addModal.call(this.app) 
 

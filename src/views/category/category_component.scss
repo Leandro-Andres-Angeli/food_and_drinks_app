@@ -81,34 +81,38 @@ rating-container {
     height: 100%;
     justify-content: center;
     gap: 1rem;
+    transition: all .2s ease;
     @include handlePosition($linksBoxPosition );
 
-    &.btn:hover {
-      background-color: gainsboro
-    }
+    // &:hover {
+    //   transition: all .2s ease;
+    //   @include handlePosition(translateX(0%),1,all);
+    // }
+  }
+  &-btn-container.visible {
+    pointer-events:all;
+    width: fit-content;
+    opacity: 1;
+    transition: all .2s ease;
+    @include handlePosition(translateX(0%),1,all);
   }
 
   &-footer {
     @include handlePosition($footerPosition );
     background-color: gray;
     pointer-events: initial;
-    opacity: 1;
+    opacity: 0;
     transition: all .2s ease;
 
   }
 
   &-footer.visible {
-   
+    transition: all .2s ease;
     opacity: 1;
     @include handlePosition(translateY(0%),1,all);
 
   }
-  &-btn-container.visible {
-    pointer-events:all;
-    width: fit-content;
-    opacity: 1;
-    @include handlePosition(translateX(0%),1,all);
-  }
+ 
 }
 .loader-container{
   position: absolute;
