@@ -21,24 +21,34 @@ class CategoryComponent {
     this.app = document.querySelector('.app')
 
 
-['touchstart'].forEach ((ev)=>document.querySelector('.app').addEventListener((ev), (e) => {
-  if (!e.target.closest('.product-cards-container') || !e.target) {
 
-    return
-  }
-  console.log(e)
-  e.stopPropagation()
-  e.preventDefault();
-}))
-  //  document.querySelector('.app').addEventListener('touchstart', (e) => {
-  //     if (!e.target.closest('.product-cards-container') || !e.target) {
+   document.querySelector('.app').addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.product-cards-container') || !e.target) {
 
-  //       return
-  //     }
-  //     console.log(e)
-  //     e.stopPropagation()
-  //     e.preventDefault();
-  //   })
+        return
+      }
+      console.log(e)
+      e.stopPropagation()
+      e.preventDefault();
+    })
+   document.querySelector('.app').addEventListener('touchend', (e) => {
+      if (!e.target.closest('.product-cards-container') || !e.target) {
+
+        return
+      }
+      console.log(e)
+      e.stopPropagation()
+      e.preventDefault();
+    })
+   document.querySelector('.app').addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.product-cards-container') || !e.target) {
+
+        return
+      }
+      console.log(e)
+      e.stopPropagation()
+      e.preventDefault();
+    })
 
 
 
