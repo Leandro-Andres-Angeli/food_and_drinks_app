@@ -5,7 +5,7 @@ import getId from "../../utils/getId";
 import { addModal } from "../category/components/product_card/product_card_components/ProductCardUtilities";
 
 class ProductPage {
-    constructor(test = 2) {
+    constructor(test) {
         this.test = test;
         this.fetchData = getData;
         this.endpoint;

@@ -26,6 +26,14 @@ class CategoryComponent {
       handleProductCardButtons(e)
      
     })
+    document.querySelector('.app').addEventListener('touchmove', (e) => {
+      if(e.target.closest('.product-cards-container')){
+     
+        e.preventDefault();
+      
+      }      
+      
+    })
 
   // addModal.call(this.app) 
 
