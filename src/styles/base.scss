@@ -63,6 +63,8 @@ $carousel-control-next-icon-bg: url('data:image/svg+xml,<svg xmlns="http://www.w
 }
 body {
   overflow-x: hidden;
+  max-width:100vw;
+  width:100vw;
 
 }
 .hover-secondary{
