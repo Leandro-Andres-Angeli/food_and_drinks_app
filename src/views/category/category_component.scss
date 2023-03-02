@@ -54,11 +54,14 @@ rating-container {
   }
 }
 
+
 .product-card,
 .preview-card {
   cursor: pointer;
 }
-
+.product-category-cards{
+  overflow: hidden;
+}
 .product-card {
   overflow: hidden;
 
