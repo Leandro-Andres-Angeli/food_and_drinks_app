@@ -31,15 +31,15 @@ class CategoryComponent {
   //     e.stopPropagation()
   //     e.preventDefault();
   //   })
-  //  document.querySelector('.app').addEventListener('touchend', (e) => {
-  //     if (!!e.target.classList.contains('.product-cards-container')  || !e.target) {
+   document.querySelector('.app').addEventListener('touchmove', (e) => {
+      if (!!e.target.classList.contains('.product-cards-container')  || !e.target) {
 
-  //       return
-  //     }
-  //     console.log(e)
-  //     e.stopPropagation()
-  //     e.preventDefault();
-  //   })
+        return
+      }
+      console.log(e)
+      e.stopPropagation()
+      e.preventDefault();
+    })
   //  document.querySelector('.app').addEventListener('touchstart', (e) => {
   //     if (!e.target.classList.contains('.product-cards-container') || !e.target) {
 
