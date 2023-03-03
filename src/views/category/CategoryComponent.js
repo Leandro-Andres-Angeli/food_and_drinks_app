@@ -29,7 +29,8 @@ class CategoryComponent {
 
     })
     document.querySelector('.app').addEventListener('touchmove', (e) => {
-      if (e.target.classList.contains('.product-cards-container')) {
+      
+      if (e.target.classList.contains('.product-cards')) {
 
         console.log(e)
         e.stopPropagation()
@@ -37,20 +38,7 @@ class CategoryComponent {
       }
 
     })
-    //  document.querySelector('.app').addEventListener('touchstart', (e) => {
-    //     if (!e.target.classList.contains('.product-cards-container') || !e.target) {
-
-    //       return
-    //     }
-    //     console.log(e)
-    //     e.stopPropagation()
-    //     e.preventDefault();
-    //   })
-
-
-
-
-    // addModal.call(this.app) 
+  
 
   }
 
