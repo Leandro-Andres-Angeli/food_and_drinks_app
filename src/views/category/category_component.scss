@@ -3,7 +3,7 @@
 $footerPosition :translateY(100%);
 $linksBoxPosition :translateX(100%);
 
-@mixin handlePosition($property,$opacity:0,$mouseEvents :none) {
+@mixin handlePosition($property, $opacity: 0, $mouseEvents :none) {
   @media (min-width:768px) {
     transform: $property;
     pointer-events: $mouseEvents;
@@ -72,9 +72,13 @@ rating-container {
 
   &-btn-container {
     position: absolute;
+    padding: .5rem;
+
     @media (min-width:650px) {
-      right: 10px;  
+      opacity: 0;
+      @include handlePosition(translateX(-10%), 0, all);
     }
+
     right: 0;
     transition: all .2s ease;
     top: 0;
@@ -85,62 +89,73 @@ rating-container {
     justify-content: center;
     gap: 1rem;
     transition: all .2s ease;
-    @media (min-width:650px) {
-      pointer-events:all;
-      width: fit-content;
-      opacity: 1;
-      transition: all .2s ease;
-      @include handlePosition(translateX(0%),1,all);
-    }
-    
-
-    // &:hover {
-    //   transition: all .2s ease;
-    //   @include handlePosition(translateX(0%),1,all);
-    // }
-  }
-  &-btn-container.visible {
     pointer-events:all;
     width: fit-content;
     opacity: 1;
     transition: all .2s ease;
-    @include handlePosition(translateX(0%),1,all);
+
+
+
+
+
+    &:hover {
+      transition: all .2s ease;
+      @include handlePosition(translateX(0%), 1, all);
+    }
+  }
+
+  &-btn-container.visible {
+    pointer-events: all;
+    width: fit-content;
+    opacity: 1;
+    transition: all .2s ease;
+    @include handlePosition(translateX(0%), 1, all);
   }
 
   &-footer {
-    @include handlePosition($footerPosition );
+
+
+    opacity: 1;
+    @include handlePosition(translateY(0%), 1, all);
     background-color: gray;
-    pointer-events: initial;
-    opacity: 0;
-    transition: all .2s ease;
+    @media (min-width:650px) {
+      @include handlePosition($footerPosition );
+    
+      pointer-events: initial;
+      opacity: 0;
+      transition: all .2s ease;
+    }
 
   }
 
   &-footer.visible {
     transition: all .2s ease;
     opacity: 1;
-    @include handlePosition(translateY(0%),1,all);
+    @include handlePosition(translateY(0%), 1, all);
 
   }
- 
+
 }
-.loader-container{
+
+.loader-container {
   position: absolute;
-top: 0;
-left: 0;
-background: white;
-width: 100%;
-z-index: 10;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100%;
-svg{
-  fill:$primary;
-  width: 15rem;
-  height: 10rem;
-}
-&.hide{
-  display: none;
-}
+  top: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  svg {
+    fill: $primary;
+    width: 15rem;
+    height: 10rem;
+  }
+
+  &.hide {
+    display: none;
+  }
 }
