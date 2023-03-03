@@ -32,7 +32,7 @@ class CategoryComponent {
       e.preventDefault();
     })
    document.querySelector('.app').addEventListener('touchend', (e) => {
-      if (!e.target.closest('.product-cards-container') || !e.target) {
+      if (!!e.target.classList.contains('.product-cards-container')  || !e.target) {
 
         return
       }
@@ -41,7 +41,7 @@ class CategoryComponent {
       e.preventDefault();
     })
    document.querySelector('.app').addEventListener('touchstart', (e) => {
-      if (!e.target.closest('.product-cards-container') || !e.target) {
+      if (!e.target.classList.contains('.product-cards-container') || !e.target) {
 
         return
       }

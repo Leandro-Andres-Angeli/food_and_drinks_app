@@ -72,7 +72,10 @@ rating-container {
 
   &-btn-container {
     position: absolute;
-    right: 10px;
+    @media (min-width:650px) {
+      right: 10px;  
+    }
+    right: 0;
     transition: all .2s ease;
     top: 0;
     display: flex;
@@ -82,7 +85,10 @@ rating-container {
     justify-content: center;
     gap: 1rem;
     transition: all .2s ease;
-    @include handlePosition($linksBoxPosition );
+    @media (min-width:650px) {
+      @include handlePosition($linksBoxPosition );
+    }
+    
 
     // &:hover {
     //   transition: all .2s ease;
