@@ -22,15 +22,12 @@ class CategoryComponent {
 
 
 
-  //  document.querySelector('.app').addEventListener('touchstart', (e) => {
-  //     if (!e.target.closest('.product-cards-container') || !e.target) {
-
-  //       return
-  //     }
-  //     console.log(e)
-  //     e.stopPropagation()
-  //     e.preventDefault();
-  //   })
+  document.querySelector('.app').addEventListener('click', (e) => {
+    e.preventDefault()
+    this.handlePaginationLink(e)
+    handleProductCardButtons(e)
+   
+  })
    document.querySelector('.app').addEventListener('touchmove', (e) => {
       if (!!e.target.classList.contains('.product-cards-container')  || !e.target) {
 
