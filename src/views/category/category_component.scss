@@ -86,7 +86,11 @@ rating-container {
     gap: 1rem;
     transition: all .2s ease;
     @media (min-width:650px) {
-      @include handlePosition($linksBoxPosition );
+      pointer-events:all;
+      width: fit-content;
+      opacity: 1;
+      transition: all .2s ease;
+      @include handlePosition(translateX(0%),1,all);
     }
     
 
