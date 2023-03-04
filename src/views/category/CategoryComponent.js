@@ -28,17 +28,8 @@ class CategoryComponent {
       handleProductCardButtons(e)
 
     })
-    document.querySelector('.app').addEventListener('touchmove', (e) => {
-      
-      if (e.target.classList.contains('.product-cards')) {
+   
 
-        console.log(e)
-        e.stopPropagation()
-        e.preventDefault();
-      }
-
-    })
-  
 
   }
 

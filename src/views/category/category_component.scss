@@ -54,7 +54,9 @@ rating-container {
   }
 }
 
-
+.product-category-cards{
+  touch-action: pan-y;
+}
 .product-card,
 .preview-card {
   cursor: pointer;
@@ -68,7 +70,6 @@ rating-container {
     height: 20px;
   }
 
-  &-link {}
 
   &-btn-container {
     position: absolute;
