@@ -60,7 +60,7 @@ const productCard = function ({ id, img, product, price }) {
         </p>
         </div>
         ${new CardFooter().build()}
-        ${productModal()}
+       
          </div>`;
 };
 export default productCard

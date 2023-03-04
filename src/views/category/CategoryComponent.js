@@ -28,8 +28,7 @@ class CategoryComponent {
       handleProductCardButtons(e)
 
     })
-   
-
+    
 
   }
 
