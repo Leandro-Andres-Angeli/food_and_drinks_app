@@ -6,10 +6,12 @@ import { addModal } from "../category/components/product_card/product_card_compo
 
 class ProductPage {
     constructor(test) {
+        this.app = document.querySelector('.app')
         this.test = test;
         this.fetchData = getData;
         this.endpoint;
-        // addModal.call(this)
+        //  addModal.call(this.app)
+       
     }
     build() {
         return async function () {

@@ -28,8 +28,10 @@ class CategoryComponent {
       handleProductCardButtons(e)
 
     })
-    
-
+  
+    // const modal = productModal();
+    // document.querySelector('.app').insertAdjacentHTML('beforeend' ,`<div>modal</div>` )
+    // console.log(productModal())
   }
 
   handlePaginationLink(e) {

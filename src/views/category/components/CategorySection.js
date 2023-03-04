@@ -6,6 +6,7 @@ import previewCard from "./PreviewCard";
 import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
+import { productModal } from "./product_card/product_card_components/ProductCardUtilities";
 const nameTypes = Object.freeze({
   drinks: 'strDrink',
   categories: 'strMeal',
@@ -128,6 +129,7 @@ const CategorySection = async () => {
       </div>
       
     </div>
+    ${productModal()}
     </section>`;
 
 };

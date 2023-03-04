@@ -26,13 +26,14 @@ class App {
     this.body = document.querySelector('body');
     this.header = document.querySelector('header');
     window.location.hash = '#/home';
-    window.addEventListener('hashchange', () => {
+    
+    window.addEventListener('hashchange', ()=> {
      
       let route =window.location.hash
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
-      
+       
        let view ; 
      
       
@@ -54,11 +55,11 @@ class App {
       const loading = document.createElement('div');
       loading.classList.add('loading');
       loading.innerText = 'loading';
-      this.body.appendChild(loading);
+     
       asyncRender.call(this, Navbar, this.header);
 
-      asyncRender.call(this, Home, this.app);
-      this.body.removeChild(loading);
+      if(!this.route)  asyncRender.call(this, Home, this.app);
+     
       this.handleScroll()
       // document.addEventListener('touchstart',(e)=>e.preventDefault())
       // document.addEventListener('touchmove',(e)=>e.preventDefault())
