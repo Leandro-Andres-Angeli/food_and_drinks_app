@@ -10,11 +10,11 @@ export const productModal = () => {
 
 
 
-  const modal = ` <div class="modal  fade w-100" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog " >
+  const modal = ` <div class="modal  fade w-100 " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered " >
 <div class='loader-container'>${iconsList.loader.component}</div>
   <div class="modal-content">
-  3456
+
     <div class="modal-header">
     
       
@@ -81,13 +81,13 @@ export const buttonActions = Object.freeze({
     attributes: function () {
       return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
-   
+      document.querySelector('.modal-backdrop').style.height = document.body.clientHeight+"px"
       handleLoaderDisplay('remove')
 
       const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
 
       updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data))
-    
+      
 
     }
   }, link: { attributes:function ()  { 
