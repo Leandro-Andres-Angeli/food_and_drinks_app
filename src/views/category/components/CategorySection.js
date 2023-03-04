@@ -58,7 +58,7 @@ const renderProducts = function (productList) {
 
 }
 const CategorySection = async () => {
-
+  document.body.insertAdjacentHTML('beforeend',productModal())
   const split = window.location.hash.split('?');
   const category = split.pop().trim();
   const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
@@ -100,7 +100,9 @@ const CategorySection = async () => {
 
   }
   selectForm.order(handleOrder)
-  return `<section>
+  return `
+ 
+  <section>
     <div class='container-fluid'>
     ${new PageSection('main', undefined).setContent(mainHeader(category)).build()
       .outerHTML
@@ -129,8 +131,9 @@ const CategorySection = async () => {
       </div>
       
     </div>
-    ${productModal()}
-    </section>`;
+    
+    </section>
+    `;
 
 };
 export default CategorySection

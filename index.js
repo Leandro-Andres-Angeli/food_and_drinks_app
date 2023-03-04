@@ -75,7 +75,7 @@ class App {
 
     });
   
-    new Footer();
+ new Footer();
 
     const renderSubscribe = function (callback) {
       const subscribeComponent = SubscribeComponent();

@@ -11,17 +11,17 @@ export const productModal = () => {
 
 
   const modal = ` <div class="modal  fade w-100" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog ">
+<div class="modal-dialog " >
 <div class='loader-container'>${iconsList.loader.component}</div>
   <div class="modal-content">
-  
+  3456
     <div class="modal-header">
     
       
     </div>
     <div class="modal-body">
      
-     
+    
     </div>
    
   </div>
@@ -81,6 +81,7 @@ export const buttonActions = Object.freeze({
     attributes: function () {
       return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
+   
       handleLoaderDisplay('remove')
 
       const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
