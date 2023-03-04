@@ -66,7 +66,7 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
 }
 export const addModal = function () {
 
-
+ 
     return this.insertAdjacentHTML('beforeend',productModal()) 
 
   

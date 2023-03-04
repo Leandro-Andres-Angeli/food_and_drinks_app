@@ -58,7 +58,7 @@ const renderProducts = function (productList) {
 
 }
 const CategorySection = async () => {
-  document.body.insertAdjacentHTML('beforeend',productModal())
+  document.querySelector('.modal') === null ? document.body.insertAdjacentHTML('beforeend',productModal()) : null;
   const split = window.location.hash.split('?');
   const category = split.pop().trim();
   const apiRoute = window.location.toString().includes('drinks') ? process.env.API_DRINKS_ENDPOINT : process.env.API_ENDPOINT
