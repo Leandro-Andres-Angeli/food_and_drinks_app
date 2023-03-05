@@ -262,18 +262,21 @@ const CategorySection = async () => {
     
       
       
-    
-           <div class='row '>
-         
+      <div class='product-category-cards col col-12 col-md-8'>
+           <div class='row no-wrap d-flex product-cards-list   gap-4 p2'>
+        
                ${renderProducts(divideProductArray.rightSide)} 
-       
+               </div>
         
       
     <div>
-      </div>
-      
-    </div>
     
+      </div>
+     
+    </div>
+    ${pages > 1 &&
+      `<div class='container d-flex justify-content-end pe-3 py-3'>${productNav(pages)}</div>` || ''
+      }
     </section>
     ${modal}
     ${modalBtn}
