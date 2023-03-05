@@ -3,7 +3,7 @@ import routes from './routes';
 class Router {
   constructor(type) {
     this.type = routes[type];
-    console.log(type);
+  
   }
   renderRoute(DOMel) {
     const route = routes[this.type] || routes.error;

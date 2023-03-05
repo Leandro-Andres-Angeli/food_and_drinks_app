@@ -4,7 +4,8 @@ import Contact from '../views/Contact';
 import ErrorPage from '../views/error/ErrorPage';
 import Home from '../views/home/Home';
 import ProductPage from '../views/product_page/ProductPage';
-import testPage from '../views/product_page/Test';
+import content from '../views/product_page/Test';
+
 
 
 const routes = {
@@ -16,7 +17,7 @@ const routes = {
   product: { route: ':categories:id', view:  ProductPage  },
 
   contact: { route: 'contact', view: Contact },
-  contact: { route: 'test', view: testPage },
+  test: { route: 'test', view:content  },
   error: { view: ErrorPage },
 };
 export default routes;
