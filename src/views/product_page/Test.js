@@ -1,33 +1,32 @@
 
 
+
 const tag = (content) => {
     return content;
 }
 const list = `<ul class="list-group">
-<li class="list-group-item">An item</li>
-<li class="list-group-item">A second item</li>
-<li class="list-group-item">A third item</li>
-<li class="list-group-item">A fourth item</li>
-<li class="list-group-item">And a fifth one</li>
+${ `<li class="list-group-item">An item</li>
+<li class="list-group-item">A second item</li>`.repeat(12)}
+
 </ul>`
 
 const leftSide = `<div class ='col-12 col col-md-5'>${list}</div>`
-
-const card = `
+export const modalBtn = ` <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+Launch demo modal
+</button>`
+export const card = `
 
 <div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
   <h5 class="card-title">Card title</h5>
   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+ ${modalBtn}
 </div>
 </div>
 
 `
-const modal = `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+export const modal = `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
