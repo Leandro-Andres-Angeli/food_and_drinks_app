@@ -151,7 +151,7 @@ import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
 import { addModal, productModal } from "./product_card/product_card_components/ProductCardUtilities";
-import { card, modal, modalBtn } from "../../product_page/Modal";
+import { modal } from "../../product_page/Modal";
 const nameTypes = Object.freeze({
   drinks: 'strDrink',
   categories: 'strMeal',
@@ -165,6 +165,15 @@ const getNameProp = function () {
 const sortOptions = Object.freeze({
   price: { orderFunc: function (products) { return products.sort((a, b) => a.price - b.price) } },
   priceReverse: { orderFunc: function (products) { return products.sort((a, b) => b.price - a.price) } },
+  nameReverse: {
+    orderFunc: function (products) {
+      return products.sort((a, b) => {
+        const nameType = nameTypes[getNameProp()];
+    
+        return a[`${nameType}`] < b[`${nameType}`] ? 1 : a[`${nameType}`] < b[`${nameType}`] ? 1 : 0
+      })
+    }
+  },
   name: {
     orderFunc: function (products) {
       return products.sort((a, b) => {
@@ -174,13 +183,6 @@ const sortOptions = Object.freeze({
       })
     }
   },
-  nameReverse: {
-    orderFunc: function (products) {
-      const nameType = nameTypes[getNameProp()];
-    
-      return products.sort((a, b) => a[`${nameType}`] < b[`${nameType}`] ? 1 : a[`${nameType}`] < b[`${nameType}`] ? -1 : 0)
-    }
-  }
 
 });
 const renderProducts = function (productList) {
@@ -260,26 +262,26 @@ const CategorySection = async () => {
       ${divideProductArray.leftSide.map((item) => previewCard(item)).join('')}</ul>
       </div>
     
-      
-      
-      <div class='product-category-cards col col-12 col-md-8'>
-           <div class='row  d-flex product-cards-list flex-nowrap  gap-4 p2'>
-        
-               ${renderProducts(divideProductArray.rightSide)} 
+            <div class='col col-12 col-md-8 product-cards-container'>
+            ${selectForm.root}
+               <div class=' product-category-cards  '>
+            
+          
+                  <div class='row flex-nowrap product-cards-list  gap-4 p2'>
+                  ${renderProducts(divideProductArray.rightSide)} 
+                       
+                 </div>
                </div>
-        
-      
-    <div>
-    
-      </div>
-     
-    </div>
-    ${pages > 1 &&
-      `<div class='container d-flex justify-content-end pe-3 py-3'>${productNav(pages)}</div>` || ''
-      }
+               ${pages > 1 &&
+           `<div class='container d-flex justify-content-end pe-3 py-3'>${productNav(pages)}</div>` || ''
+           }
+           <div>
+             </div>
+            
+           </div>
     </section>
     ${modal}
-    ${modalBtn}
+   
     `;
 
 };
