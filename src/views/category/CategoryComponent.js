@@ -38,9 +38,9 @@ class CategoryComponent {
     else {
 
 
-      let translateVal = document.querySelector(`.product-category-cards [data-index="${e.target.tabIndex}"]`).clientWidth * (+e.target.tabIndex)
-
-      this.app.querySelector('.product-category-cards').animate([{ transform: `translateX(${-translateVal}px)` }], { duration: 1000, fill: 'both' })
+      let translateVal = document.querySelector(`.product-category-cards [data-index="${e.target.tabIndex}"]`).clientWidth * (+e.target.tabIndex ) 
+     
+      this.app.querySelector('.product-category-cards').animate([{ transform: `translateX(${-(translateVal  ) }px)` }], { duration: 1000, fill: 'both' })
     }
   }
 

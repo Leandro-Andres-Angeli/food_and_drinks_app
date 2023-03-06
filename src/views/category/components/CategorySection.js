@@ -192,7 +192,7 @@ const renderProducts = function (productList) {
   return `  ${divideArray(productList, 9)
     .map(
       (page, i) =>
-        `<div  data-index="${i}" class='col  product-col col-12 w-100 w-lg-100  gy-2 gy-lg-4'>
+        `<div  data-index="${i}" class='col  product-col  col-12 w-100 w-lg-100  gy-2 gy-lg-4'>
           <div class='row'>      ${page
           .map(
             (prod, i) =>
