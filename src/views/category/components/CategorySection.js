@@ -167,9 +167,10 @@ const sortOptions = Object.freeze({
   priceReverse: { orderFunc: function (products) { return products.sort((a, b) => b.price - a.price) } },
   nameReverse: {
     orderFunc: function (products) {
+      console.log(products)
       return products.sort((a, b) => {
         const nameType = nameTypes[getNameProp()];
-    
+        console.log(nameType)
         return a[`${nameType}`] < b[`${nameType}`] ? 1 : a[`${nameType}`] < b[`${nameType}`] ? 1 : 0
       })
     }
