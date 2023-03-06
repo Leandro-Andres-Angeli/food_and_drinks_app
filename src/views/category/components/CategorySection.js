@@ -151,7 +151,7 @@ import productCard from "./product_card/ProductCard";
 import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
 import { addModal, productModal } from "./product_card/product_card_components/ProductCardUtilities";
-import { card, modal, modalBtn } from "../../product_page/Test";
+import { card, modal, modalBtn } from "../../product_page/Modal";
 const nameTypes = Object.freeze({
   drinks: 'strDrink',
   categories: 'strMeal',
@@ -189,15 +189,15 @@ const renderProducts = function (productList) {
   return `  ${divideArray(productList, 9)
     .map(
       (page, i) =>
-        `<div  data-index="${i}" class='col  col-12 w-lg-100 row  gy-2 gy-lg-4'>
-          
-      ${page
+        `<div  data-index="${i}" class='col  product-col col-12 w-100 w-lg-100  gy-2 gy-lg-4'>
+          <div class='row'>      ${page
           .map(
             (prod, i) =>
               `<div class='col col-6 col-md-4'>${productCard(formatProductData(prod))}</div>`
           )
           .join('')}
-       </div>`
+       </div> </div>
+       `
     )
     .join('')} `
 
@@ -263,7 +263,7 @@ const CategorySection = async () => {
       
       
       <div class='product-category-cards col col-12 col-md-8'>
-           <div class='row no-wrap d-flex product-cards-list   gap-4 p2'>
+           <div class='row  d-flex product-cards-list flex-nowrap  gap-4 p2'>
         
                ${renderProducts(divideProductArray.rightSide)} 
                </div>

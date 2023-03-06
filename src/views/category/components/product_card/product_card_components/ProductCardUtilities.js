@@ -27,24 +27,8 @@ export const productModal = () => {
   </div>
 </div>
 </div> `;
-const m2 = `<div class="modal" id="exampleModal"  tabindex="-1">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Modal title</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <p>Modal body text goes here.</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
-    </div>
-  </div>
-</div>
-</div>`
-  return m2
+
+  return modal
 
 }
 
@@ -82,7 +66,7 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
 
 }
 export const addModal = function () {
-
+  
  
     return this.insertAdjacentHTML('beforeend',productModal()) 
 
@@ -98,12 +82,13 @@ export const buttonActions = Object.freeze({
     attributes: function () {
       return ` data-bs-toggle="modal" data-bs-target="#exampleModal" `
     }, btnAction: async function ({ apiRoute, prodId }) {
-      // document.querySelector('.modal-backdrop').style.height = document.body.clientHeight+"px"
-      // handleLoaderDisplay('remove')
+    
+     document.querySelector('.modal-backdrop').style.height = document.body.clientHeight+"px"
+      handleLoaderDisplay('remove')
 
-      // const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
+      const data = await getData(`${apiRoute}lookup.php?i=${prodId}`);
 
-      // updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data))
+      updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data))
       return
       
 
