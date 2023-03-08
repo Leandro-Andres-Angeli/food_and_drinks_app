@@ -193,12 +193,17 @@ const renderProducts = function (productList) {
     .map(
       (page, i) =>
         `<div  data-index="${i}" class='col  product-col  col-12 w-100 w-lg-100  gy-2 gy-lg-4'>
-          <div class='row'>      ${page
+          <div class='row gy-4'>  
+          <div class='col-12 col pe-0 pe-md-5'>
+          <div class='row'>         ${page
           .map(
             (prod, i) =>
-              `<div class='col col-6 col-md-4'>${productCard(formatProductData(prod))}</div>`
+              `<div class='col col-6 col-md-4 p-3 '>${productCard(formatProductData(prod))}</div>`
           )
           .join('')}
+          </div>
+ 
+          </div>
        </div> </div>
        `
     )
@@ -268,17 +273,19 @@ const CategorySection = async () => {
                <div class=' product-category-cards  '>
             
           
-                  <div class='row flex-nowrap product-cards-list  gap-4 p2'>
+                  <div class='row flex-nowrap product-cards-list   p2'>
                   ${renderProducts(divideProductArray.rightSide)} 
                        
-                 </div>
+                
+                  </div> 
                </div>
                ${pages > 1 &&
            `<div class='container d-flex justify-content-end pe-3 py-3'>${productNav(pages)}</div>` || ''
            }
-           <div>
+
+          
              </div>
-            
+             </div>
            </div>
     </section>
     ${modal}
