@@ -38,7 +38,7 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
 
   const { category, name, id, img, ingredients } = product
   this.dataset.id = id;
-  this.querySelector('.modal-header').innerHTML = `<ol class="breadcrumb">
+  this.querySelector('.modal-header').innerHTML = `<ol class="breadcrumb m-0">
   <li class="breadcrumb-item">${category}</a></li>
   <li class="breadcrumb-item active text-primary" aria-current="page">${name}</li>
 </ol><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`

@@ -23,8 +23,9 @@ if (module.hot) {
 class App {
   constructor() {
     this.app = document.querySelector('.app');
+    this.navbar = document.querySelector('header')
     this.body = document.querySelector('body');
-    this.header = document.querySelector('header');
+    this.header = document.querySelector('header ');
     window.location.hash = '#/home';
     
     window.addEventListener('hashchange', ()=> {
@@ -40,6 +41,7 @@ class App {
   try{       
      view = getId() && routes.product.view ||  routes[route].view 
      asyncRender( view, this.app)
+     console.log(this.navbar)
       }
       catch(e){
     
@@ -71,6 +73,15 @@ class App {
 
 
       const changeRoute = handleNavbarLink(e, currentRoute);
+      const  handleStyles = function(){
+        console.log( window.location.hash)
+        Array.from( document.querySelectorAll('header .nav-link')).forEach(link => link.classList.remove('active'))
+      window.location.hash.toString().includes(e.target.innerText.toLowerCase()) ? e.target.classList.add('active') : null;
+     
+
+
+      }
+      handleStyles.call(this)
 
 
     });

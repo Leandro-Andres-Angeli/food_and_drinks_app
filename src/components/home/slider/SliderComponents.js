@@ -32,7 +32,7 @@ class SliderImg extends SliderComponent {
     super();
     this.tag = ` 
       <div class='col-md-6 mb-3 mb-md-2 d-block col-12 col p-3 text-center'   >
-            <img src="${src}" class="img-fluid carousel-img rounded w-75 w-md-100" alt="...">
+            <img src="${src}" class="img-fluid carousel-img rounded w-100" alt="...">
   </div>
       `;
   }

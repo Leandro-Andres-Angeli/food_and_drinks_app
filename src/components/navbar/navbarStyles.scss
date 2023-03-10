@@ -1,3 +1,4 @@
+@import '../../styles/base.scss';
 header{
  
  
@@ -41,4 +42,6 @@ header{
   width: 4rem;
 }
 .dropdown-toggle{background-color: inherit;border: none;}
-
+.nav-link.active{
+  color: $primary !important;
+}
