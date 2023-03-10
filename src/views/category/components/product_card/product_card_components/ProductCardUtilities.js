@@ -90,6 +90,7 @@ export const buttonActions = Object.freeze({
 
       updateModalContent.call(document.body.querySelector('.modal-content'), formatApiData.modal(data))
       
+     document.querySelector('.modal-body').scrollIntoView()
        
 
     }
