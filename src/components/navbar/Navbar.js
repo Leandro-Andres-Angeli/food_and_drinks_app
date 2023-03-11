@@ -43,7 +43,7 @@ const Navbar = async () => {
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-capitalize">
          ${firsArt
            .reverse()
-           .map((link) => NavElement.setStrategy('navLink').build(link))
+           .map((link,i) => NavElement.setStrategy('navLink').build(link,i === 0))
            .join('')}
           ${dropdownMenu(mealCategories,'meals')}
          ${ dropdownMenu(drinksCategories,'drinks')}

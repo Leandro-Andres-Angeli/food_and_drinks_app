@@ -55,10 +55,7 @@ class App {
     });
 
     window.addEventListener('load', () => {
-      const loading = document.createElement('div');
-      loading.classList.add('loading');
-      loading.innerText = 'loading';
-
+    
       asyncRender.call(this, Navbar, this.header);
 
       if (!this.route) asyncRender.call(this, Home, this.app);

@@ -1,7 +1,7 @@
-function NavLink(route) {
+function NavLink(route,active =false) {
   const view = `
 <li class="nav-item">
-<a class="nav-link " aria-current="page" href="#/${route}">${route}</a>
+<a class="nav-link  ${active ? 'active' : 'defa'}" aria-current="page" href="#/${route}">${route}</a>
 </li>`;
   return view;
 }
@@ -31,8 +31,9 @@ export class NavElement {
     return this;
   }
 
-  static build(route) {
-    return this.element(route);
+  static build(route,isActive ) {
+    
+    return this.element(route,isActive );
   }
   static clean() {
     return NavElement;
