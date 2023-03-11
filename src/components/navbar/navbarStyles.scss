@@ -45,3 +45,6 @@ header{
 .nav-link.active{
   color: $primary !important;
 }
+.nav-link.active.dropdown.text-gray-800{
+  color: $primary !important;
+}

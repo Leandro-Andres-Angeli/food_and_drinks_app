@@ -11,6 +11,7 @@ import handleNavbarLink from './src/utils/handleNavbarLinks';
 import Footer from './src/components/footer/Footer';
 import SubscribeComponent from './src/components/footer/SubscribeComponent';
 import getId from './src/utils/getId';
+import { getLinkType, handleLinksStylesClass, toggleClassName } from './src/components/navbar/stylingUtilities';
 
 if (module.hot) {
   module.hot.accept();
@@ -27,45 +28,44 @@ class App {
     this.body = document.querySelector('body');
     this.header = document.querySelector('header ');
     window.location.hash = '#/home';
-    
-    window.addEventListener('hashchange', ()=> {
-     
-      let route =window.location.hash
+
+    window.addEventListener('hashchange', () => {
+
+      let route = window.location.hash
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
+
+      let view;
+
+
+      try {
+        view = getId() && routes.product.view || routes[route].view
+        asyncRender(view, this.app)
        
-       let view ; 
-     
-      
-  try{       
-     view = getId() && routes.product.view ||  routes[route].view 
-     asyncRender( view, this.app)
-     console.log(this.navbar)
       }
-      catch(e){
-    
-      window.location.hash='/error'
+      catch (e) {
+
+        window.location.hash = '/error'
       }
-   
-     
-   
-      window.scrollTo(0,0)
+
+
+
+      window.scrollTo(0, 0)
     });
 
     window.addEventListener('load', () => {
       const loading = document.createElement('div');
       loading.classList.add('loading');
       loading.innerText = 'loading';
-     
+
       asyncRender.call(this, Navbar, this.header);
 
-      if(!this.route)  asyncRender.call(this, Home, this.app);
-     
+      if (!this.route) asyncRender.call(this, Home, this.app);
+
       this.handleScroll()
-      // document.addEventListener('touchstart',(e)=>e.preventDefault())
-      // document.addEventListener('touchmove',(e)=>e.preventDefault())
-     
+
+
     });
 
     this.header.addEventListener('click', (e) => {
@@ -73,20 +73,13 @@ class App {
 
 
       const changeRoute = handleNavbarLink(e, currentRoute);
-      const  handleStyles = function(){
-        console.log( window.location.hash)
-        Array.from( document.querySelectorAll('header .nav-link')).forEach(link => link.classList.remove('active'))
-      window.location.hash.toString().includes(e.target.innerText.toLowerCase()) ? e.target.classList.add('active') : null;
-     
+      e.target.closest('li') && this.handleStyles(e)
 
-
-      }
-      handleStyles.call(this)
 
 
     });
-  
- new Footer();
+
+    new Footer();
 
     const renderSubscribe = function (callback) {
       const subscribeComponent = SubscribeComponent();
@@ -96,25 +89,47 @@ class App {
       callback.call(document.querySelector('.subscribe-form'));
     };
     renderSubscribe(function () {
-   
+
       this.addEventListener('submit', (e) => {
         e.preventDefault();
       });
     });
 
   }
+  handleStyles(e) {
+    // console.log(this)
+    // console.log(e.target.closest('li'))
+    // console.log('parent', e.target.parentElement.parentElement)
+    // console.log('label', e.target.parentElement.parentElement.getAttribute('aria-labelledby'))
+    // //   console.log( window.location.hash)
+
+    const linkType = getLinkType(e.target.parentElement.parentElement.getAttribute('aria-labelledby'))
+    // console.log(linkType)
+
+    // Array.from( this.header.querySelectorAll(' .nav-link')).forEach(link => link.classList.remove('active'))
+    const dropdownItems = Array.from(this.header.querySelectorAll('.dropdown-item'))
+
+    const domLinks = Array.from(this.header.querySelectorAll('.nav-link'))
+
+    toggleClassName(Array.from(domLinks), 'remove');
+
+    handleLinksStylesClass[`${linkType}`](e.target)
+
+
+
+  }
   handleScroll() {
     let positionY = window.pageYOffset;
 
     window.addEventListener('scroll', function (e) {
-      if(this.window.innerWidth < 800 ){return}
+      if (this.window.innerWidth < 800) { return }
       const currentScroll = (this.pageYOffset)
-    
+
       const header = e.target.body.querySelector('header');
       const setVisibleOnScrollUp = 'visible-on-scroll'
       positionY > currentScroll && this.pageYOffset > header.getBoundingClientRect().height * 2 ?
-       header.classList.add(setVisibleOnScrollUp)
-      : header.classList.remove(setVisibleOnScrollUp)
+        header.classList.add(setVisibleOnScrollUp)
+        : header.classList.remove(setVisibleOnScrollUp)
       positionY = currentScroll
 
     })
