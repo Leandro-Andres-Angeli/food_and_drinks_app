@@ -13,10 +13,19 @@ class ProductPage {
       
        
     }
+    handleCategoryLink(){
+        this.app.addEventListener('click',function(e){
+             const eventTarget =  e.target.closest('li') ;
+             if(eventTarget === null || !eventTarget.classList.contains('product-category') ){
+               return 
+             }
+             return window.history.back()
+        }) 
+    }
     build() {
         return async function () {
             const id = getId();
-
+           
             this.endpoint = window.location.hash.includes('categories') ? process.env.API_ENDPOINT : process.env.API_DRINKS_ENDPOINT;
 
             const data = await this.fetchData(`${this.endpoint}lookup.php?i=${id}`)
@@ -32,7 +41,7 @@ class ProductPage {
             <h5 class="card-title">
             <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">${formattedProdData.category}</a></li>
+    <li class="breadcrumb-item product-category"><a href="#">${formattedProdData.category}</a></li>
     <li class="breadcrumb-item active" aria-current="page"> ${formattedProdData.name}</li>
   </ol>
 </nav>
@@ -54,6 +63,7 @@ class ProductPage {
            
        
         </div>`
+        this.handleCategoryLink()
             return div;
         }.bind(this)
 
