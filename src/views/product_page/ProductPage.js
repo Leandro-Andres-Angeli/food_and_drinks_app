@@ -2,7 +2,7 @@
 import getData from "../../apis/getData";
 import formatProductData, { formatApiData } from "../../utils/formatProductData";
 import getId from "../../utils/getId";
-
+import './productPage.scss'
 
 class ProductPage {
     constructor(test) {
@@ -26,7 +26,7 @@ class ProductPage {
             const div = await `
     
         <div class='container p-2 p-md-5'>
-        <div class='card mb-5'>
+        <div class='card mb-5 product-page-card'>
          
             <div class="card-body d-flex flex-column ">
             <h5 class="card-title">
@@ -47,7 +47,7 @@ class ProductPage {
             </div > 
             <ul class="list-group p-2 p-md-4">
             <h6 class='text-primary fs-4 fw-bold'>Ingredients</h6> 
-            ${Object.entries(formattedProdData.ingredients).map(([key, val]) => `<li class="list-group-item">${key} : ${val}</li>`).join('')}
+            ${Object.entries(formattedProdData.ingredients).map(([key, val]) => `<li class="list-group-item">${val !== undefined ? `${key} : ${val}` : `${key}` } </li>`).join('')}
             </ul>
          
             </div>

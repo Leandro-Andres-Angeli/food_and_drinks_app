@@ -54,7 +54,7 @@ const updateModalContent = function (product, callback = handleLoaderDisplay('ad
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <ul class="list-group">
-      ${Object.entries(ingredients).map(([key, val]) => `<li class="list-group-item">${key} : ${val}</li>`).join('')}
+      ${Object.entries(ingredients).map(([key, val]) => `<li class="list-group-item">${val !== undefined ? `${key} : ${val}` : `${key}`}</li>`).join('')}
       </ul>
       </div>
     </div>
