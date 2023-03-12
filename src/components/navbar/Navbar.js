@@ -51,8 +51,9 @@ const Navbar = async () => {
       
          ${NavElement.setStrategy('navLink').build(last)}
         </ul>
-          ${new SearchComponent(new ButtonSearch().build() ).build()}
+         
       </div>
+      ${new SearchComponent(new ButtonSearch().build() ).build()}
     </div>
   </nav>`;
 
