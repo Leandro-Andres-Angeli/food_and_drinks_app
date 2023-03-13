@@ -19,6 +19,7 @@ class ProductPage {
              if(eventTarget === null || !eventTarget.classList.contains('product-category') ){
                return 
              }
+             
              return window.history.back()
         }) 
     }
