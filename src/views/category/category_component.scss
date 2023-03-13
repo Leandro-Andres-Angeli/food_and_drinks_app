@@ -54,12 +54,23 @@ rating-container {
   }
 }
 
-.product-category-cards{
+.product-category-cards {
   touch-action: pan-y;
 }
+
 .product-card,
 .preview-card {
   cursor: pointer;
+}
+
+.preview-card {
+  transition: box-shadow .2s ease;
+
+  &:hover {
+    box-shadow: 4px 4px 9px 0px rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: 4px 4px 9px 0px rgba(0, 0, 0, 0.103);
+    -moz-box-shadow: 4px 4px 9px 0px rgba(0, 0, 0, 0.13);
+  }
 }
 
 .product-card {
@@ -119,9 +130,10 @@ rating-container {
     opacity: 1;
     @include handlePosition(translateY(0%), 1, all);
     background-color: gray;
+
     @media (min-width:650px) {
       @include handlePosition($footerPosition );
-    
+
       pointer-events: initial;
       opacity: 0;
       transition: all .2s ease;
