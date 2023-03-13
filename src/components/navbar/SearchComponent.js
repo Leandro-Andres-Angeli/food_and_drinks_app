@@ -38,7 +38,7 @@ class SearchComponent {
         console.log(inputSearchVal)
         const searchResult = await  Promise.all( [getData(`${process.env.API_ENDPOINT}search.php?s=${inputSearchVal}`),getData(`${process.env.API_DRINKS_ENDPOINT}search.php?s=${inputSearchVal}`)])
         console.log(searchResult)
-        const renderResult =  await asyncRender(searchView(searchResult), this.app);
+        const renderResult =  await asyncRender(()=>searchView(searchResult), this.app);
         e.target.reset()
 
       })
