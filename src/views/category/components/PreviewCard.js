@@ -1,5 +1,5 @@
 import RatingComponent from "./RatingComponent";
-const previewCard = function (data , rating = 'rating-container') {
+ const previewCard = function (data , rating = 'rating-container') {
     this.addEventListener('click',(e)=>{
       
       if(e.target.closest('a') === null ||   !e.target.closest('a').classList.contains('preview-product-card-link')){

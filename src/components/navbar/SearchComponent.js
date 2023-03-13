@@ -6,6 +6,7 @@ import searchView from "../../views/search_page/SearchPage";
 class SearchComponent {
   constructor(children) {
     this.app = document.querySelector('.app')
+    this.header = document.querySelector('header')
     this.children = children;
     this.testEl = document.createElement('button')
 
@@ -26,13 +27,18 @@ class SearchComponent {
     this.testEl.addEventListener('click', () => console.log('clicked'))
     this.handleSubmit()
   }
+  resetNavStyles(){
+     const removeNavLinks = [...this.header.querySelectorAll('.nav-link')].filter(e => e.classList.contains('active')).map(e => e.classList.remove('active'))
+     
+  }
   handleSubmit() {
-    console.log('method')
+   
     document.querySelector('header').addEventListener('click',  (e)=> {
       if (e.target.type !== "submit") return;
+     
       console.log('loaded')
       e.target.parentElement.addEventListener('submit',async  (e)=> {
-        console.log('this ===',this)
+      
         e.preventDefault()
         const { value: inputSearchVal } = e.target.searchVal;
         console.log(inputSearchVal)
@@ -42,7 +48,7 @@ class SearchComponent {
         e.target.reset()
 
       })
-
+      this.resetNavStyles()
 
     })
 
