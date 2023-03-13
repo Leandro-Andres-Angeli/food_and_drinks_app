@@ -1,6 +1,7 @@
 import { async } from "regenerator-runtime";
 import getData from "../../apis/getData";
 import { asyncRender } from "../../utils/renders";
+import searchView from "../../views/search_page/SearchPage";
 
 class SearchComponent {
   constructor(children) {
@@ -37,7 +38,7 @@ class SearchComponent {
         console.log(inputSearchVal)
         const searchResult = await  Promise.all( [getData(`${process.env.API_ENDPOINT}search.php?s=${inputSearchVal}`),getData(`${process.env.API_DRINKS_ENDPOINT}search.php?s=${inputSearchVal}`)])
         console.log(searchResult)
-        const renderResult =  await asyncRender(()=>`<div>search</div>`, this.app);
+        const renderResult =  await asyncRender(searchView(searchResult), this.app);
         e.target.reset()
 
       })
