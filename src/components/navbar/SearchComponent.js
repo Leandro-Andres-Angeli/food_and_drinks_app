@@ -1,7 +1,7 @@
 import { async } from "regenerator-runtime";
 import getData from "../../apis/getData";
 import { asyncRender } from "../../utils/renders";
-import searchView from "../../views/search_page/SearchPage";
+import searchView from "../../views/search_page/SearchView";
 
 class SearchComponent {
   constructor(children) {
@@ -41,12 +41,14 @@ class SearchComponent {
       e.target.parentElement.addEventListener('submit',async  (e)=> {
       
         e.preventDefault()
-        const { value: inputSearchVal } = e.target.searchVal;
-        console.log(inputSearchVal)
-        const searchResult = await  Promise.all( [getData(`${process.env.API_ENDPOINT}search.php?s=${inputSearchVal}`),getData(`${process.env.API_DRINKS_ENDPOINT}search.php?s=${inputSearchVal}`)])
-        console.log(searchResult)
-        const renderResult =  await asyncRender(()=>searchView(searchResult), this.app);
-        e.target.reset()
+       
+        window.location.hash = `/search?query=${e.target.searchVal.value}`
+        // const { value: inputSearchVal } = e.target.searchVal;
+        // console.log(inputSearchVal)
+        
+        // console.log(searchResult)
+        // const renderResult =  await asyncRender(()=>searchView(searchResult), this.app);
+         e.target.reset()
         this.resetNavStyles()
       })
       

@@ -4,7 +4,7 @@ import Contact from '../views/Contact';
 import ErrorPage from '../views/error/ErrorPage';
 import Home from '../views/home/Home';
 import ProductPage from '../views/product_page/ProductPage';
-import searchView from '../views/search_page/SearchPage';
+import searchView from '../views/search_page/SearchView';
 
 
 
