@@ -24,11 +24,11 @@ class SearchComponent {
     
         ${this.children && this.children}
       </form>`
-    this.testEl.addEventListener('click', () => console.log('clicked'))
+
     this.handleSubmit()
   }
   resetNavStyles(){
-    console.log('function')
+    
      const removeNavLinks = [...this.header.querySelectorAll('.nav-link'),...this.header.querySelectorAll('.dropdown-item')].filter(e => e.classList.contains('active')).map(e => e.classList.remove('active'))
      
   }
@@ -38,18 +38,13 @@ class SearchComponent {
     document.querySelector('header').addEventListener('click',  (e)=> {
       if (e.target.type !== "submit") return;
      
-      console.log('loaded')
+    
       e.target.parentElement.addEventListener('submit',async  (e)=> {
       
         e.preventDefault()
-       console.log('submit')
-       console.log(e.target.searchVal)
+   
         window.location.hash = `/search?query=${e.target.searchVal.value}`
-        // const { value: inputSearchVal } = e.target.searchVal;
-        // console.log(inputSearchVal)
-        
-        // console.log(searchResult)
-        // const renderResult =  await asyncRender(()=>searchView(searchResult), this.app);
+
        
         this.resetNavStyles()
        

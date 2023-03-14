@@ -30,7 +30,7 @@ class RenderSearch {
           <h3 class='text-primary text-underline text-uppercase'> ${keys}</h3> 
 
           ${productEntries?.map( prodEntry   =>{
-            console.log(prodEntry)
+          
             const destructureObj = (data)=>[ data.name,data.img,data.id ]
             const key =  `${keys[0].toUpperCase()+keys.slice(1,keys.length-1)}`;
              const parsedData = formatApiData.formatTypes(key,prodEntry);
@@ -58,7 +58,7 @@ const searchView = async (query = window.location.hash.split('query=')[1],callba
    
     callback()
        return `<div class="container" > ${new RenderSearch(searchResults).renderComponent()}</div> `
-    // return new RenderSearch(meals, drinks).renderComponent()
+    
     
 }
 

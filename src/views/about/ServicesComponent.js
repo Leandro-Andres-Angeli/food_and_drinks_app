@@ -4,7 +4,7 @@ import './about_styles.scss';
 const servicesTitle = `<h2 class='text-primary text-center fw-bold'>What <span class='text-yellow-300 text-stroke m-2 my-lg-5'> Services</span> We Offer </h2>
 
 `;
-// const servicesCard =
+
 const dummyText =
   'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.';
 const servicesListObj = Object.freeze([
@@ -40,7 +40,7 @@ const servicesInner = () => {
   </section>`;
 };
 
-// const ServicesComponent = new PageSection('section').setContent(servicesTitle);
+
 const ServicesComponent = new PageSection('section').setContent(
   servicesInner()
 );

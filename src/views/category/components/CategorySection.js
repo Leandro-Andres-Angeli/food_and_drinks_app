@@ -1,5 +1,4 @@
 
-//REFACTORING STARTS HERE
 import getData from "../../../apis/getData";
 import PageSection, { mainHeader } from "../../../components/shared/PageSection";
 import divideArray from "../../../utils/divideArray";
@@ -153,5 +152,5 @@ const CategorySection = async () => {
     `;
 
 };
-//REFACTORING STARTS HERE
+
 export default CategorySection

@@ -7,7 +7,7 @@ class Router {
   }
   renderRoute(DOMel) {
     const route = routes[this.type] || routes.error;
-    console.log(this);
+   
     DOMel.innerHTML = this.type.component;
     return route;
   }
