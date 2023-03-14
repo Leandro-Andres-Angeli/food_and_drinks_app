@@ -1,4 +1,8 @@
+const getCategory = (prodData)=>{
 
+  const [category] = Object.keys(prodData)
+  return category === 'meals' ? 'Meal' : 'Drink';
+}
 export class formatApiData {
   constructor() {
 
@@ -26,7 +30,7 @@ export class formatApiData {
     return formattedProdData;
   }
   static formatTypes(type, data) {
-  
+   
     const { strCategory: category } = data;
     let formattedProdData = { category };
     let ingredients = [];
@@ -54,11 +58,12 @@ export class formatApiData {
     let joined = ingredients.reduce(((acc, curr, i) => { acc[`${curr}`] =proportions[`${i}`]; return acc }), {})
     return {...formattedProdData, ingredients : joined}
   }
-  static modal(productData) {
+  
+  static modal(productData,category = getCategory) {
 
-    const [category] = Object.keys(productData)
-    const getCategory = category === 'meals' ? 'Meal' : 'Drink';
-   const formattedProdDataModal =  this.formatTypes(getCategory, ...Object.entries(productData)[0][1])
+    
+   
+   const formattedProdDataModal =  this.formatTypes(category(productData), ...Object.entries(productData)[0][1])
    return formattedProdDataModal
    
 
