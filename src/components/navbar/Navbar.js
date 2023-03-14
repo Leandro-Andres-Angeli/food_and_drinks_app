@@ -24,7 +24,7 @@ const Navbar = async () => {
   const view = ` <nav class="navbar nav header-nav navbar-expand-md navbar-light bg-light shadow ">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="#/home">
+      <a class="navbar-brand d-flex align-items-center" href="#/home">
       <img  class='navbar-brand_logo' src=${brandPic}>
       Gatherer
       </a>
