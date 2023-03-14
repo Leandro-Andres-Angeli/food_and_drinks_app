@@ -3,6 +3,9 @@ export class formatApiData {
   constructor() {
 
   }
+  static search (productData){
+    return productData
+  }
   static card(productData) {
 
     let formattedProdData = { price: productData.price }
@@ -64,7 +67,7 @@ export class formatApiData {
   }
 }
 
-const formatProductData = function (productData, type = 'card') {
+ const formatProductData = function (productData, type = 'card') {
 
   return formatApiData[`${type}`](productData)
 

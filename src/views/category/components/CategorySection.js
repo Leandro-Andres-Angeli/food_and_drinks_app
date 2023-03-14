@@ -10,6 +10,8 @@ import productNav from "./ProductNav";
 import SelectSortEl from "./SelectSortEl";
 import { addModal, productModal } from "./product_card/product_card_components/ProductCardUtilities";
 import { modal } from "../../product_page/Modal";
+import RatingComponent from "./RatingComponent";
+import { mainSectionPreviewCardData } from "../../../utils/formatPreviewCardData";
 const nameTypes = Object.freeze({
   drinks: 'strDrink',
   categories: 'strMeal',
@@ -123,7 +125,7 @@ const CategorySection = async () => {
       <div class='col bg-light top-sellers-col p-0 p-md-2 col-12 col-md-4'>
       <h2 class='position-relative text-capitalize top-sellers-title  w-75 ms-3'>top sellers</h2>
       <ul class='list-group top-sellers-list gap-2 '>
-      ${divideProductArray.leftSide.map((item) => previewCard.call(document.body.querySelector('.app'),item)).join('')}</ul>
+      ${divideProductArray.leftSide.map((item) => previewCard.call(document.body.querySelector('.app'),item,'rating-container',undefined)).join('')}</ul>
       </div>
     
             <div class='col col-12 col-md-8 product-cards-container'>
