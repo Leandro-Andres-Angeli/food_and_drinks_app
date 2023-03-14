@@ -11,12 +11,14 @@ import getData from "../../apis/getData";
 class RenderSearch {
     constructor(results) {
         this.results = results;
-        this.meals = results.meals;
-        this.drinks = results.drinks;
+        [this.meals , this.drinks ] = this.results;
+        
         this.resultsHTML = resultsHTMLFunc()
 
     }
     renderComponent() {
+        console.log(this.results)
+        console.log( this.meals)
         // console.log('render funcc')
         // console.log( Object.values(this.meals)[0] === null )
         // console.log(this.drinks)
@@ -49,10 +51,10 @@ class RenderSearch {
         // <h3 class='text-primary text-capitalize'> ${key}</h3>
         // ${values.map(val => `<li class='list-group-item'>${JSON.stringify(val)}</li>`).join('')}
         // </ul>` ).join('')
-        // if (Object.values(this.meals)[0] === null && Object.values(this.drinks)[0] === null) this.resultsHTML.innerHTML = `<h2 class='text-primary m-5 p-5'>No products found , try again</h2>`
+       if (Object.values(this.meals)[0] === null && Object.values(this.drinks)[0] === null) this.resultsHTML.innerHTML = `<h2 class='text-primary m-5 p-5'>No products found , try again</h2>`
         // return this.resultsHTML.outerHTML
         // else 
-         this.resultsHTML.innerHTML =`<div>${JSON.stringify( this.results)}</div>`;
+       else   this.resultsHTML.innerHTML =`<div>${JSON.stringify( this.results)}</div>`;
         // console.log(this.resultsHTML)
         return this.resultsHTML.outerHTML;
     }
@@ -60,14 +62,12 @@ class RenderSearch {
 }
 resetForm =()=>document.querySelector('form').reset()
 const searchView = async (query = window.location.hash.split('query=')[1],callback = resetForm) => {
-    console.log(query)
-    // const [meals, drinks] = searchResults;
-    // console.log('meals', meals)
-    // console.log('drinks', drinks)
+    
+    
     const searchResults = 
        await  Promise.all( [getData(`${process.env.API_ENDPOINT}search.php?s=${query}`),getData(`${process.env.API_DRINKS_ENDPOINT}search.php?s=${query}`)])
       
-    console.log(searchResults)
+   
     callback()
        return `<div class="container" > ${new RenderSearch(searchResults).renderComponent()}</div> `
     // return new RenderSearch(meals, drinks).renderComponent()

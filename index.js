@@ -35,7 +35,7 @@ class App {
         .slice(2)
         .split('?')[0]
         .replaceAll('/', '');
-      console.log(route)
+      
       let view;
 
 
