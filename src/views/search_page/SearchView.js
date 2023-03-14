@@ -48,7 +48,7 @@ class RenderSearch {
     }
 
 }
-resetForm =()=>document.querySelector('form').reset()
+const resetForm =()=>document.querySelector('form').reset()
 const searchView = async (query = window.location.hash.split('query=')[1],callback = resetForm) => {
     
     
