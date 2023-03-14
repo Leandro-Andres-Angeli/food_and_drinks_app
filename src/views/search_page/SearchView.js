@@ -3,7 +3,7 @@
  import previewCard, { previewCardHTML } from "../category/components/PreviewCard";
 const resultsHTMLFunc = () => {
     const resultsTag = document.createElement('div');
-    ['container', 'p-2', 'p-lg-4'].forEach(cl => resultsTag.classList.add(cl))
+    ['container', 'p-2', 'p-lg-4','my-2','my-md-4'].forEach(cl => resultsTag.classList.add(cl))
     return resultsTag;
 }
 
@@ -26,7 +26,7 @@ class RenderSearch {
        else   this.resultsHTML.innerHTML =`<div>
        ${ Object.entries(this.meals).concat(Object.entries(this.drinks)).map(([keys,productEntries])=>{
 
-         if(keys && productEntries !== null) return `<ul class='list-group' >
+         if(keys && productEntries !== null) return `<ul class='list-group m-2 m-md-3 m-lg-5 p-2 p-md-3' >
           <h3 class='text-primary text-underline text-uppercase'> ${keys}</h3> 
 
           ${productEntries?.map( prodEntry   =>{
@@ -57,7 +57,7 @@ const searchView = async (query = window.location.hash.split('query=')[1],callba
       
    
     callback()
-       return `<div class="container" > ${new RenderSearch(searchResults).renderComponent()}</div> `
+       return `<div class="container mt-3 pt-3" > ${new RenderSearch(searchResults).renderComponent()}</div> `
     
     
 }

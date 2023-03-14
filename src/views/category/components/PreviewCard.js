@@ -1,5 +1,4 @@
-import { mainSectionPreviewCardData } from "../../../utils/formatPreviewCardData";
-import RatingComponent from "./RatingComponent";
+
 export  const previewCardHTML = (name,img,id,rating)=>{
   return  `<li class="list-group-item d-flex border-1 preview-card " data-id="${id}">
   <a href="${window.location.hash}&id=${id}" class='preview-product-card-link overflow-hidden d-flex text-decoration-none'>     <img class=' img-fluid w-lg-50 w-25' src="${img}"/>
