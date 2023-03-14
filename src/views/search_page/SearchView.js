@@ -1,21 +1,22 @@
-// import formatProductData, { formatApiData } from "../../utils/formatProductData";
+ import formatProductData, { formatApiData } from "../../utils/formatProductData";
 // import previewCard from "../category/components/PreviewCard";
-// const resultsHTMLFunc = () => {
-//     const resultsTag = document.createElement('div');
-//     ['container', 'p-2', 'p-lg-4'].forEach(cl => resultsTag.classList.add(cl))
-
+const resultsHTMLFunc = () => {
+    const resultsTag = document.createElement('div');
+    ['container', 'p-2', 'p-lg-4'].forEach(cl => resultsTag.classList.add(cl))
+    return resultsTag;
+}
 import getData from "../../apis/getData";
 
-//     return resultsTag;
-// }
-// class RenderSearch {
-//     constructor(meals, drinks) {
-//         this.meals = meals;
-//         this.drinks = drinks;
-//         this.resultsHTML = resultsHTMLFunc()
 
-//     }
-//     renderComponent() {
+class RenderSearch {
+    constructor(results) {
+        this.results = results;
+        this.meals = results.meals;
+        this.drinks = results.drinks;
+        this.resultsHTML = resultsHTMLFunc()
+
+    }
+    renderComponent() {
         // console.log('render funcc')
         // console.log( Object.values(this.meals)[0] === null )
         // console.log(this.drinks)
@@ -32,33 +33,45 @@ import getData from "../../apis/getData";
         // ${key}
         // ${values.map(val => `<li>${val}</li>`)}
         // </ul>` )
+
+
+        //////////////
         // if (Object.values(this.meals)[0] === null && Object.values(this.drinks)[0] === null) this.resultsHTML.innerHTML = `<h2 class='text-primary m-5 p-5'>No products found , try again</h2>`
         // else   this.resultsHTML.innerHTML = Object.entries({ ...this.meals, ...this.drinks }).map(([key, values]) => `<ul  class="list-group" >
         // <h3 class='text-primary text-capitalize'> ${key}</h3>
         // ${values.map((val) =>  `<li>${ key , JSON.stringify(formatProductData(val,'search'))} </li>`).join('')}
         // </ul>` ).join('')
-            // this.resultsHTML.innerHTML = `
+        //     this.resultsHTML.innerHTML = `
 
-            //  ${JSON.stringify(this.meals)}${JSON.stringify(this.drinks)}
-            //  `
+        //      ${JSON.stringify(this.meals)}${JSON.stringify(this.drinks)}
+        //      `
         //     this.resultsHTML.innerHTML = Object.entries({ ...this.meals, ...this.drinks }).map(([key, values]) => `<ul  class="list-group" >
         // <h3 class='text-primary text-capitalize'> ${key}</h3>
         // ${values.map(val => `<li class='list-group-item'>${JSON.stringify(val)}</li>`).join('')}
         // </ul>` ).join('')
-      
-//         return this.resultsHTML.outerHTML
-//     }
+        // if (Object.values(this.meals)[0] === null && Object.values(this.drinks)[0] === null) this.resultsHTML.innerHTML = `<h2 class='text-primary m-5 p-5'>No products found , try again</h2>`
+        // return this.resultsHTML.outerHTML
+        // else 
+         this.resultsHTML.innerHTML =`<div>${JSON.stringify( this.results)}</div>`;
+        // console.log(this.resultsHTML)
+        return this.resultsHTML.outerHTML;
+    }
 
-// }
-const searchView = async (query = window.location.hash.split('query=')[1]) => {
-
+}
+resetForm =()=>document.querySelector('form').reset()
+const searchView = async (query = window.location.hash.split('query=')[1],callback = resetForm) => {
+    console.log(query)
     // const [meals, drinks] = searchResults;
     // console.log('meals', meals)
     // console.log('drinks', drinks)
-    const searchResults = await  Promise.all( [getData(`${process.env.API_ENDPOINT}search.php?s=${query}`),getData(`${process.env.API_DRINKS_ENDPOINT}search.php?s=${query}`)]);
+    const searchResults = 
+       await  Promise.all( [getData(`${process.env.API_ENDPOINT}search.php?s=${query}`),getData(`${process.env.API_DRINKS_ENDPOINT}search.php?s=${query}`)])
+      
     console.log(searchResults)
-       return `<div class="container" > ${JSON.stringify(searchResults) || 'asdasd' }</div> `
+    callback()
+       return `<div class="container" > ${new RenderSearch(searchResults).renderComponent()}</div> `
     // return new RenderSearch(meals, drinks).renderComponent()
+    
 }
 
  export default searchView;
