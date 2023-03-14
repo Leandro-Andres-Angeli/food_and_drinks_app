@@ -28,7 +28,8 @@ class SearchComponent {
     this.handleSubmit()
   }
   resetNavStyles(){
-     const removeNavLinks = [...this.header.querySelectorAll('.nav-link')].filter(e => e.classList.contains('active')).map(e => e.classList.remove('active'))
+    console.log('function')
+     const removeNavLinks = [...this.header.querySelectorAll('.nav-link'),...this.header.querySelectorAll('.dropdown-item')].filter(e => e.classList.contains('active')).map(e => e.classList.remove('active'))
      
   }
   handleSubmit() {
@@ -46,9 +47,9 @@ class SearchComponent {
         console.log(searchResult)
         const renderResult =  await asyncRender(()=>searchView(searchResult), this.app);
         e.target.reset()
-
+        this.resetNavStyles()
       })
-      this.resetNavStyles()
+      
 
     })
 
