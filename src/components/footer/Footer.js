@@ -192,13 +192,33 @@ const fs3 = new FooterSection()
   .setContent(undefined, footerTags.title.render('contact'))
   .setContent(undefined, footerTags.ulContact.render())
   .build().outerHTML;
-const fs4 = new FooterSection().addClasslist(['about-me'])
+  class PersonalLinks {
+    constructor(url,icon){
+      this.url=url;
+      this.icon=icon;
+    }
+  }
+  const {telegramIcon:{component : telegram},whatsappIcon :{component : whatsapp},linkedinIcon:{component : linkedin},mailIcon:{component : mailIcon}} = iconsList;
+  const  linksList = [new PersonalLinks("https://t.me/L34nndr0",telegram),new PersonalLinks("https://wa.me/541159066928",whatsapp),new PersonalLinks('mailto:leandroandresangeli@gmail.com',mailIcon),new PersonalLinks('https://www.linkedin.com/in/leandro-angeli-80b1a5247/',linkedin)] 
+  
+  const aboutMe = (links)=> `<div class='container-fluid'> By Leandro Angeli 03/2023 for educational purposes </br> Contact :
+  <ul>
+  ${linksList.map(link => `
+  <li class='personal-links'>
+  <a href=${link.url}>
+   ${link.icon}
+  </a>
+  </li>
+  `).join('')}
+  </ul>
+</div>`
 class Footer {
   constructor() {
     this.footerDom = document.querySelector('footer');
     this.footerDom.innerHTML = ` 
     <div class='p-3'>
     <div class='row'> ${fs + fs1 + fs2 + fs3}</div>
+    ${aboutMe()}
     </div>
     `;
   }
