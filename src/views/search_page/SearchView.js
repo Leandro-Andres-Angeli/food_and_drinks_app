@@ -36,7 +36,7 @@ class RenderSearch {
              const parsedData = formatApiData.formatTypes(key,prodEntry);
           
              const {name,img,id} = parsedData; 
-             const searchCard = previewCard(parsedData,undefined,undefined,undefined,destructureObj(parsedData))
+             
              
             return `${previewCardHTML(name,img,id)}` })}
          </ul>`
