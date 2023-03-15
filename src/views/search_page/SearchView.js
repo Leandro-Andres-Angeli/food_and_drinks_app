@@ -26,19 +26,19 @@ class RenderSearch {
        else   this.resultsHTML.innerHTML =`<div>
        ${ Object.entries(this.meals).concat(Object.entries(this.drinks)).map(([keys,productEntries])=>{
 
-         if(keys && productEntries !== null) return `<ul class='list-group m-2 m-md-3 m-lg-5 p-2 p-md-3' >
+         if(keys && productEntries !== null) return `<ul class='list-group gap-3 m-2 m-md-3 m-lg-5 p-2 p-md-3' >
           <h3 class='text-primary text-underline text-uppercase'> ${keys}</h3> 
 
           ${productEntries?.map( prodEntry   =>{
           
-            const destructureObj = (data)=>[ data.name,data.img,data.id ]
+          
             const key =  `${keys[0].toUpperCase()+keys.slice(1,keys.length-1)}`;
              const parsedData = formatApiData.formatTypes(key,prodEntry);
           
              const {name,img,id} = parsedData; 
              
              
-            return `${previewCardHTML(name,img,id)}` })}
+            return `${previewCardHTML(name,img,id,undefined,'')}` }).join('')}
          </ul>`
        }).join('')  }
      
