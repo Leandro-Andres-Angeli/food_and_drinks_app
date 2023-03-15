@@ -201,16 +201,19 @@ const fs3 = new FooterSection()
   const {telegramIcon:{component : telegram},whatsappIcon :{component : whatsapp},linkedinIcon:{component : linkedin},mailIcon:{component : mailIcon}} = iconsList;
   const  linksList = [new PersonalLinks("https://t.me/L34nndr0",telegram),new PersonalLinks("https://wa.me/541159066928",whatsapp),new PersonalLinks('mailto:leandroandresangeli@gmail.com',mailIcon),new PersonalLinks('https://www.linkedin.com/in/leandro-angeli-80b1a5247/',linkedin)] 
   
-  const aboutMe = (links)=> `<div class='container-fluid'> By Leandro Angeli 03/2023 for educational purposes </br> Contact :
-  <ul>
+  const aboutMe = (links)=> `<div class='container-fluid'> By Leandro Angeli 03/2023 for educational purposes </br>
+  <div class='d-flex my-3'>
+  <span>Contact :</span> 
+  <ul class='d-flex gap-2 ps-2'>
   ${linksList.map(link => `
-  <li class='personal-links'>
-  <a href=${link.url}>
+  <li class='personal-links '>
+  <a href=${link.url}  target="_blank">
    ${link.icon}
   </a>
   </li>
   `).join('')}
   </ul>
+  </div>
 </div>`
 class Footer {
   constructor() {
