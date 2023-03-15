@@ -198,10 +198,10 @@ const fs3 = new FooterSection()
       this.icon=icon;
     }
   }
-  const {telegramIcon:{component : telegram},whatsappIcon :{component : whatsapp},linkedinIcon:{component : linkedin},mailIcon:{component : mailIcon}} = iconsList;
-  const  linksList = [new PersonalLinks("https://t.me/L34nndr0",telegram),new PersonalLinks("https://wa.me/541159066928",whatsapp),new PersonalLinks('mailto:leandroandresangeli@gmail.com',mailIcon),new PersonalLinks('https://www.linkedin.com/in/leandro-angeli-80b1a5247/',linkedin)] 
+  const {telegramIcon:{component : telegram},whatsappIcon :{component : whatsapp},linkedinIcon:{component : linkedin},mailIcon:{component : mailIcon},gitHubIcon:{component :gitHubIcon}} = iconsList;
+  const  linksList = [new PersonalLinks("https://t.me/L34nndr0",telegram),new PersonalLinks("https://wa.me/541159066928",whatsapp),new PersonalLinks('mailto:leandroandresangeli@gmail.com',mailIcon),new PersonalLinks('https://www.linkedin.com/in/leandro-angeli-80b1a5247/',linkedin),new PersonalLinks('https://github.com/Leandro-Andres-Angeli',gitHubIcon)] 
   
-  const aboutMe = (links)=> `<div class='container-fluid'> By Leandro Angeli 03/2023 for educational purposes </br>
+  const aboutMe = ()=> `<div class='container-fluid'> By Leandro Angeli 03/2023 for educational purposes </br>
   <div class='d-flex my-3'>
   <span>Contact :</span> 
   <ul class='d-flex gap-2 ps-2'>
