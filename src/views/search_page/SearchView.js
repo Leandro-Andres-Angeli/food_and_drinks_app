@@ -57,7 +57,7 @@ const searchView = async (query = window.location.hash.split('query=')[1],callba
       
    
     callback()
-       return `<div class="container mt-3 pt-3" > ${new RenderSearch(searchResults).renderComponent()}</div> `
+       return `<div class="container mt-3 pt-3 search-results" > ${new RenderSearch(searchResults).renderComponent()}</div> `
     
     
 }
