@@ -192,7 +192,7 @@ const fs3 = new FooterSection()
   .setContent(undefined, footerTags.title.render('contact'))
   .setContent(undefined, footerTags.ulContact.render())
   .build().outerHTML;
-
+const fs4 = new FooterSection().addClasslist(['about-me'])
 class Footer {
   constructor() {
     this.footerDom = document.querySelector('footer');

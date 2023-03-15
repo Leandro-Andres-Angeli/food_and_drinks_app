@@ -21,10 +21,10 @@ const Navbar = async () => {
     `${process.env.API_DRINKS_ENDPOINT}list.php?c=list`
   );
 
-  const view = ` <nav class="navbar nav header-nav navbar-expand-md navbar-light bg-light shadow ">
+  const view = ` <nav class="navbar px-4 nav header-nav navbar-expand-md navbar-light bg-light shadow ">
 
     <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="#/home">
+      <a class="navbar-brand d-flex align-items-center " href="#/home">
       <img  class='navbar-brand_logo' src=${brandPic}>
       Gatherer
       </a>
@@ -39,8 +39,7 @@ const Navbar = async () => {
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    </div>
-     
+   
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-capitalize">
          ${firsArt
@@ -57,7 +56,8 @@ const Navbar = async () => {
       </div>
     
   
-  
+   </div>
+     
   </nav>`;
 
   
