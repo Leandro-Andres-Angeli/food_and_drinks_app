@@ -204,7 +204,7 @@ const fs3 = new FooterSection()
   const aboutMe = ()=> `<div class='container-fluid'> By Leandro Angeli 03/2023 for educational purposes </br>
   <div class='d-flex my-3'>
   <span>Contact :</span> 
-  <ul class='d-flex gap-2 ps-2'>
+  <ul class='d-flex gap-4 ps-2'>
   ${linksList.map(link => `
   <li class='personal-links '>
   <a href=${link.url}  target="_blank">
